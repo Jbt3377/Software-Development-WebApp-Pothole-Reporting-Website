@@ -1,0 +1,16 @@
+h1 {
+	color: green;
+	font-family: verdana;
+	font-size: 300%;
+}
+
+p{
+	color: red;
+	font-family: courier;
+	font-size: 160%;
+}
+
+#para1 {
+	text-align: center;
+	color: red;
+}
