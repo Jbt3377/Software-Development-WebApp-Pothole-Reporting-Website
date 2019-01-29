@@ -1,16 +1,16 @@
-h1 {
-	color: green;
-	font-family: verdana;
-	font-size: 300%;
+h1 { 
+	color: black; 
+	font-family: Courier;
+	font-size: 200%;
 }
 
-p{
-	color: red;
-	font-family: courier;
-	font-size: 160%;
+p {
+	color: purple;
+	font-family: Courier;
+	font-size: 150%;
 }
 
-#para1 {
-	text-align: center;
-	color: red;
+body {
+	background-color: lightpink;
 }
+	
