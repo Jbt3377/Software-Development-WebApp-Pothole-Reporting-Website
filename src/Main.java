@@ -34,7 +34,7 @@ public class Main
 		//Creates a *DatabaseInterface* object
 			//when this object is created it will attempt to access the database file
 			//it will fix it if there were any problems (e.g. because the webserver crashed while it was writing data)
-			//if the database file does not exist it will create it
+			//if the database file does not exist it will create it 
 			//the database is a store of structured information that the webserver can use to 
 			//record knowledge used by an application
 			//it is good for many small pieces of data that will change frequently
