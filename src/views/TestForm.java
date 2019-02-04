@@ -48,8 +48,6 @@ public class TestForm extends DynamicWebPage
 			//MESSAGELAB2TASK4
 
 			toProcess.r = new WebResponse( WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToWebBrowser );
-
-			
 			
 			return true;
 		}
