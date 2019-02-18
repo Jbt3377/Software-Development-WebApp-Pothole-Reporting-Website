@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import views.ExampleView;
+import views.IndexView;
 import views.TestForm;
 import web.Base64;
 import web.WebInterface;
@@ -79,6 +80,7 @@ public class Main
 		//An example dynamic page that responds to a form in html
 		TestForm testFormPage = new TestForm(databaseInterface,fileStoreInterface);
 
+		IndexView indexViewPage = new IndexView(databaseInterface, fileStoreInterface);
 		
 		//this variable indicates that the program should keep running
 			//by setting this variable to false the program will exit
@@ -131,7 +133,9 @@ public class Main
 //		        else
 		        if(testFormPage.process(toProcess))
 		        {
-		        	//testForm page is processed
+		        	// testForm page is processed
+		        }else if(indexViewPage.process(toProcess)) {
+		        	// main page is processed
 		        }
 		        else
 		        {
