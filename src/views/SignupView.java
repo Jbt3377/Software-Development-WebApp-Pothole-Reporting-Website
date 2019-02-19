@@ -102,7 +102,7 @@ public class SignupView extends DynamicWebPage{
 			"              </div>\r\n" + 
 			"            </div>\r\n" + 
 			"          </div>\r\n" + 
-			"          <h2 class=\"lead mb-3\" contenteditable=\"true\">Already have an account with us?&nbsp;<br>Click the Log In button below to get started.</h2> <a href=\"#\" class=\"btn btn-lg btn-light btn-lg text-primary mx-1 rounded\">Log In</a>\r\n" + 
+			"          <h2 class=\"lead mb-3\" contenteditable=\"true\">Already have an account with us?&nbsp;<br>Click the Log In button below to get started.</h2> <a href=\"loginview.html\" class=\"btn btn-lg btn-light btn-lg text-primary mx-1 rounded\" href=\"a\">Log In</a>\r\n" + 
 			"        </div>\r\n" + 
 			"      </div>\r\n" + 
 			"    </div>\r\n" + 
