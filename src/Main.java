@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
+import views.AboutUsView;
 import views.ExampleView;
 import views.IndexView;
 import views.LoginView;
@@ -87,6 +88,8 @@ public class Main
 		SignupView signupViewPage = new SignupView(databaseInterface, fileStoreInterface);
 		
 		LoginView loginViewPage = new LoginView(databaseInterface, fileStoreInterface);
+		
+		AboutUsView aboutUsViewPage = new AboutUsView(databaseInterface, fileStoreInterface);
 		//this variable indicates that the program should keep running
 			//by setting this variable to false the program will exit
 		boolean shouldKeepRunning = true;
@@ -145,6 +148,8 @@ public class Main
 		        	// signup page is processed
 		        }else if(loginViewPage.process(toProcess)) {
 		        	// login page is processed
+		        }else if(aboutUsViewPage.process(toProcess)) {
+		        	//aboutus page is processed
 		        }
 		        else
 		        {
