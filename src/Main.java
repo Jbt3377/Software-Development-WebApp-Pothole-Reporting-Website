@@ -4,6 +4,8 @@ import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import views.ExampleView;
 import views.IndexView;
+import views.LoginView;
+import views.SignupView;
 import views.TestForm;
 import web.Base64;
 import web.WebInterface;
@@ -82,6 +84,9 @@ public class Main
 
 		IndexView indexViewPage = new IndexView(databaseInterface, fileStoreInterface);
 		
+		SignupView signupViewPage = new SignupView(databaseInterface, fileStoreInterface);
+		
+		LoginView loginViewPage = new LoginView(databaseInterface, fileStoreInterface);
 		//this variable indicates that the program should keep running
 			//by setting this variable to false the program will exit
 		boolean shouldKeepRunning = true;
@@ -136,6 +141,10 @@ public class Main
 		        	// testForm page is processed
 		        }else if(indexViewPage.process(toProcess)) {
 		        	// main page is processed
+		        }else if(signupViewPage.process(toProcess)) {
+		        	// signup page is processed
+		        }else if(loginViewPage.process(toProcess)) {
+		        	// login page is processed
 		        }
 		        else
 		        {
