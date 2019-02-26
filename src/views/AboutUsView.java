@@ -45,10 +45,10 @@ public class AboutUsView extends DynamicWebPage {
 				"      </button>\r\n" + 
 				"      <div class=\"collapse navbar-collapse\" id=\"navbar10\">\r\n" + 
 				"        <ul class=\"navbar-nav ml-auto\">\r\n" + 
-				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Report</a> </li>\r\n" + 
-				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Login</a> </li>\r\n" + 
-				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Sign Up</a> </li>\r\n" + 
-				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">About</a> </li>\r\n" + 
+				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"indexview\">Report</a> </li>\r\n" + 
+				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"loginview\">Login</a> </li>\r\n" + 
+				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"signupview\">Sign Up</a> </li>\r\n" + 
+				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About</a> </li>\r\n" + 
 				"          <li class=\"nav-item\" > <a class=\"nav-link\" href=\"#\">FAQ</a> </li>\r\n" + 
 				"        </ul> <a class=\"btn navbar-btn ml-md-2 btn-light text-dark\">Contact us</a>\r\n" + 
 				"      </div>\r\n" + 

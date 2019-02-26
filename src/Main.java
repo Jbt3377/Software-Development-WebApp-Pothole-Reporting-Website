@@ -134,7 +134,7 @@ public class Main
 		        //this will mean that a static index.html page will be loaded as default
 		        //the example dynamic page will process the request if the index.html file is not present
 	        	if(toProcess.path.length()==0)
-	        		toProcess.path = "index.html";	
+	        		toProcess.path = "indexview";	
 
 	        	//Uncomment this code to see an example dynamic page or an example dynamic page that responds to a form
 //		        if(exampleDynamicPage.process(toProcess))

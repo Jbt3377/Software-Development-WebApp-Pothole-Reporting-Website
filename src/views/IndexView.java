@@ -14,7 +14,7 @@ public class IndexView extends DynamicWebPage{
 	
 	public boolean process(WebRequest toProcess) {
 		
-		if(toProcess.path.equalsIgnoreCase("index.html")) {
+		if(toProcess.path.equalsIgnoreCase("indexview")) {
 			
 			// Account Action will be default Login until cookie has an account and will change to logout
 			String accountAction = "Login";
@@ -40,13 +40,13 @@ public class IndexView extends DynamicWebPage{
 					"          <b>&nbsp;FILL MY HOLE</b>\r\n" + 
 					"        </a>\r\n" + 
 					"        <ul class=\"navbar-nav mx-auto\">\r\n" + 
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Report a Problem</a> </li>\r\n" + 
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#report\">Report a Problem</a> </li>\r\n" + 
 					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n" + 
 					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"formPage.html\">FAQ</a> </li>\r\n" + 
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUs.html\">About Us</a> </li>\r\n" + 
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About Us</a> </li>\r\n" + 
 					"        </ul>\r\n" + 
 					"        <ul class=\"navbar-nav\">\r\n" + 
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"loginview.html\">" + accountAction +"</a> </li>\r\n" + 
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"loginview\">" + accountAction +"</a> </li>\r\n" + 
 					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\r\n" + 
 					"          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signupview\">"+ account +"</a> </li>\r\n" + 
 					"        </ul>\r\n" + 
@@ -59,7 +59,7 @@ public class IndexView extends DynamicWebPage{
 					"        <div class=\"col-md-8 mx-auto\">\r\n" + 
 					"          <h1 class=\"mb-3 mt-3 p-2\">What's Bothering You?</h1>\r\n" + 
 					"          <p class=\"lead mb-0 p-2\">Fill My Hole is a website dedicated to informing local councils of problems they have the responsibility to fix.<br></p>\r\n" + 
-					"          <p class=\"lead text-center text-capitalize p-0 m-2\">Got a Problem?&nbsp; Report it!<br></p><a class=\"btn btn-primary m-2 my-3 mb-4\" href=\"#\"><b class=\"text-center\">Report an Issue</b></a>\r\n" + 
+					"          <p class=\"lead text-center text-capitalize p-0 m-2\">Got a Problem?&nbsp; Report it!<br></p><a class=\"btn btn-primary m-2 my-3 mb-4\" href=\"#report\"><b class=\"text-center\">Report an Issue</b></a>\r\n" + 
 					"        </div>\r\n" + 
 					"      </div>\r\n" + 
 					"      <div class=\"row\">\r\n" + 
@@ -105,12 +105,16 @@ public class IndexView extends DynamicWebPage{
 					"                <!--Report Card-->\r\n" + 
 					"                <p class=\"card-text\"><b>Ping the location of the problem on the map above and enter the required information. Afterwards, submit!</b><br></p>\r\n" + 
 					"                <!--Report Form-->\r\n" + 
+					"				 <a name=\"report\"></a>"+		
 					"                <div class=\"Report-Form\">\r\n" + 
 					"                  <form action=\"/writereportprocess\" method=\"GET\">\r\n" + 
 					"                    <!--Description (Text Input)-->\r\n" + 
 					"                    <label for=\"description\" class=\"w-100 text-left pt-2\"><b>Description</b></label>\r\n" + 
 					"                    <input type=\"text\" class=\"form-control text-left\" name=\"desc\" placeholder=\"Provide a short despription of the problem\" required=\"required\">\r\n" + 
-					"                    <!--Category (Dropdown)-->\r\n" + 
+					"                    <!--Location (Text Input)-->\r\n" + 
+					"                    <label for=\"location\" class=\"w-100 text-left pt-2\"><b>Location</b></label>\r\n" + 
+					"                    <input type=\"text\" class=\"form-control text-left\" name=\"location\" placeholder=\"Provide the address of the problem (alternative to pinging location)\" required=\"required\">"
+					+ "					 <!--Category (Dropdown)-->\r\n" + 
 					"                    <label for=\"category\" class=\"w-100 text-left pt-2\"><b>Category</b></label>\r\n" + 
 					"                    <select class=\"form-control text-left\" name=\"category\" required=\"required\">\r\n" + 
 					"                      <option value=\"\" disabled=\"disabled\" selected=\"selected\" class=\"text-dark\">Select a Suitable Category</option>\r\n" + 
@@ -155,7 +159,7 @@ public class IndexView extends DynamicWebPage{
 			problemReport.category = toProcess.params.get("category");
 			problemReport.details = toProcess.params.get("details");
 			problemReport.filePathToImage = "https://www.telegraph.co.uk/content/dam/news/2018/06/11/TELEMMGLPICT000162928990_trans_NvBQzQNjv4BqpVlberWd9EgFPZtcLiMQfyf2A9a6I9YchsjMeADBa08.jpeg?imwidth=450";
-			
+			System.out.println("== Problem has been reported ==");
 		}
 		
 		return false;
