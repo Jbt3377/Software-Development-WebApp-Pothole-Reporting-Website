@@ -29,7 +29,7 @@ public class SignupView extends DynamicWebPage{
 			"<body>\r\n" + 
 			"  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\r\n" + 
 			"    <div class=\"container\"> <a class=\"navbar-brand\" href=\"#\">\r\n" + 
-			"        <i class=\"fa d-inline fa-lg fa-stop-circle\"></i>\r\n" + 
+			"        <a href=\"indexview\" class=\"fa d-inline fa-lg fa-stop-circle\"></a>\r\n" + 
 			"        <b></b>\r\n" + 
 			"      </a> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar10\">\r\n" + 
 			"        <span class=\"navbar-toggler-icon\"></span>\r\n" + 
