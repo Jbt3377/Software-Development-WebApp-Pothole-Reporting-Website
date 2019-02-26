@@ -1,5 +1,6 @@
 package views;
 
+import model.accountdata;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import web.WebRequest;
@@ -15,7 +16,10 @@ public class LoginView extends DynamicWebPage{
 	{
 	if(toProcess.path.equalsIgnoreCase("loginview"))
 	{
-	String ExUsername = "Daniel";
+		accountdata mainuser = new accountdata();
+		mainuser.username = "master";
+		mainuser.password = "1234";
+	
 	String stringToSendToWebBrowser = "\r\n" + 
 			"<!DOCTYPE html>\r\n" + 
 			"<html>\r\n" + 
