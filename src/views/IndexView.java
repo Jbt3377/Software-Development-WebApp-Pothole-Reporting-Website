@@ -46,7 +46,7 @@ public class IndexView extends DynamicWebPage{
 					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About Us</a> </li>\r\n" + 
 					"        </ul>\r\n" + 
 					"        <ul class=\"navbar-nav\">\r\n" + 
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"loginview\">" + accountAction +"</a> </li>\r\n" + 
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"loginview.html\">" + accountAction +"</a> </li>\r\n" + 
 					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\r\n" + 
 					"          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signupview\">"+ account +"</a> </li>\r\n" + 
 					"        </ul>\r\n" + 

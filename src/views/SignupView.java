@@ -22,23 +22,29 @@ public class SignupView extends DynamicWebPage{
 			"  <meta charset=\"utf-8\">\r\n" + 
 			"  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n" + 
 			"  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" type=\"text/css\">\r\n" + 
-			"  <link rel=\"stylesheet\" href=\"signupcss.css\">\r\n" + 
+			"  <link rel=\"stylesheet\" href=\"now-ui-kit.css\">\r\n" + 
 			"</head>\r\n" + 
 			"\r\n" + 
 			"<body >\r\n" + 
 			"  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\r\n" + 
-			"    <div class=\"container\"> <a class=\"navbar-brand\" href=\"#\">\r\n" + 
-			"        <i class=\"fa d-inline fa-lg fa-stop-circle\"></i>\r\n" + 
-			"        <b></b>\r\n" + 
-			"      </a> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar10\">\r\n" + 
+			"    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\r\n" + 
 			"        <span class=\"navbar-toggler-icon\"></span>\r\n" + 
 			"      </button>\r\n" + 
-			"      <div class=\"collapse navbar-collapse\" id=\"navbar10\">\r\n" + 
-			"        <ul class=\"navbar-nav ml-auto\">\r\n" + 
-			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">About</a> </li>\r\n" + 
-			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">FAQ</a> </li>\r\n" + 
-			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Report a Problem</a> </li>\r\n" + 
-			"        </ul> <a class=\"btn navbar-btn ml-md-2 btn-primary text-light\">Contact us</a>\r\n" + 
+			"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"#\">\r\n" + 
+			"          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\r\n" + 
+			"          <b>&nbsp;FILL MY HOLE</b>\r\n" + 
+			"        </a>\r\n" + 
+			"        <ul class=\"navbar-nav mx-auto\">\r\n" + 
+			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#report\">Report a Problem</a> </li>\r\n" + 
+			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n" + 
+			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"formPage.html\">FAQ</a> </li>\r\n" + 
+			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About Us</a> </li>\r\n" + 
+			"        </ul>\r\n" + 
+			"        <ul class=\"navbar-nav\">\r\n" + 
+			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"loginview.html\">Login</a> </li>\r\n" + 
+			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\r\n" + 
+			"          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signupview\">Register</a> </li>\r\n" + 
+			"        </ul>\r\n" + 
 			"      </div>\r\n" + 
 			"    </div>\r\n" + 
 			"  </nav>\r\n" + 
