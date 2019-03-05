@@ -7,6 +7,7 @@ import views.ExampleView;
 import views.IndexView;
 import views.LoginView;
 import views.SignupView;
+import views.SupportUsView;
 import views.TestForm;
 import web.Base64;
 import web.WebInterface;
@@ -90,6 +91,8 @@ public class Main
 		LoginView loginViewPage = new LoginView(databaseInterface, fileStoreInterface);
 		
 		AboutUsView aboutUsViewPage = new AboutUsView(databaseInterface, fileStoreInterface);
+		
+		SupportUsView supportUsViewPage = new SupportUsView(databaseInterface, fileStoreInterface);
 		//this variable indicates that the program should keep running
 			//by setting this variable to false the program will exit
 		boolean shouldKeepRunning = true;
@@ -131,7 +134,7 @@ public class Main
 		        //this will mean that a static index.html page will be loaded as default
 		        //the example dynamic page will process the request if the index.html file is not present
 	        	if(toProcess.path.length()==0)
-	        		toProcess.path = "index.html";	
+	        		toProcess.path = "indexview";	
 
 	        	//Uncomment this code to see an example dynamic page or an example dynamic page that responds to a form
 //		        if(exampleDynamicPage.process(toProcess))
@@ -149,7 +152,9 @@ public class Main
 		        }else if(loginViewPage.process(toProcess)) {
 		        	// login page is processed
 		        }else if(aboutUsViewPage.process(toProcess)) {
-		        	//aboutus page is processed
+		        	//about us page is processed
+		        }else if(supportUsViewPage.process(toProcess)) {
+		        	//support us page is processed
 		        }
 		        else
 		        {
