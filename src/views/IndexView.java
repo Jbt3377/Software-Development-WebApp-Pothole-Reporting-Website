@@ -20,6 +20,7 @@ public class IndexView extends DynamicWebPage{
 			String accountAction = "Login";
 			// Account will default be register until an account has been logged in and a user name can be displayed
 			String account = "Register";
+			
 			String stringToSendToBrowser = "<!DOCTYPE html>\r\n" + 
 					"<html>\r\n" + 
 					"\r\n" + 
@@ -113,8 +114,8 @@ public class IndexView extends DynamicWebPage{
 					"                    <input type=\"text\" class=\"form-control text-left\" name=\"desc\" placeholder=\"Provide a short despription of the problem\" required=\"required\">\r\n" + 
 					"                    <!--Location (Text Input)-->\r\n" + 
 					"                    <label for=\"location\" class=\"w-100 text-left pt-2\"><b>Location</b></label>\r\n" + 
-					"                    <input type=\"text\" class=\"form-control text-left\" name=\"location\" placeholder=\"Provide the address of the problem (alternative to pinging location)\" required=\"required\">"
-					+ "					 <!--Category (Dropdown)-->\r\n" + 
+					"                    <input type=\"text\" class=\"form-control text-left\" name=\"location\" placeholder=\"Provide the address of the problem (alternative to pinging location)\" required=\"required\">" +
+					"					 <!--Category (Dropdown)-->\r\n" + 
 					"                    <label for=\"category\" class=\"w-100 text-left pt-2\"><b>Category</b></label>\r\n" + 
 					"                    <select class=\"form-control text-left\" name=\"category\" required=\"required\">\r\n" + 
 					"                      <option value=\"\" disabled=\"disabled\" selected=\"selected\" class=\"text-dark\">Select a Suitable Category</option>\r\n" + 
@@ -146,7 +147,7 @@ public class IndexView extends DynamicWebPage{
 					"\r\n" + 
 					"</html>";
 			
-			// Web Response \/
+			// Web Response
 			toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToBrowser);
 			
 			return true;
