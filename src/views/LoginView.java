@@ -14,7 +14,7 @@ public class LoginView extends DynamicWebPage{
 	}
 	public boolean process(WebRequest toProcess)
 	{
-	if(toProcess.path.equalsIgnoreCase("loginview"))
+	if(toProcess.path.equalsIgnoreCase("loginview.html"))
 	{
 		accountdata mainuser = new accountdata();
 		mainuser.username = "master";
@@ -30,58 +30,91 @@ public class LoginView extends DynamicWebPage{
 			"  <link rel=\"stylesheet\" href=\"now-ui-kit.css\">\r\n" + 
 			"</head>\r\n" + 
 			"\r\n" + 
-			"<body >\r\n" + 
+			"<body>\r\n" + 
 			"  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\r\n" + 
-			"    <div class=\"container\"> <a class=\"navbar-brand\" href=\"#\">\r\n" + 
-			"        <a href=\"indexview\"class=\"fa d-inline fa-lg fa-stop-circle\"></a>\r\n" + 
-			"        <b></b>\r\n" + 
-			"      </a> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar10\">\r\n" + 
+			"    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\r\n" + 
 			"        <span class=\"navbar-toggler-icon\"></span>\r\n" + 
 			"      </button>\r\n" + 
-			"      <div class=\"collapse navbar-collapse\" id=\"navbar10\">\r\n" + 
-			"        <ul class=\"navbar-nav ml-auto\">\r\n" + 
-			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">About</a> </li>\r\n" + 
-			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">FAQ</a> </li>\r\n" + 
-			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Report a Problem</a> </li>\r\n" + 
-			"        </ul> <a class=\"btn navbar-btn ml-md-2 btn-primary text-light\">Contact us</a>\r\n" + 
+			"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"#\">\r\n" + 
+			"          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\r\n" + 
+			"          <b>&nbsp;FILL MY HOLE</b>\r\n" + 
+			"        </a>\r\n" + 
+			"        <ul class=\"navbar-nav mx-auto\">\r\n" + 
+			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#report\">Report a Problem</a> </li>\r\n" + 
+			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n" + 
+			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"formPage.html\">FAQ</a> </li>\r\n" + 
+			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About Us</a> </li>\r\n" + 
+			"        </ul>\r\n" + 
+			"        <ul class=\"navbar-nav\">\r\n" + 
+			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"loginview.html\">Login</a> </li>\r\n" + 
+			"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\r\n" + 
+			"          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signupview\">Register</a> </li>\r\n" + 
+			"        </ul>\r\n" + 
 			"      </div>\r\n" + 
 			"    </div>\r\n" + 
 			"  </nav>\r\n" + 
-			"  <div class=\"align-items-center h-100 text-center py-0 pt-0 pb-5 d-flex\" style=\"background-image: linear-gradient(rgba(255, 255, 255, 0.71), rgb(160, 160, 160)); background-size: 100%;\">\r\n" + 
-			"    <div class=\"container\">\r\n" + 
-			"      <div class=\"row px-5 text-center mx-auto\" style=\"\">\r\n" + 
-			"        <div class=\"col-md-12\">\r\n" + 
-			"          <div class=\"card-body text-center bg-primary shadow-sm w-100 px-4 mt-5\">\r\n" + 
-			"            <h1 class=\"mb-4 text-center display-2\"><b>Log In</b></h1>\r\n" + 
-			"            <form class=\"px-5 text-center w-100\">\r\n" + 
-			"              <div class=\"form-group\"> <input type=\"email\" class=\"form-control\" placeholder=\"Enter email\" id=\"form9\"> </div>\r\n" + 
-			"              <div class=\"form-group mb-2\"> <input type=\"password\" class=\"form-control\" placeholder=\"Password\" id=\"form10\"> <small class=\"form-text text-muted text-right w-100\">\r\n" + 
-			"                  <small class=\"mb-1 w-100\" href=\"#\"> Recover password </small> </small></div><small class=\"form-text text-muted text-right\"> <button type=\"submit\" class=\"btn btn-light\">Submit</button>\r\n" + 
-			"              </small>\r\n" + 
-			"            </form>\r\n" + 
-			"            <h3 class=\"\"><strike>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </strike>&nbsp;or&nbsp;<strike>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strike></h3>\r\n" + 
-			"            <div class=\"row text-center d-inline-flex\">\r\n" + 
-			"              <div class=\"col-md-12\"><a class=\"btn text-white rounded\" href=\"#\" style=\"background:#dd4b39\" target=\"_blank\"><i class=\"fa fa-google-plus fa-2x fa-fw fa-1x py-1 pb-0\"></i></a></div>\r\n" + 
-			"            </div>\r\n" + 
-			"            <h3 class=\"pt-3\">Log In with Google</h3>\r\n" + 
-			"          </div>\r\n" + 
-			"        </div><small class=\"form-text text-muted text-right\">\r\n" + 
-			"        </small>\r\n" + 
-			"      </div><small class=\"form-text text-muted text-right\">\r\n" + 
-			"      </small>\r\n" + 
-			"    </div><small class=\"form-text text-muted text-right\">\r\n" + 
-			"    </small>\r\n" + 
-			"  </div><small class=\"form-text text-muted text-right\">\r\n" + 
+			"  <small class=\"form-text text-muted text-right\">\r\n" + 
 			"    <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\" style=\"\"></script>\r\n" + 
 			"    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\"></script>\r\n" + 
 			"    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\"></script>\r\n" + 
 			"    <pingendo onclick=\"window.open('https://pingendo.com/', '_blank')\" style=\"cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white\">Made with Pingendo Free&nbsp;&nbsp;<img src=\"https://pingendo.com/site-assets/Pingendo_logo_big.png\" class=\"d-block\" alt=\"Pingendo logo\" height=\"16\"></pingendo>\r\n" + 
 			"  </small>\r\n" + 
+			"  <div class=\"text-center align-items-stretch d-flex flex-column h-100 w-100 pt-3 pb-5 mt-0 mb-5\" style=\"background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: auto, auto;  background-repeat: repeat, repeat;\" >\r\n" + 
+			"    <div class=\"container py-0 px-5 w-50\">\r\n" + 
+			"      <div class=\"card bg-primary\">\r\n" + 
+			"        <div class=\"card-body text-center w-100 px-0\">\r\n" + 
+			"          <h5 class=\"mb-0 display-1\">Log In</h5>\r\n" + 
+			"          <div class=\"card-body text-center\">\r\n" + 
+			"            <div class=\"row mt-1\">\r\n" + 
+			"              <div class=\"col-md-12\">\r\n" + 
+			"                <h5 class=\"mb-2\">\r\n" + 
+			"                  <b>Share the Love</b></h5>\r\n" + 
+			"                <button class=\"btn btn-icon rounded btn-light mx-1 btn-facebook shadow\" type=\"button\">\r\n" + 
+			"                  <i class=\"fa fa-fw fa-lg fa-facebook-square\"></i>\r\n" + 
+			"                </button>\r\n" + 
+			"                <button class=\"btn btn-icon rounded btn-lg btn-light mx-1 btn-google shadow\" type=\"button\">\r\n" + 
+			"                  <i class=\"fa fa-fw fa-2x fa-google-plus\"></i>\r\n" + 
+			"                </button>\r\n" + 
+			"                <button class=\"btn btn-icon rounded btn-light mx-1 btn-twitter shadow\" type=\"button\">\r\n" + 
+			"                  <i class=\"fa fa-fw fa-twitter fa-lg\"></i>\r\n" + 
+			"                </button>\r\n" + 
+			"              </div>\r\n" + 
+			"            </div>\r\n" + 
+			"            <div class=\"row mt-3 pt-1\">\r\n" + 
+			"              <div class=\"col\">\r\n" + 
+			"                <form class=\"w-50 mx-auto px-1\">\r\n" + 
+			"                  <div class=\"form-group mb-2\">\r\n" + 
+			"                    <div class=\"input-group border-0\">\r\n" + 
+			"                      <div class=\"input-group-prepend\">\r\n" + 
+			"                        <span class=\"input-group-text\" id=\"basic-addon1\">\r\n" + 
+			"                          <i class=\"now-ui-icons users_circle-08 lg\"></i>\r\n" + 
+			"                        </span>\r\n" + 
+			"                      </div>\r\n" + 
+			"                      <input type=\"text\" class=\"form-control\" id=\"inlineFormInputGroup\" placeholder=\"Email...\">\r\n" + 
+			"                    </div>\r\n" + 
+			"                  </div>\r\n" + 
+			"                  <div class=\"form-group mb-2\">\r\n" + 
+			"                    <div class=\"input-group border-0\">\r\n" + 
+			"                      <div class=\"input-group-prepend \">\r\n" + 
+			"                        <span class=\"input-group-text\" id=\"basic-addon1\">\r\n" + 
+			"                          <i class=\"now-ui-icons text_caps-small lg\"></i>\r\n" + 
+			"                        </span>\r\n" + 
+			"                      </div>\r\n" + 
+			"                      <input type=\"text\" class=\"form-control\" id=\"inlineFormInputGroup\" placeholder=\"Password...\">\r\n" + 
+			"                    </div>\r\n" + 
+			"                  </div>\r\n" + 
+			"                </form>\r\n" + 
+			"              </div>\r\n" + 
+			"            </div>\r\n" + 
+			"          </div>\r\n" + 
+			"          <a class=\"btn btn-lg btn-light btn-lg text-primary mx-1 rounded\" href=\"login.html\">Log In</a>\r\n" + 
+			"        </div>\r\n" + 
+			"      </div>\r\n" + 
+			"    </div>\r\n" + 
+			"  </div>\r\n" + 
 			"</body>\r\n" + 
 			"\r\n" + 
-			"</html>\r\n" + 
-			"\r\n" + 
-			""; 
+			"</html>";
 			
 	toProcess.r = new WebResponse( WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToWebBrowser );
 	
