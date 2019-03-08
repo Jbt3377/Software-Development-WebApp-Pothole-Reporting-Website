@@ -66,6 +66,7 @@ public class IndexView extends DynamicWebPage{
 					"        <div class=\"col-md-12\"><iframe width=\"100%\" height=\"400\" src=\"https://maps.google.com/maps?q=New%20York&amp;z=14&amp;output=embed\" scrolling=\"no\" frameborder=\"0\"></iframe></div>\r\n" + 
 					"      </div>\r\n" + 
 					"    </div>\r\n" + 
+					"	 <a name=\"report\"></a>"+
 					"    <div class=\"container py-4\">\r\n" + 
 					"      <div class=\"row\">\r\n" + 
 					"        <div class=\"row\">\r\n" + 
@@ -105,7 +106,6 @@ public class IndexView extends DynamicWebPage{
 					"                <!--Report Card-->\r\n" + 
 					"                <p class=\"card-text\"><b>Ping the location of the problem on the map above and enter the required information. Afterwards, submit!</b><br></p>\r\n" + 
 					"                <!--Report Form-->\r\n" + 
-					"				 <a name=\"report\"></a>"+		
 					"                <div class=\"Report-Form\">\r\n" + 
 					"                  <form action=\"/writereportprocess\" method=\"GET\">\r\n" + 
 					"                    <!--Description (Text Input)-->\r\n" + 
