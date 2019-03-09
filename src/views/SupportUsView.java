@@ -1,5 +1,9 @@
 package views;
 
+import java.util.List;
+
+import org.h2.mvstore.MVMap;
+
 import model.Donation;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
@@ -142,6 +146,35 @@ public class SupportUsView extends DynamicWebPage {
 		toProcess.r = new WebResponse( WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToWebBrowser ); 
 		 
 		return true; 
+		}  else if(toProcess.path.equalsIgnoreCase("donation")) { 
+			Donation newdonation = new Donation();
+			
+			newdonation.name = toProcess.params.get("putNameHere");
+			newdonation.amount = toProcess.params.get("enterAmountHere");
+			
+			MVMap<String, Donation> newDonation = db.s.openMap("Donation");
+			newDonation.put(newdonation.name, newdonation);
+			List<String> newDonatorKeys = newDonation.keyList();
+			
+			String stringToSendToWebBrowser = "<html><body><p>You have Successfully Donated!</p> <a href=\"IndexView\">Click this button to return to the homepage!</a></body></html>"; 
+			toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToWebBrowser); 
+			
+			if(newDonatorKeys.size()==0) {
+				Donation adonation = new Donation();
+				adonation.name = "a name";
+				adonation.amount = "an amount";
+				newDonation.put(adonation.name, adonation);
+				db.commit();
+				newDonatorKeys = newDonation.keyList();
+				
+			}
+			
+			for (int index = 0; index < newDonatorKeys.size(); index++) {
+				String newDonationUniqueID = newDonatorKeys.get(index);
+				Donation aD = newDonation.get(newDonationUniqueID);
+				stringToSendToWebBrowser += "<h1>"+aD.name+"</h1>";
+			}
+			
 		} return false; 
 		} 
 
