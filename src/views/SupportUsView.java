@@ -59,7 +59,7 @@ public class SupportUsView extends DynamicWebPage {
 				"      <div class=\"row\">\r\n" + 
 				"        <div class=\"col-md-8 mx-auto bg-primary\"> <i class=\"d-block fa fa-stop-circle mb-3 text-muted fa-5x\"></i>\r\n" + 
 				"          <h1 class=\"display-3 mb-4\">Support Us</h1>\r\n" + 
-				"          <p class=\"lead mb-5\" style=\"\">Help us run this page by donating below</p>\r\n" + 
+				"          <p class=\"lead mb-5\" style=\"\">"+test.name+"Help us run this page by donating below</p>\r\n" + 
 				"        </div>\r\n" + 
 				"      </div>\r\n" + 
 				"    </div>\r\n" + 
@@ -74,12 +74,12 @@ public class SupportUsView extends DynamicWebPage {
 				"        </div>\r\n" + 
 				"        <div class=\"mx-auto p-4 col-md-6\">\r\n" + 
 				"          <h2 class=\"mb-4\">Donate here!</h2>\r\n" + 
-				"          <form>\r\n" + 
-				"            <div class=\"form-group\"> <input type=\"email\" class=\"form-control\" id=\"form31\" placeholder=\"Name\">\r\n" + 
-				"              <div class=\"form-group\"><label>Label</label><input type=\"email\" class=\"form-control\" id=\"form31\" placeholder=\"Amount to donate\"></div>\r\n" + 
-				"            </div>\r\n" + 
-				"            <button type=\"Donate\" class=\"btn btn-primary\">Donate</button>\r\n" + 
-				"          </form>\r\n" + 
+				"          <form action=\"/Donation\" method=\"GET\" class=\"\"> Name:<br class=\"\">\r\n" + 
+				"            <input type=\"text\" name=\"Name\" placeholder=\"Enter your name here\" class=\"\"><br> Amount:<br>\r\n" + 
+				"            <input type=\"text\" name=\"Amount\" placeholder=\"Enter the amount here\">\r\n" + 
+				"            <p contenteditable=\"true\">&nbsp;</p><br>\r\n" + 
+				"            <input type=\"submit\" value=\"Donate\" class=\"btn btn-primary\">\r\n" + 
+				"          </form>\r\n" +
 				"        </div>\r\n" + 
 				"      </div>\r\n" + 
 				"    </div>\r\n" + 
@@ -125,11 +125,11 @@ public class SupportUsView extends DynamicWebPage {
 				"        <div class=\"my-3 col-lg-8\">\r\n" + 
 				"          <h1 class=\"text-center text-lg-left text-white\" style=\"\">Help others by sharing</h1>\r\n" + 
 				"        </div>\r\n" + 
-				"        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"#\">\r\n" + 
+				"        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/QUBelfast/\">\r\n" + 
 				"            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n" + 
-				"          </a> <a href=\"#\">\r\n" + 
+				"          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n" + 
 				"            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n" + 
-				"          </a> <a href=\"#\">\r\n" + 
+				"          </a> <a href=\"https://www.instagram.com/qubelfast/?hl=en\">\r\n" + 
 				"            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n" + 
 				"          </a> </div>\r\n" + 
 				"      </div>\r\n" + 
@@ -161,6 +161,7 @@ public class SupportUsView extends DynamicWebPage {
 			
 			if(newDonatorKeys.size()==0) {
 				Donation adonation = new Donation();
+				adonation.donatorID = "" + System.currentTimeMillis();
 				adonation.name = "a name";
 				adonation.amount = "an amount";
 				newDonation.put(adonation.name, adonation);
@@ -170,12 +171,81 @@ public class SupportUsView extends DynamicWebPage {
 			}
 			
 			for (int index = 0; index < newDonatorKeys.size(); index++) {
+				
 				String newDonationUniqueID = newDonatorKeys.get(index);
-				Donation aD = newDonation.get(newDonationUniqueID);
-				stringToSendToWebBrowser += "<h1>"+aD.name+"</h1>";
+				Donation adonation = newDonation.get(newDonationUniqueID);
+				stringToSendToWebBrowser += "<div class=\"col-md-6\">\r\n" + 
+						"          <div class=\"list-group\">\r\n" + 
+						"            <a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start active\">\r\n" + 
+						"              <div class=\"d-flex w-100 justify-content-between\">\r\n" + 
+						"                <h5 class=\"mb-1\">Donator 1&nbsp;</h5> <small>Date</small>\r\n" + 
+						"              </div>\r\n" + 
+						"              <p class=\"mb-1\">Amount Donated</p><small><br>&nbsp;<br></small> <small></small>\r\n" + 
+						"            </a>\r\n" + 
+						"            <a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start\">\r\n" + 
+						"              <div class=\"d-flex w-100 justify-content-between\">\r\n" + 
+						"                <h5 class=\"mb-1\">"+adonation.name+"</h5> <small class=\"text-muted\">"+adonation.donatorID+"</small>\r\n" + 
+						"              </div>\r\n" + 
+						"              <p class=\"mb-1\">"+adonation.amount+"</p> <small class=\"text-muted\">&nbsp;</small>\r\n" + 
+						"            </a><a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start active\">\r\n" + 
+						"              <div class=\"d-flex w-100 justify-content-between\">\r\n" + 
+						"                <h5 class=\"mb-1\">Donator 3</h5> <small>Date</small>\r\n" + 
+						"              </div>\r\n" + 
+						"              <p class=\"mb-1\">Amount Donate</p><small><br></small>\r\n" + 
+						"            </a>\r\n" + 
+						"          </div>\r\n" + 
+						"        </div>\r\n" + 
+						"      </div>\r\n" + 
+						"    </div>\r\n" + 
+						"  </div>";
 			}
+		}
 			
-		} return false; 
-		} 
+			else
+				if(toProcess.path.equalsIgnoreCase("AboutUsView/Submit/Donation"))
+				{
+					Donation donation = new Donation();
+					donation.donatorID = "donation_"+System.currentTimeMillis();
+					donation.name = toProcess.params.get("Name");
+					donation.amount = toProcess.params.get("Amount");
+					//donation.journalists.add(toProcess.params.get("journalist"));
+					
+					//At this point you would normally add the newsstory to the database
+					MVMap<String, Donation> DS = db.s.openMap("Donation");
+					DS.put(donation.donatorID, donation);
+					
+					//MVMap<String, NewsStory> newsStories = db.s.openMap("NewsStories");
+					//newsStories.put(newsstory.uniqueid, newsstory);
 
+					//The code is now updated to get the newsevent from the database
+					MVMap<String, Donation> DE = db.s.openMap("Donation");
+					Donation dakanewsevent = DE.get(toProcess.params.get("donatedakanewsEvents"));
+					
+					//The code is now updated to get the newsevent from the database
+					//MVMap<String, NewsEvent> newsEvents = db.s.openMap("NewsEvents");
+					//NewsEvent newsevent = newsEvents.get(toProcess.params.get("newsEvent"));
+
+					//By adding the newsstory to the newsevent it should appear on the main page
+					dakanewsevent.donator.add(dakanewsevent.donatorID);
+
+					//put the news event back in the database after it has been changed
+					DE.put(dakanewsevent.donatorID, dakanewsevent);
+
+					//Commit the changes to save to disk
+					db.commit();
+
+
+					//This code will get the website that this submit was made from it is part of the information sent by a web browser to the webserver
+		    		String url = toProcess.header.get("referer");
+					toProcess.r = new WebResponse( WebResponse.HTTP_REDIRECT, WebResponse.MIME_HTML,
+											   "<html><body>Redirected: <a href=\"" + url + "\">" +
+											   url + "</a></body></html>");
+					toProcess.r.addHeader( "Location", url );
+					return true;
+				}
+		
+			
+		return false; 
+		 
+	}
 }
