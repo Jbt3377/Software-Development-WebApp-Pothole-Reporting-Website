@@ -1,6 +1,8 @@
 package views;
 
-import model.accountdata;
+import org.h2.mvstore.MVMap;
+
+import model.Profile;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import web.WebRequest;
@@ -16,10 +18,13 @@ public class LoginView extends DynamicWebPage{
 	{
 	if(toProcess.path.equalsIgnoreCase("loginview.html"))
 	{
-		accountdata mainuser = new accountdata();
-		mainuser.username = "master";
-		mainuser.password = "1234";
-	
+		String username = toProcess.params.get("username");
+		String password = toProcess.params.get("password");
+		
+		MVMap<String, Profile> profiles = db.s.openMap("Profiles");
+		
+		if (!profiles.containsKey(username))
+		{
 	String stringToSendToWebBrowser = "<!DOCTYPE html>\r\n" + 
 			"<html>\r\n" + 
 			"\r\n" + 
@@ -90,7 +95,7 @@ public class LoginView extends DynamicWebPage{
 			"                          <i class=\"now-ui-icons users_circle-08 lg\"></i>\r\n" + 
 			"                        </span>\r\n" + 
 			"                      </div>\r\n" + 
-			"                      <input type=\"text\" class=\"form-control\" id=\"inlineFormInputGroup\" placeholder=\"Email...\">\r\n" + 
+			"                      <input type=\"text\" class=\"form-control\" id=\"inlineFormInputGroup\" placeholder=\"Username ...\">\r\n" + 
 			"                    </div>\r\n" + 
 			"                  </div>\r\n" + 
 			"                  <div class=\"form-group mb-2\">\r\n" + 
@@ -119,6 +124,7 @@ public class LoginView extends DynamicWebPage{
 	toProcess.r = new WebResponse( WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToWebBrowser );
 	
 	return true;
+	}
 	}
 	return false;
 	}

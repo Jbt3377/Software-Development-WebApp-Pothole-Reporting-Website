@@ -63,7 +63,7 @@ public class IndexView extends DynamicWebPage{
 					"        </div>\r\n" + 
 					"      </div>\r\n" + 
 					"      <div class=\"row\">\r\n" + 
-					"        <div class=\"col-md-12\"><iframe width=\"100%\" height=\"400\" src=\"https://maps.google.com/maps?q=New%20York&amp;z=14&amp;output=embed\" scrolling=\"no\" frameborder=\"0\"></iframe></div>\r\n" + 
+					"        <div class=\"col-md-12\"><iframe width=\"100%\" height=\"400\" src=\"https://maps.google.com/maps?q=Belfast&amp;z=14&amp;output=embed\" scrolling=\"no\" frameborder=\"0\"></iframe></div>\r\n" + 
 					"      </div>\r\n" + 
 					"    </div>\r\n" + 
 					"    <div class=\"container py-4\">\r\n" + 
