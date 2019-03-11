@@ -136,6 +136,13 @@ sup {
   line-height: 0;
   vertical-align: baseline; }
 
+.field:valid {
+  border-color: black;
+}
+.:invalid {
+  border-color: red;
+}
+
 sub {
   bottom: -.25em; }
 
