@@ -21,8 +21,6 @@ public class AboutUsView extends DynamicWebPage {
 			Biography test = new Biography();
         	test.name = "E. M. Atos";
         	test.info= "Team 1 Member";
-        	test.profilepic = "https://dance.ampd.yorku.ca/wp-content/uploads/sites/5/2012/07/profile-default-small.jpg";
-      
 		 
 		String stringToSendToWebBrowser = "<!DOCTYPE html>\r\n" + 
 				"<html>\r\n" + 
@@ -49,7 +47,7 @@ public class AboutUsView extends DynamicWebPage {
 				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"loginview\">Login</a> </li>\r\n" + 
 				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"signupview\">Sign Up</a> </li>\r\n" + 
 				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About</a> </li>\r\n" + 
-				"          <li class=\"nav-item\" > <a class=\"nav-link\" href=\"#\">FAQ</a> </li>\r\n" + 
+				"          <li class=\"nav-item\" > <a class=\"nav-link\" href=\"helpview\">FAQ</a> </li>\r\n" + 
 				"        </ul> <a class=\"btn navbar-btn ml-md-2 btn-light text-dark\">Contact us</a>\r\n" + 
 				"      </div>\r\n" + 
 				"    </div>\r\n" + 
@@ -80,7 +78,7 @@ public class AboutUsView extends DynamicWebPage {
 				"          <h4>D. Bell</h4>\r\n" + 
 				"          <p class=\"mb-0\">Lead Designer</p>\r\n" + 
 				"        </div>\r\n" + 
-				"        <div class=\"col-lg-4 p-4\"> <img class=\"img-fluid d-block mb-3 mx-auto rounded-circle\" src=\""+ test.profilepic + "width=\"200\">\r\n" + 
+				"		<div class=\"col-lg-4 col-md-6 p-4\"> <img class=\"img-fluid d-block mb-3 mx-auto rounded-circle\" src=\"https://static.pingendo.com/img-placeholder-1.svg\" alt=\"Card image cap\" width=\"200\">\r\n" + 
 				"          <h4> <b>" +test.name + "</b></h4>\r\n" + 
 				"          <p class=\"mb-0\">" + test.info + "</p>\r\n" + 
 				"        </div>\r\n" + 
@@ -102,9 +100,9 @@ public class AboutUsView extends DynamicWebPage {
 				"    <div class=\"container\">\r\n" + 
 				"      <div class=\"row\">\r\n" + 
 				"        <div class=\"mx-auto p-4 col-md-7\" style=\"\">\r\n" + 
-				"          <h1 class=\"mb-4\">"+test.name+ "</h1>\r\n" + 
+				"          <h1 class=\"mb-4\">Support Us!</h1>\r\n" + 
 				"          <p> Help us run this site </p>\r\n" + 
-				"          <a class=\"btn btn-primary\" href=\"#\">Donate</a>\r\n" + 
+				"          <a class=\"btn btn-primary\" href=\"SupportUsView\">Donate</a>\r\n" + 
 				"        </div>\r\n" + 
 				"      </div>\r\n" + 
 				"    </div>\r\n" + 
@@ -115,11 +113,11 @@ public class AboutUsView extends DynamicWebPage {
 				"        <div class=\"my-3 col-lg-8\">\r\n" + 
 				"          <h1 class=\"text-center text-lg-left text-white\">Help others by sharing</h1>\r\n" + 
 				"        </div>\r\n" + 
-				"        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"#\">\r\n" + 
+				"        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/QCSQUB/\">\r\n" + 
 				"            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n" + 
-				"          </a> <a href=\"#\">\r\n" + 
+				"          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n" + 
 				"            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n" + 
-				"          </a> <a href=\"#\">\r\n" + 
+				"          </a> <a href=\"https://www.instagram.com/qubelfast/?hl=en\">\r\n" + 
 				"            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n" + 
 				"          </a> </div>\r\n" + 
 				"      </div>\r\n" + 
@@ -128,7 +126,6 @@ public class AboutUsView extends DynamicWebPage {
 				"  <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\r\n" + 
 				"  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js\" integrity=\"sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49\" crossorigin=\"anonymous\"></script>\r\n" + 
 				"  <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\"></script>\r\n" + 
-				"  <pingendo onclick=\"window.open('https://pingendo.com/', '_blank')\" style=\"cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white\">Made with Pingendo Free&nbsp;&nbsp;<img src=\"https://pingendo.com/site-assets/Pingendo_logo_big.png\" class=\"d-block\" alt=\"Pingendo logo\" height=\"16\"></pingendo>\r\n" + 
 				"</body>\r\n" + 
 				"\r\n" + 
 				"</html>"; 

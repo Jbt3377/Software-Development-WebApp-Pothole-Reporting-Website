@@ -4,6 +4,7 @@ import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import views.AboutUsView;
 import views.ExampleView;
+import views.HelpView;
 import views.IndexView;
 import views.LoginView;
 import views.SignupView;
@@ -93,6 +94,10 @@ public class Main
 		AboutUsView aboutUsViewPage = new AboutUsView(databaseInterface, fileStoreInterface);
 		
 		SupportUsView supportUsViewPage = new SupportUsView(databaseInterface, fileStoreInterface);
+		
+		HelpView helpViewPage = new HelpView(databaseInterface, fileStoreInterface);
+		
+		
 		//this variable indicates that the program should keep running
 			//by setting this variable to false the program will exit
 		boolean shouldKeepRunning = true;
@@ -155,6 +160,8 @@ public class Main
 		        	//about us page is processed
 		        }else if(supportUsViewPage.process(toProcess)) {
 		        	//support us page is processed
+		        }else if(helpViewPage.process(toProcess)) {
+		        	//help page is processed
 		        }
 		        else
 		        {
