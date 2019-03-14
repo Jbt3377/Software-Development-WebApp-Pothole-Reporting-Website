@@ -12,9 +12,7 @@ public class AboutUsView extends DynamicWebPage {
 		super(db, fs);
 		// TODO Auto-generated constructor stub
 	}
-
 	public boolean process(WebRequest toProcess) { 
-		
 		if(toProcess.path.equalsIgnoreCase("aboutusview")) 
 		{ 
 			
