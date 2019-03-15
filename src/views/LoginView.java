@@ -37,7 +37,7 @@ public class LoginView extends DynamicWebPage{
 				"    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\r\n" + 
 				"        <span class=\"navbar-toggler-icon\"></span>\r\n" + 
 				"      </button>\r\n" + 
-				"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"#\">\r\n" + 
+				"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"indexview\">\r\n" + 
 				"          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\r\n" + 
 				"          <b>&nbsp;FILL MY HOLE</b>\r\n" + 
 				"        </a>\r\n" + 
@@ -60,11 +60,11 @@ public class LoginView extends DynamicWebPage{
 				"    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\"></script>\r\n" + 
 				"    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\"></script>\r\n" +  
 				"  </small>\r\n" + 
-				"  <div class=\"text-center align-items-stretch d-flex flex-column h-100 w-100 pt-3 pb-5 mt-0 mb-5\" style=\"background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: auto, auto;  background-repeat: repeat, repeat;\" >\r\n" + 
+				"  <div class=\"text-center align-items-stretch d-flex flex-column h-100 w-100 pt-3 pb-0 mt-0 mb-0\" style=\"background-image: linear-gradient(to bottom, rgba(13, 21, 25, .85), rgba(9, 14, 16, .90)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: auto, auto;  background-repeat: repeat, repeat;\" >\r\n" + 
 				"    <div class=\"container py-0 px-5 w-50\">\r\n" + 
 				"      <div class=\"card bg-primary\">\r\n" + 
 				"        <div class=\"card-body text-center w-100 px-0\">\r\n" + 
-				"          <h5 class=\"mb-0 display-1\">Log In</h5>\r\n" + 
+				"          <h5 class=\"mb-0 display-1\">Welcome</h5>\r\n" + 
 				"          <div class=\"card-body text-center\">\r\n" + 
 				"            <div class=\"row mt-1\">\r\n" + 
 				"              <div class=\"col-md-12\">\r\n" + 
@@ -83,20 +83,17 @@ public class LoginView extends DynamicWebPage{
 				"            </div>\r\n" + 
 				"            <div class=\"row mt-3 pt-1\">\r\n" + 
 				"              <div class=\"col\">\r\n" + 
-				"                <form class=\"login100-form validate-form\">\r\n" + 
-					"					<span class=\"login100-form-title p-b-26\">\r\n" + 
-					"						Welcome\r\n" + 
-					"					</span>\r\n" + 
+				"                <form class=\"login100-form validate-form\">\r\n" +  
 					"					<span class=\"login100-form-title p-b-48\">\r\n" + 
 					"						<i class=\"zmdi zmdi-font\"></i>\r\n" + 
 					"					</span>\r\n" + 
 					"\r\n" + 
-					"					<div class=\"wrap-input100 validate-input\" data-validate = \"Valid email is: a@b.c\">\r\n" + 
+					"					<div class=\"wrap-input100 validate-input mb-4\" data-validate = \"Valid email is: a@b.c\">\r\n" + 
 					"						<input class=\"input100\" type=\"text\" name=\"email\">\r\n" + 
 					"						<span class=\"focus-input100\" data-placeholder=\"Email\"></span>\r\n" + 
 					"					</div>\r\n" + 
 					"\r\n" + 
-					"					<div class=\"wrap-input100 validate-input\" data-validate=\"Enter password\">\r\n" + 
+					"					<div class=\"wrap-input100 validate-input mb-3\" data-validate=\"Enter password\">\r\n" + 
 					"						<span class=\"btn-show-pass\">\r\n" + 
 					"							<i class=\"zmdi zmdi-eye\"></i>\r\n" + 
 					"						</span>\r\n" + 
@@ -104,29 +101,28 @@ public class LoginView extends DynamicWebPage{
 					"						<span class=\"focus-input100\" data-placeholder=\"Password\"></span>\r\n" + 
 					"					</div>\r\n" + 
 					"\r\n" + 
-					"					<div class=\"container-login100-form-btn\">\r\n" + 
-					"						<div class=\"wrap-login100-form-btn\">\r\n" + 
-					"							<div class=\"login100-form-bgbtn\"></div>\r\n" + 
-					"							<button class=\"login100-form-btn\">\r\n" + 
-					"								Login\r\n" + 
+					"					<div class=\"container-login100-form-btn mb-3\">\r\n" + 
+					"						<div class=\"wrap-login100-form-btn shadow\">\r\n" + 
+					"							<div class=\"login100-form-bgbtn shadow\"></div>\r\n" + 
+					"							<button class=\"login100-form-btn shadow\"href=\"indexview\">\r\n" + 
+					"								Log In\r\n" + 
 					"							</button>\r\n" + 
 					"						</div>\r\n" + 
 					"					</div>\r\n" + 
 					"\r\n" + 
-					"					<div class=\"text-center p-t-115\">\r\n" + 
+					"					<div class=\"text-center p-t-115 mt-1\">\r\n" + 
 					"						<span class=\"txt1\">\r\n" + 
 					"							Don’t have an account?\r\n" + 
 					"						</span>\r\n" + 
 					"\r\n" + 
-					"						<a class=\"txt2\" href=\"#\">\r\n" + 
+					"						<a class=\"txt2\" href=\"signupview\">\r\n" + 
 					"							Sign Up\r\n" + 
 					"						</a>\r\n" + 
 					"					</div>\r\n" + 
 					"				</form>\r\n" + 
 				"              </div>\r\n" + 
 				"            </div>\r\n" + 
-				"          </div>\r\n" + 
-				"          <a class=\"btn btn-lg btn-light btn-lg text-primary mx-1 rounded\" href=\"login.html\">Log In</a>\r\n" + 
+				"          </div>\r\n" +  
 				"        </div>\r\n" + 
 				"      </div>\r\n" + 
 				"    </div>\r\n" + 

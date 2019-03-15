@@ -31,6 +31,8 @@
   --light: #FFFFFF;
   --dark: #233842;
   --gray: #EEEEEE;
+  --btnprimary: #FFFFFF;
+  --btnsecondary: #bbbbbb;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -4228,6 +4230,12 @@ button.close {
 
 .align-text-top {
   vertical-align: text-top !important; }
+  
+.bg {
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;}
 
 .bg-primary {
   background-color: #ff8900 !important; }
@@ -7517,7 +7525,7 @@ a {
 	font-family: sans-serif;
 	font-size: 14px;
 	line-height: 1.7;
-	color: #666666;
+	color: #233842;
 	margin: 0px;
 	transition: all 0.4s;
 	-webkit-transition: all 0.4s;
@@ -7531,7 +7539,7 @@ a:focus {
 
 a:hover {
 	text-decoration: none;
-  color: #6a7dfe;
+  color: #bbb;
   color: -webkit-linear-gradient(left, #21d4fd, #b721ff);
   color: -o-linear-gradient(left, #21d4fd, #b721ff);
   color: -moz-linear-gradient(left, #21d4fd, #b721ff);
@@ -7613,15 +7621,17 @@ iframe {
 .txt1 {
   font-family: sans-serif;
   font-size: 13px;
-  color: #666666;
+  color: #233842;
   line-height: 1.5;
+  margin-top: 25px;
 }
 
 .txt2 {
   font-family: sans-serif;
   font-size: 13px;
-  color: #333333;
+  color: #fff;
   line-height: 1.5;
+  margin-top: 25px;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -7667,6 +7677,7 @@ iframe {
 
 .login100-form {
   width: 100%;
+  padding: 0px 150px;
 }
 
 .login100-form-title {
@@ -7687,14 +7698,14 @@ iframe {
 .wrap-input100 {
   width: 100%;
   position: relative;
-  border-bottom: 2px solid #adadad;
-  margin-bottom: 37px;
+  border-bottom: 2px solid #FFFFFF;
+  
 }
 
 .input100 {
   font-family: sans-serif;
   font-size: 15px;
-  color: #555555;
+  color: #FFFFFF;
   line-height: 1.2;
 
   display: block;
@@ -7730,16 +7741,16 @@ iframe {
   transition: all 0.4s;
 
   background: #6a7dfe;
-  background: -webkit-linear-gradient(left, #21d4fd, #b721ff);
-  background: -o-linear-gradient(left, #21d4fd, #b721ff);
-  background: -moz-linear-gradient(left, #21d4fd, #b721ff);
-  background: linear-gradient(left, #21d4fd, #b721ff);
+  background: -webkit-linear-gradient(left,#FFFFFF,#aaaaaa);
+  background: -o-linear-gradient(left, #FFFFFF, #aaaaaa);
+  background: -moz-linear-gradient(left, #FFFFFF, #aaaaaa);
+  background: linear-gradient(left, #FFFFFF, #aaaaaa);
 }
 
 .focus-input100::after {
   font-family: sans-serif;
   font-size: 15px;
-  color: #999999;
+  color: #fff;
   line-height: 1.2;
 
   content: attr(data-placeholder);
@@ -7797,18 +7808,18 @@ iframe {
 
 .btn-show-pass:hover {
   color: #6a7dfe;
-  color: -webkit-linear-gradient(left, #21d4fd, #b721ff);
-  color: -o-linear-gradient(left, #21d4fd, #b721ff);
-  color: -moz-linear-gradient(left, #21d4fd, #b721ff);
-  color: linear-gradient(left, #21d4fd, #b721ff);
+  color: -webkit-linear-gradient(left, #FFFFFF, #aaaaaa);
+  color: -o-linear-gradient(left, #FFFFFF, #aaaaaa);
+  color: -moz-linear-gradient(left, #FFFFFF,#aaaaaa);
+  color: linear-gradient(left, #FFFFFF, #aaaaaa);
 }
 
 .btn-show-pass.active {
   color: #6a7dfe;
-  color: -webkit-linear-gradient(left, #21d4fd, #b721ff);
-  color: -o-linear-gradient(left, #21d4fd, #b721ff);
-  color: -moz-linear-gradient(left, #21d4fd, #b721ff);
-  color: linear-gradient(left, #21d4fd, #b721ff);
+  color: -webkit-linear-gradient(left, #FFFFFF, #aaaaaa);
+  color: -o-linear-gradient(left, #FFFFFF, #aaaaaa);
+  color: -moz-linear-gradient(left,#FFFFFF, #aaaaaa);
+  color: linear-gradient(left, #FFFFFF, #aaaaaa);
 }
 
 
@@ -7842,10 +7853,10 @@ iframe {
   width: 300%;
   height: 100%;
   background: #a64bf4;
-  background: -webkit-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
-  background: -o-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
-  background: -moz-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
-  background: linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+  background: -webkit-linear-gradient(right, #fff, #bbb, #fff, #bbb);
+  background: -o-linear-gradient(right, #fff, #bbb,#fff, #bbb);
+  background: -moz-linear-gradient(right, #fff, #bbb, #fff, #bbb);
+  background: linear-gradient(right, #fff, #bbb, #fff, #bbb);
   top: 0;
   left: -100%;
 
@@ -7858,7 +7869,7 @@ iframe {
 .login100-form-btn {
   font-family: sans-serif;
   font-size: 15px;
-  color: #fff;
+  color: #ff8900;
   line-height: 1.2;
   text-transform: uppercase;
 

@@ -42,7 +42,7 @@ public class SignupView extends DynamicWebPage{
 			"    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\r\n" + 
 			"        <span class=\"navbar-toggler-icon\"></span>\r\n" + 
 			"      </button>\r\n" + 
-			"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"#\">\r\n" + 
+			"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"indexview\">\r\n" + 
 			"          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\r\n" + 
 			"          <b>&nbsp;FILL MY HOLE</b>\r\n" + 
 			"        </a>\r\n" + 
@@ -60,7 +60,7 @@ public class SignupView extends DynamicWebPage{
 			"      </div>\r\n" + 
 			"    </div>\r\n" + 
 			"  </nav>\r\n" + 
-			"  <div class=\"text-center align-items-stretch d-flex flex-column h-100% w-100% pt-3 pb-5 mt-0 mb-5\" style=\"background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: auto, auto;  background-repeat: repeat, repeat;\">\r\n" + 
+			"  <div class=\"bg text-center align-items-stretch d-flex flex-column h-100% w-100% pt-3 pb-5 mt-0 mb-auto\" style=\"background-image: linear-gradient(to bottom, rgba(13, 21, 25, .85), rgba(9, 14, 16, .90)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: auto, auto;  background-repeat: repeat, repeat;\">\r\n" + 
 			"    <div class=\"container py-0 px-5 w-50\">\r\n" + 
 			"      <div class=\"card bg-primary\">\r\n" + 
 			"        <div class=\"card-body text-center w-100 px-0\">\r\n" + 
