@@ -202,28 +202,28 @@ public class SupportUsView extends DynamicWebPage {
 					"</head>\r\n" + 
 					"\r\n" + 
 					"<body>\r\n" + 
-					"  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\r\n" + 
-					"    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\">\r\n" + 
-					"        <span class=\"navbar-toggler-icon\"></span>\r\n" + 
-					"      </button>\r\n" + 
-					"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"#\">\r\n" + 
-					"          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\r\n" + 
-					"          <b contenteditable=\"true\">&nbsp;FILL MY HOLE</b>\r\n" + 
-					"        </a>\r\n" + 
-					"        <ul class=\"navbar-nav mx-auto\">\r\n" + 
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Report a Problem</a> </li>\r\n" + 
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n" + 
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"formPage.html\">FAQ</a> </li>\r\n" + 
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUs.html\">About Us</a> </li>\r\n" + 
-					"        </ul>\r\n" + 
-					"        <ul class=\"navbar-nav\">\r\n" + 
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Log in</a> </li>\r\n" + 
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\r\n" + 
-					"          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signup.html\">Register</a> </li>\r\n" + 
-					"        </ul>\r\n" + 
-					"      </div>\r\n" + 
-					"    </div>\r\n" + 
-					"  </nav>\r\n" + 
+					"<nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\n" +
+					"    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\n"+
+					"        <span class=\"navbar-toggler-icon\"></span>\n" +
+					"      </button>\n"+
+					"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"#\">\n" +
+					"          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\n"+
+					"          <b>&nbsp;FILL MY HOLE</b>\n"+
+					"        </a>\n"+
+					"        <ul class=\"navbar-nav mx-auto\">\n"+
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"indexview\">Report a Problem</a> </li>\n"+
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\n"+
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"help.html\">FAQ</a> </li>\n"+
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About Us</a> </li>\n"+
+					"        </ul>\n"+
+					"        <ul class=\"navbar-nav\">\n"+
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n"+
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n"+
+					"          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signup.html\">Register</a> </li>\n"+
+					"        </ul>\n"+
+					"      </div>\n"+
+					"    </div>\n"+
+					"  </nav>\n"+
 					"  <div class=\"py-5 text-center align-items-center d-flex h-100\" style=\"background-image: linear-gradient(to left bottom, rgba(189, 195, 199, .75), rgba(44, 62, 80, .75)); background-size: 100%;\">\r\n" + 
 					"    <div class=\"container py-5\">\r\n" + 
 					"      <div class=\"row\">\r\n" + 
@@ -240,11 +240,11 @@ public class SupportUsView extends DynamicWebPage {
 					"        <div class=\"my-3 col-lg-8\">\r\n" + 
 					"          <h1 class=\"text-center text-lg-left text-white\">Help others by sharing</h1>\r\n" + 
 					"        </div>\r\n" + 
-					"        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"#\">\r\n" + 
+					"        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/QUBelfast/\">\r\n" + 
 					"            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n" + 
-					"          </a> <a href=\"#\">\r\n" + 
+					"          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n" + 
 					"            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n" + 
-					"          </a> <a href=\"#\">\r\n" + 
+					"          </a> <a href=\"https://www.instagram.com/qubelfast/?hl=en\">\r\\n" +
 					"            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n" + 
 					"          </a> </div>\r\n" + 
 					"      </div>\r\n" + 
@@ -258,93 +258,10 @@ public class SupportUsView extends DynamicWebPage {
 					"</html>";
 			toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToWebBrowser); 
 			
-			if(newDonatorKeys.size()==0) {
-				Donation adonation = new Donation();
-				adonation.donatorID = "" + System.currentTimeMillis();
-				adonation.name = "a name";
-				adonation.amount = "an amount";
-				newDonation.put(adonation.donatorID, adonation);
-				db.commit();
-				newDonatorKeys = newDonation.keyList();
-				
-			}
-			/*
-			for (int index = 0; index < newDonatorKeys.size(); index++) {
-				
-				String newDonationUniqueID = newDonatorKeys.get(index);
-				Donation adonation = newDonation.get(newDonationUniqueID);
-				stringToSendToWebBrowser += "<div class=\"col-md-6\">\r\n" + 
-						"          <div class=\"list-group\">\r\n" + 
-						"            <a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start active\">\r\n" + 
-						"              <div class=\"d-flex w-100 justify-content-between\">\r\n" + 
-						"                <h5 class=\"mb-1\">Donator 1&nbsp;</h5> <small>Date</small>\r\n" + 
-						"              </div>\r\n" + 
-						"              <p class=\"mb-1\">Amount Donated</p><small><br>&nbsp;<br></small> <small></small>\r\n" + 
-						"            </a>\r\n" + 
-						"            <a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start\">\r\n" + 
-						"              <div class=\"d-flex w-100 justify-content-between\">\r\n" + 
-						"                <h5 class=\"mb-1\">"+adonation.name+"</h5> <small class=\"text-muted\">"+adonation.donatorID+"</small>\r\n" + 
-						"              </div>\r\n" + 
-						"              <p class=\"mb-1\">"+adonation.amount+"</p> <small class=\"text-muted\">&nbsp;</small>\r\n" + 
-						"            </a><a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start active\">\r\n" + 
-						"              <div class=\"d-flex w-100 justify-content-between\">\r\n" + 
-						"                <h5 class=\"mb-1\">Donator 3</h5> <small>Date</small>\r\n" + 
-						"              </div>\r\n" + 
-						"              <p class=\"mb-1\">Amount Donate</p><small><br></small>\r\n" + 
-						"            </a>\r\n" + 
-						"          </div>\r\n" + 
-						"        </div>\r\n" + 
-						"      </div>\r\n" + 
-						"    </div>\r\n" + 
-						"  </div>";
-						
-						
-						
-			} */
+
 		}
 			
-			else
-				if(toProcess.path.equalsIgnoreCase("AboutUsView/Submit/Donation"))
-				{
-					Donation donation1 = new Donation();
-					donation1.donatorID = "donation_"+System.currentTimeMillis();
-					donation1.name = toProcess.params.get("Name");
-					donation1.amount = toProcess.params.get("Amount");
-					//donation.journalists.add(toProcess.params.get("journalist"));
-					
-					//At this point you would normally add the newsstory to the database
-					MVMap<String, Donation> DS = db.s.openMap("Donation");
-					DS.put(donation1.donatorID, donation1);
-					
-					//MVMap<String, NewsStory> newsStories = db.s.openMap("NewsStories");
-					//newsStories.put(newsstory.uniqueid, newsstory);
-
-					//The code is now updated to get the newsevent from the database
-					MVMap<String, Donation> DE = db.s.openMap("Donation");
-					Donation donations = DE.get(toProcess.params.get("donatedakanewsEvents"));
-					
-					//The code is now updated to get the newsevent from the database
-					//MVMap<String, NewsEvent> newsEvents = db.s.openMap("NewsEvents");
-					//NewsEvent newsevent = newsEvents.get(toProcess.params.get("newsEvent"));
-
-					//By adding the newsstory to the newsevent it should appear on the main page
-					donations.donator.add(donations.donatorID);
-
-					//put the news event back in the database after it has been changed
-					DE.put(donations.donatorID, donations);
-
-					//Commit the changes to save to disk
-					db.commit();
-
-
-					//This code will get the website that this submit was made from it is part of the information sent by a web browser to the webserver
-		    		String url = toProcess.header.get("referer");
-					toProcess.r = new WebResponse( WebResponse.HTTP_REDIRECT, WebResponse.MIME_HTML,
-											   "<html><body>Redirected: <a href=\"" + url + "\">" +
-											   url + "</a></body></html>");
-					toProcess.r.addHeader( "Location", url );
-					return true;
-				}
+			
 		
 			
 		return false; 
