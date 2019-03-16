@@ -1,9 +1,7 @@
 package views;
 
 import java.util.List;
-
 import org.h2.mvstore.MVMap;
-
 import model.Donation;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
@@ -21,10 +19,18 @@ public class SupportUsView extends DynamicWebPage {
 		
 		if(toProcess.path.equalsIgnoreCase("supportus.html")) 
 		{ 
-			//Donation test = new Donation();
-			//test.name = "examplename";
-			//test.amount = "exampleamount";
+			Donation donation = new Donation();
+			
+			donation.donatorID = "donation_" +System.currentTimeMillis();
+			donation.name = toProcess.params.get("Name");
+			donation.amount = toProcess.params.get("Amount");
+			
+			/*
+			MVMap<String, Donation> Donation = db.s.openMap("Donation");
+			Donation.put(donation.donatorID, donation);
+			List<String> newDonatorKeys = Donation.keyList();*/
 		 
+				
 		String stringToSendToWebBrowser = "";		
 		stringToSendToWebBrowser +="<html>\n";
 		stringToSendToWebBrowser +="\n";
@@ -51,6 +57,13 @@ public class SupportUsView extends DynamicWebPage {
 		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About Us</a> </li>\n";
 		stringToSendToWebBrowser +="        </ul>\n";
 		stringToSendToWebBrowser +="        <ul class=\"navbar-nav\">\n";
+		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n";
+		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
+		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signup.html\">Register</a> </li>\n";
+		stringToSendToWebBrowser +="        </ul>\n";
+		stringToSendToWebBrowser +="      </div>\n";
+		stringToSendToWebBrowser +="    </div>\n";
+		stringToSendToWebBrowser +="  </nav>\n";
 		stringToSendToWebBrowser +="  <div class=\"py-5 text-center align-items-center d-flex\" style=\"background-image: linear-gradient(to left bottom, rgba(189, 195, 199, .75), rgba(44, 62, 80, .75)); background-size: 100%;\">\r\n";
 		stringToSendToWebBrowser +="    <div class=\"container py-5\">\r\n";
 		stringToSendToWebBrowser +="      <div class=\"row\">\r\n";
@@ -96,15 +109,36 @@ public class SupportUsView extends DynamicWebPage {
 		stringToSendToWebBrowser +="            </div>\r\n";
 		stringToSendToWebBrowser +="          </div>\r\n";
 		stringToSendToWebBrowser +="        </div>\r\n";
+		
+		MVMap<String, Donation> Donation = db.s.openMap("Donation");
+		//Donation.put(donation.donatorID, donation);
+		List<String> newDonatorKeys = Donation.keyList();
+		
+		if(newDonatorKeys.size()==0) {
+			Donation adonation = new Donation();
+			adonation.donatorID = "" + System.currentTimeMillis();
+			adonation.name = "a name";
+			adonation.amount = "an amount";
+			Donation.put(adonation.donatorID, adonation);
+			db.commit();
+			newDonatorKeys = Donation.keyList();
+		}
+		
+		
+		for (int index = 0; index < newDonatorKeys.size(); index++) {
+			
+			String newDonationUniqueID = newDonatorKeys.get(index);
+			Donation adonation = Donation.get(newDonationUniqueID);
+
 		stringToSendToWebBrowser +="        <div class=\"col-md-6\">\r\n";
 		stringToSendToWebBrowser +="          <div class=\"list-group\">\r\n";
 		stringToSendToWebBrowser +="            <a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start active\">\r\n";
 		stringToSendToWebBrowser +="              <div class=\"d-flex w-100 justify-content-between\">\r\n";
-		stringToSendToWebBrowser +="                <h5 class=\"mb-1\"> donate &nbsp;</h5> <small>Date</small>\r\n";
+		stringToSendToWebBrowser +="                <h5 class=\"mb-1\">"+ adonation.name+"&nbsp;</h5> <small>"+adonation.donatorID+"</small>\r\n";
 		stringToSendToWebBrowser +="              </div>\r\n";
-		stringToSendToWebBrowser +="              <p class=\"mb-1\"> owo </p><small><br>&nbsp;<br></small> <small></small>\r\n";
+		stringToSendToWebBrowser +="              <p class=\"mb-1\"> "+adonation.amount+" </p><small><br>&nbsp;<br></small> <small></small>\r\n";
 		stringToSendToWebBrowser +="            </a>\r\n";
-		stringToSendToWebBrowser +="            <a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start\">\r\n";
+		/*			stringToSendToWebBrowser +="            <a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start\">\r\n";
 		stringToSendToWebBrowser +="              <div class=\"d-flex w-100 justify-content-between\">\r\n";
 		stringToSendToWebBrowser +="                <h5 class=\"mb-1\">Donator 2</h5> <small class=\"text-muted\">Date</small>\r\n";
 		stringToSendToWebBrowser +="              </div>\r\n";
@@ -114,13 +148,14 @@ public class SupportUsView extends DynamicWebPage {
 		stringToSendToWebBrowser +="                <h5 class=\"mb-1\">Donator 3</h5> <small>Date</small>\r\n";
 		stringToSendToWebBrowser +="              </div>\r\n";
 		stringToSendToWebBrowser +="              <p class=\"mb-1\">Amount Donate</p><small><br></small>\r\n";
-		stringToSendToWebBrowser +="            </a>\r\n";
+		stringToSendToWebBrowser +="            </a>\r\n"; */
 		stringToSendToWebBrowser +="          </div>\r\n"; 
 		stringToSendToWebBrowser +="        </div>\r\n";
 		stringToSendToWebBrowser +="      </div>\r\n";
 		stringToSendToWebBrowser +="    </div>\r\n";
 		stringToSendToWebBrowser +="  </div>\r\n";
 //End of recent Donations		
+		}
 
 		stringToSendToWebBrowser +="  <div class=\"py-5\" style=\"background-image: linear-gradient(to left bottom, rgba(189, 195, 199, .75), rgba(44, 62, 80, .75));	background-size: 100%;\">\r\n";
 		stringToSendToWebBrowser +="    <div class=\"container\">\r\n";
@@ -144,6 +179,7 @@ public class SupportUsView extends DynamicWebPage {
 		stringToSendToWebBrowser +="</body>\r\n";
 		stringToSendToWebBrowser +="\r\n";
 		stringToSendToWebBrowser +="</html>"; 
+			
 		 
 		toProcess.r = new WebResponse( WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToWebBrowser ); 
 		 
@@ -207,15 +243,15 @@ public class SupportUsView extends DynamicWebPage {
 			else
 				if(toProcess.path.equalsIgnoreCase("AboutUsView/Submit/Donation"))
 				{
-					Donation donation = new Donation();
-					donation.donatorID = "donation_"+System.currentTimeMillis();
-					donation.name = toProcess.params.get("Name");
-					donation.amount = toProcess.params.get("Amount");
+					Donation donation1 = new Donation();
+					donation1.donatorID = "donation_"+System.currentTimeMillis();
+					donation1.name = toProcess.params.get("Name");
+					donation1.amount = toProcess.params.get("Amount");
 					//donation.journalists.add(toProcess.params.get("journalist"));
 					
 					//At this point you would normally add the newsstory to the database
 					MVMap<String, Donation> DS = db.s.openMap("Donation");
-					DS.put(donation.donatorID, donation);
+					DS.put(donation1.donatorID, donation1);
 					
 					//MVMap<String, NewsStory> newsStories = db.s.openMap("NewsStories");
 					//newsStories.put(newsstory.uniqueid, newsstory);
@@ -250,5 +286,6 @@ public class SupportUsView extends DynamicWebPage {
 			
 		return false; 
 		 
+	
 	}
 }
