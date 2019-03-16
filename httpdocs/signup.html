@@ -45,7 +45,6 @@
         <div class="card-body text-center w-100 px-0">  
           <h5 class="mb-0 display-1" contenteditable="true"><b>Sign Up</b></h5>  
           <div class="card-body text-center">
-           <form role="form" action="/SignupView.html" method="GET">  
             <div class="row mt-1">  
               <div class="col-md-12">  
                 <h5 class="mb-2">  
@@ -63,15 +62,16 @@
             </div>  
             <div class="row mt-3 pt-1">  
               <div class="col">  
-                <form class="w-50 mx-auto px-1">  
-                  <div class="form-group mb-2">  
+                <form class="w-50 mx-auto px-1">
+                <form role="form" action="/SignupView.html" method="GET">  
+                  <div class="form-group mb-2">                 
                     <div class="input-group border-0">  
                       <div class="input-group-prepend">  
                         <span class="input-group-text" id="basic-addon1">  
                           <i class="now-ui-icons users_circle-08 lg"></i>  
                         </span>  
                       </div>  
-                      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Name..." type="text" name="name">  
+                      <input type="text" class="form-control" id="inlineFormInputGroupName" placeholder="Name..." type="text" name="name">  
                     </div>  
                   </div>  
                   <div class="form-group mb-2">  
@@ -81,7 +81,7 @@
                           <i class="now-ui-icons text_caps-small lg"></i>  
                         </span>  
                       </div>  
-                      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Email..." type="email" name="username">  
+                      <input type="email" class="form-control" id="inlineFormInputGroupEmail" placeholder="Email..." name="username">  
                     </div>  
                   </div>  
                   <div class="form-group mb-3">  
@@ -91,14 +91,14 @@
                           <i class="now-ui-icons ui-1_email-85 lg"></i>  
                         </span>  
                       </div>  
-                      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Password..." type="password" name="password">  
+                      <input type="password" class="form-control" id="inlineFormInputGroupPassword" placeholder="Password..."  name="password">  
                     </div>  
                   </div>  
                   <button type="submit" class="btn btn-lg btn-dark mx-1 rounded">Sign Up</button>  
+                 </form>
                 </form>  
               </div>  
-            </div>
-           </form>  
+            </div>  
           </div>  
          <h2 class="lead mb-2" contenteditable="true">Already have an account with us?&nbsp;<br>Click the Log In button below to get started.</h2> <a class="btn btn-lg btn-light btn-lg text-primary mx-1 rounded" href="login.html">Log In</a>  
         </div>  
