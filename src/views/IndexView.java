@@ -116,12 +116,12 @@ public class IndexView extends DynamicWebPage{
 				
 				
 				// Decide if an image was provided in the report, or if a default image is required
-//				if(currentReport.filePathToImage != null) {
-//					stringToSendToBrowser += "                      <div class=\"col-md-6\"><img class=\"img-fluid d-block\" src=\"/"+ currentReport.filePathToImage +"\" height=\"120\" width=\"120\" align=\"right\" alt=\"Picture of Problem\"></div>\r\n";
-//					
-//				}else{
-//					stringToSendToBrowser += "                      <div class=\"col-md-6\"><img class=\"img-fluid d-block\" src=\"/"+ decideDefaultImage(currentReport.category) +"\" height=\"120\" width=\"120\" align=\"right\" alt=\"Picture of Problem\"></div>\r\n";
-//				}
+				if(currentReport.filePathToImage != null) {
+					stringToSendToBrowser += "                      <div class=\"col-md-6\"><img class=\"img-fluid d-block\" src=\"/"+ currentReport.filePathToImage +"\" height=\"120\" width=\"120\" align=\"right\" alt=\"Picture of Problem\"></div>\r\n";
+					
+				}else{
+					stringToSendToBrowser += "                      <div class=\"col-md-6\"><img class=\"img-fluid d-block\" src=\"/"+ decideDefaultImage(currentReport.category) +"\" height=\"120\" width=\"120\" align=\"right\" alt=\"Picture of Problem\"></div>\r\n";
+				}
 				
 				stringToSendToBrowser += "                    </div>\r\n";
 				stringToSendToBrowser += "                  </div>\r\n";
