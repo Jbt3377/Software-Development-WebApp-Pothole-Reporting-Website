@@ -144,17 +144,17 @@ public class Main
 //		        else
 		        if(testFormPage.process(toProcess))
 		        {
-		        	// testForm page is processed
+		        	
 		        }else if(indexViewPage.process(toProcess)) {
-		        	// main page is processed
+		        	// Main page is requested
 		        }else if(signupViewPage.process(toProcess)) {
-		        	// signup page is processed
+		        	// Sign up page is requested
 		        }else if(loginViewPage.process(toProcess)) {
-		        	// login page is processed
+		        	// Login page is requested
 		        }else if(aboutUsViewPage.process(toProcess)) {
-		        	//about us page is processed
+		        	// About us page is requested
 		        }else if(supportUsViewPage.process(toProcess)) {
-		        	//support us page is processed
+		        	// Support us page is requested
 		        }
 		        else
 		        {
@@ -168,7 +168,7 @@ public class Main
 		        //
 		        
 		        //If none of the previous rules identified a response then either the 
-		        //website is broken pointing to a url that no longer exists
+		        //web site is broken pointing to a url that no longer exists
 		        //or someone is deliberately trying to access the site in a way that wasn't designed for
 		        //either way respond with a redirection message to the index page
 		        if(toProcess.r == null)

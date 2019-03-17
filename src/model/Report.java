@@ -8,7 +8,7 @@ public class Report implements Serializable{
 	
 	public String reportID;
 	public String description;
-	public String category;
+	public Categories category;
 	public String details;
 	public String filePathToImage;
 	
