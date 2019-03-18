@@ -6,9 +6,11 @@ import java.io.File;
 import java.util.List;
 
 import model.Categories;
+import model.Profile;
 import model.Report;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
+import utils.Validator;
 import web.WebRequest;
 import web.WebResponse;
 
@@ -20,14 +22,11 @@ public class IndexView extends DynamicWebPage{
 	
 	public boolean process(WebRequest toProcess) {
 		
-		if(toProcess.path.equalsIgnoreCase("indexview")) {
+		if(toProcess.path.equalsIgnoreCase("indexview") || toProcess.path.equalsIgnoreCase("index.html")) {
 			
 			System.out.println("\n\nRequest for Web Page: " + toProcess.path);
-			
-			// Account action will only ever be login or logout
-			String accountAction = "Login";
-			// Will default be Register if an account is not signed in yet
-			String accountUsername = "Register";
+			String username = toProcess.cookies.get("username"); 
+			String password = toProcess.cookies.get("password");
 			
 			
 			String stringToSendToBrowser = "";
@@ -39,6 +38,12 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n";
 			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" type=\"text/css\">\r\n";
 			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"now-ui-kit.css\" type=\"text/css\">\r\n";
+			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.4.0/dist/leaflet.css\"\r\n" + 
+					"   integrity=\"sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==\"\r\n" + 
+					"   crossorigin=\"\"/>\r\n";
+			stringToSendToBrowser += "  <script src=\"https://unpkg.com/leaflet@1.4.0/dist/leaflet.js\"\r\n" + 
+					"   integrity=\"sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==\"\r\n" + 
+					"   crossorigin=\"\"></script>";
 			stringToSendToBrowser += "</head>\r\n";
 			stringToSendToBrowser += "\r\n";
 			stringToSendToBrowser += "<body class=\"text-left\">\r\n";
@@ -46,20 +51,30 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\r\n";
 			stringToSendToBrowser += "        <span class=\"navbar-toggler-icon\"></span>\r\n";
 			stringToSendToBrowser += "      </button>\r\n";
-			stringToSendToBrowser += "      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"#\">\r\n";
-			stringToSendToBrowser += "          </a><a href=\"indexview\"><i class=\"fa d-inline fa-lg fa-wrench\"></i></a>";
-			stringToSendToBrowser += "          <a href=\"indexview\"><b>&nbsp; FILL MY HOLE</b></a>\r\n";
-			stringToSendToBrowser += "        </a>\r\n";
+			stringToSendToBrowser += "      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"index.html\">\n";
+			stringToSendToBrowser += "          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\n";
+			stringToSendToBrowser += "          <b>&nbsp;FILL MY HOLE</b>\n";
+			stringToSendToBrowser += "        </a>\n";
 			stringToSendToBrowser += "        <ul class=\"navbar-nav mx-auto\">\r\n";
-			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Report a Problem</a> </li>\r\n";
+			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#reportForm\">Report a Problem</a> </li>\r\n";
 			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n";
-			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"formPage.html\">FAQ</a> </li>\r\n";
-			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUs.html\">About Us</a> </li>\r\n";
+			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"HelpView\">FAQ</a> </li>\r\n";
+			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\r\n";
 			stringToSendToBrowser += "        </ul>\r\n";
 			stringToSendToBrowser += "        <ul class=\"navbar-nav\">\r\n";
-			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"loginview.html\">"+ accountAction +"</a> </li>\r\n";
-			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\r\n";
-			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signupview\">"+ accountUsername +"</a> </li>\r\n";
+			
+			// Account actions alter depending if user is signed in
+			if(username!=null)
+			{
+				stringToSendToBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Welcome "+ username +"</a> </li>\n";
+			}
+			else
+			{
+				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n";
+				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
+				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signup.html\">Register</a> </li>\n";
+			}
+			
 			stringToSendToBrowser += "        </ul>\r\n";
 			stringToSendToBrowser += "      </div>\r\n";
 			stringToSendToBrowser += "    </div>\r\n";
@@ -86,7 +101,7 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "                <ol class=\"\">\r\n";
 			stringToSendToBrowser += "                  <li class=\"text-left py-2\"><b>Locate - </b>Use the map above to find the area of the problem</li>\r\n";
 			stringToSendToBrowser += "                  <li class=\"text-left py-2\"><b>Mark - </b>Click on the precise location of the problem</li>\r\n";
-			stringToSendToBrowser += "                  <li class=\"text-left py-2\"><b>Tell us! - </b>Provide us with information on the problem and we'll pass it onto the local council. You can include images as well!&nbsp;</li>\r\n";
+			stringToSendToBrowser += "                  <li class=\"text-left py-2\"><b>Tell us! - </b>Provide us with information on the problem and we'll pass it onto the local council. You can include images as well!</li>\r\n";
 			stringToSendToBrowser += "                </ol>\r\n";
 			stringToSendToBrowser += "              </div>\r\n";
 			stringToSendToBrowser += "            </div>\r\n";
@@ -100,33 +115,42 @@ public class IndexView extends DynamicWebPage{
 			// Display 3 most recent reports
 			MVMap<String, Report> allReports = db.s.openMap("NewReports");
 			List<String> reportKeys = allReports.keyList();
+			int keyIndex = reportKeys.size()-1;
+			
+			// Check at least one report exists
+			if(reportKeys.size() != 0) {
+				
+				// Iterates through up to 3 reports and display their details under "Recently Reported Problems"
+				while(keyIndex>=(reportKeys.size()-3) && keyIndex!=-1)
+				{
 
-			for(int keyIndex=(reportKeys.size()-1); keyIndex>=(reportKeys.size()-3); keyIndex--)
-			{
-				String currentReportKey = reportKeys.get(keyIndex);
-				Report currentReport = allReports.get(currentReportKey);
-				
-				
-				stringToSendToBrowser += "                  <div class=\"card-body bg-primary my-2\">\r\n";
-				stringToSendToBrowser += "                    <div class=\"row\">\r\n";
-				stringToSendToBrowser += "                      <div class=\"col-md-6\">\r\n";
-				stringToSendToBrowser += "                        <h5 class=\"card-title my-2 text-dark\" align=\"left\">" + currentReport.description +"</h5>\r\n";
-				stringToSendToBrowser += "                        <p align=\"left\">"+ currentReport.category.description() +"</p>\r\n";
-				stringToSendToBrowser += "                      </div>\r\n";
-				
-				
-				// Decide if an image was provided in the report, or if a default image is required
-				if(currentReport.filePathToImage != null) {
-					stringToSendToBrowser += "                      <div class=\"col-md-6\"><img class=\"img-fluid d-block\" src=\"/"+ currentReport.filePathToImage +"\" height=\"120\" width=\"120\" align=\"right\" alt=\"Picture of Problem\"></div>\r\n";
+					String currentReportKey = reportKeys.get(keyIndex);
+					Report currentReport = allReports.get(currentReportKey);
 					
-				}else{
-					stringToSendToBrowser += "                      <div class=\"col-md-6\"><img class=\"img-fluid d-block\" src=\"/"+ decideDefaultImage(currentReport.category) +"\" height=\"120\" width=\"120\" align=\"right\" alt=\"Picture of Problem\"></div>\r\n";
-				}
-				
-				stringToSendToBrowser += "                    </div>\r\n";
-				stringToSendToBrowser += "                  </div>\r\n";
-				
+					stringToSendToBrowser += "                  <div class=\"card-body bg-primary my-2\">\r\n";
+					stringToSendToBrowser += "                    <div class=\"row\">\r\n";
+					stringToSendToBrowser += "                      <div class=\"col-md-6\">\r\n";
+					stringToSendToBrowser += "                        <h5 class=\"card-title my-2 text-dark\" align=\"left\">" + currentReport.description +"</h5>\r\n";
+					stringToSendToBrowser += "                        <p align=\"left\">"+ currentReport.category.description() +"</p>\r\n";
+					stringToSendToBrowser += "                      </div>\r\n";
+					
+					// Decide if an image was provided in the report, or if a default image is required
+					if(currentReport.filePathToImage != null) {
+						stringToSendToBrowser += "                      <div class=\"col-md-6\"><img class=\"img-fluid d-block\" src=\"/"+ currentReport.filePathToImage +"\" height=\"120\" width=\"120\" align=\"right\" alt=\"Picture of Problem\"></div>\r\n";
+						
+					}else{
+						stringToSendToBrowser += "                      <div class=\"col-md-6\"><img class=\"img-fluid d-block\" src=\"/"+ decideDefaultImage(currentReport.category) +"\" height=\"120\" width=\"120\" align=\"right\" alt=\"Picture of Problem\"></div>\r\n";
+					}
+					
+					stringToSendToBrowser += "                    </div>\r\n";
+					stringToSendToBrowser += "                  </div>\r\n";
+					
+					keyIndex--;
+					
 
+				}
+			}else {
+				stringToSendToBrowser += "                  <p>No Reports on Record</p>";
 			}
 			
 			
@@ -146,12 +170,15 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "                <!--Report Form-->\r\n";
 			stringToSendToBrowser += "                <div class=\"Report-Form\">\r\n";
 			stringToSendToBrowser += "                  <form action=\"/Report\" method=\"GET\">\r\n";
+			stringToSendToBrowser += "                    <!--Location (Text Input)-->\r\n";
+			stringToSendToBrowser += "                    <label for=\"location\" class=\"w-100 text-left pt-2\"><b>Location</b></label>\r\n";
+			stringToSendToBrowser += "                    <input type=\"text\" class=\"form-control text-left text-white\" name=\"location\" placeholder=\"Mark your location on the map or tell us the address\" required=\"required\">\r\n";
 			stringToSendToBrowser += "                    <!--Description (Text Input)-->\r\n";
 			stringToSendToBrowser += "                    <label for=\"description\" class=\"w-100 text-left pt-2\"><b>Description</b></label>\r\n";
 			stringToSendToBrowser += "                    <input type=\"text\" class=\"form-control text-left text-white\" name=\"desc\" placeholder=\"Provide a short despription of the problem\" required=\"required\">\r\n";
 			stringToSendToBrowser += "                    <!--Category (Dropdown)-->\r\n";
 			stringToSendToBrowser += "                    <label for=\"category\" class=\"w-100 text-left pt-2\"><b>Category</b></label>\r\n";
-			stringToSendToBrowser += "                    <select class=\"form-control text-left text-dark\" name=\"category\" required=\"required\">\r\n";
+			stringToSendToBrowser += "                    <select class=\"form-control text-left text-primary\" name=\"category\" required=\"required\">\r\n";
 			stringToSendToBrowser += "                      <option value=\"\" disabled=\"disabled\" selected=\"selected\">Select a Suitable Category</option>\r\n";
 			
 			for(Categories c: Categories.values()) {
@@ -161,7 +188,7 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "                    </select>\r\n";
 			stringToSendToBrowser += "                    <!--Details (TextArea)-->\r\n";
 			stringToSendToBrowser += "                    <label for=\"details\" class=\"w-100 text-left pt-2\"><b>Details</b></label>\r\n";
-			stringToSendToBrowser += "                    <textarea name=\"details\" rows=\"10\" required=\"required\" placeholder=\"Tell us some details about the problem\" cols=\"70\" maxlength=\"255\" class=\"form-control text-left w-100 text-white\"></textarea>\r\n";
+			stringToSendToBrowser += "                    <textarea name=\"details\" rows=\"10\" required=\"required\" cols=\"70\" class=\"form-control text-left w-100 text-white\" maxlength=\"255\"></textarea>\r\n";
 			stringToSendToBrowser += "                    <!--Media (File Input)-->\r\n";
 			stringToSendToBrowser += "                    <label for=\"files\" class=\"w-100 text-left pt-2\"><b>Photos/Videos</b></label>\r\n";
 			stringToSendToBrowser += "                    <input type=\"file\" name=\"fileupload\" value=\"fileupload\" class=\"text-left form-control-file\">\r\n";
@@ -183,9 +210,54 @@ public class IndexView extends DynamicWebPage{
 			
 			// Pass out Web Response
 			toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToBrowser);
-			
+			if(username!=null)
+			{
+				MVMap<String, Profile> profiles = db.s.openMap("Profiles");
+				Validator.validate(db);
+				Profile user = profiles.get(username);
+				if((user==null)||(!user.password.contentEquals(password))) 
+				{
+					String stringToSendToWebBrowser = "";
+					stringToSendToWebBrowser += "<!DOCTYPE html>\n";
+					stringToSendToWebBrowser += "<html>\n";
+					stringToSendToWebBrowser += "  <head>\n";
+					stringToSendToWebBrowser += "    <title>Session Error</title>\n";
+					stringToSendToWebBrowser += "    <meta charset=\"utf-8\">\n";
+					stringToSendToWebBrowser += "    <meta  name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+					stringToSendToWebBrowser += "    <link href=\"/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">\n";
+					stringToSendToWebBrowser += "    <link href=\"/css/font-awesome.min.css\" rel=\"stylesheet\">\n";
+					stringToSendToWebBrowser += "    <link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700\" rel=\"stylesheet\">\n";
+					stringToSendToWebBrowser += "    <link href=\"https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic\" rel=\"stylesheet\">\n";
+					stringToSendToWebBrowser += "    <link href=\"/css/blocks.css\" rel=\"stylesheet\">\n";
+					stringToSendToWebBrowser += "    <!--[if lt IE 9]>\n";
+					stringToSendToWebBrowser += "      <script src=\"/js/html5shiv.js\"></script>\n";
+					stringToSendToWebBrowser += "      <script src=\"/js/respond.min.js\"></script>\n";
+					stringToSendToWebBrowser += "    <![endif]-->\n";
+					stringToSendToWebBrowser += "    <script type=\"text/javascript\" src=\"/js/jquery-1.11.1.min.js\"></script>\n";
+					stringToSendToWebBrowser += "    <script type=\"text/javascript\" src=\"/js/bootstrap.min.js\"></script>\n";
+					stringToSendToWebBrowser += "  <script>\n";
+					stringToSendToWebBrowser += "      function clearLoginCookie()\n";
+					stringToSendToWebBrowser += "      {\n";
+					stringToSendToWebBrowser += "          document.cookie='username=;expires=' + new Date(0).toGMTString();\n";
+					stringToSendToWebBrowser += "          document.cookie='password=;expires=' + new Date(0).toGMTString();\n";
+					stringToSendToWebBrowser += "      }\n";
+					stringToSendToWebBrowser += "  </script>\n";
+					stringToSendToWebBrowser += "  </head>\n";
+					
+
+					
+					stringToSendToWebBrowser += "  <body onload=\"clearLoginCookie()\">\n";
+					stringToSendToWebBrowser += "    <h1>Session Error<h1>\n";
+					stringToSendToWebBrowser += "    <h1><a href='/Index.html'>Click here to continue</a><h1>\n";
+					stringToSendToWebBrowser += "  </body>\n";
+					stringToSendToWebBrowser += "</html>\n";
+					toProcess.r = new WebResponse( WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToWebBrowser );
+					return true;
+
+				}
+			}
 			return true;
-			
+
 		}else if(toProcess.path.equalsIgnoreCase("Report")) {
 			
 			System.out.println("Request to submit a Report: " + toProcess.path);
@@ -195,10 +267,9 @@ public class IndexView extends DynamicWebPage{
 			
 			// Get details of new report provided
 			problemReport.reportID = "report_"+System.currentTimeMillis();
+			problemReport.location = toProcess.params.get("location");
 			problemReport.description = toProcess.params.get("desc");
-
 			problemReport.category = getCategory(toProcess.params.get("category"));
-			
 			problemReport.details = toProcess.params.get("details");
 			problemReport.filePathToImage = toProcess.params.get("fileupload");
 
@@ -215,10 +286,13 @@ public class IndexView extends DynamicWebPage{
 			MVMap<String, Report> allReports = db.s.openMap("NewReports");
 			allReports.put(problemReport.reportID, problemReport);
 			
+			db.commit();
+			
 			// Console feedback - this is the report being saved to database
 			System.out.println();
 			System.out.println("== Problem has been successfully reported ==");
 			System.out.println("ID: " + problemReport.reportID);
+			System.out.println("Location: " + problemReport.location);
 			System.out.println("Description: " + problemReport.description);
 			System.out.println("Category: " + problemReport.category);
 			System.out.println("Details: " + problemReport.details);

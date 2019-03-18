@@ -14,7 +14,7 @@ public class ExampleView extends DynamicWebPage
 
 	public boolean process(WebRequest toProcess)
 	{
-        if(toProcess.path.equalsIgnoreCase("index.html"))
+        if(toProcess.path.equalsIgnoreCase("snowcone"))
         {
         	//Lab 1 Task 4
         	//Change this string so that it contains HTML from a page you created in Pingendo 
