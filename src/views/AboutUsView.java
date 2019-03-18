@@ -1,6 +1,6 @@
 package views;
 
-import model.Biography;
+
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import web.WebRequest;
@@ -15,10 +15,6 @@ public class AboutUsView extends DynamicWebPage {
 	public boolean process(WebRequest toProcess) { 
 		if(toProcess.path.equalsIgnoreCase("aboutusview")) 
 		{ 
-			
-			Biography test = new Biography();
-        	test.name = "E. M. Atos";
-        	test.info= "Team 1 Member";
 		 
 		String stringToSendToWebBrowser = "<!DOCTYPE html>\r\n" + 
 				"<html>\r\n" + 
@@ -33,33 +29,27 @@ public class AboutUsView extends DynamicWebPage {
 				"\r\n" + 
 				"<body>\r\n" + 
 				"  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\r\n" + 
-				"    <div class=\"container\"> <a class=\"navbar-brand\" href=\"#\">\r\n" + 
-				"        <i class=\"fa d-inline fa-lg fa-stop-circle\"></i>\r\n" + 
-				"        <b contenteditable=\"true\"> Fill My Hole</b>\r\n" + 
-				"      </a> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar10\">\r\n" + 
+				"    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\">\r\n" + 
 				"        <span class=\"navbar-toggler-icon\"></span>\r\n" + 
 				"      </button>\r\n" + 
-				"      <div class=\"collapse navbar-collapse\" id=\"navbar10\">\r\n" + 
-				"        <ul class=\"navbar-nav ml-auto\">\r\n" + 
-				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"indexview\">Report</a> </li>\r\n" + 
-				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"loginview\">Login</a> </li>\r\n" + 
-				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"signupview\">Sign Up</a> </li>\r\n" + 
-				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About</a> </li>\r\n" + 
-				"          <li class=\"nav-item\" > <a class=\"nav-link\" href=\"helpview\">FAQ</a> </li>\r\n" + 
-				"        </ul> <a class=\"btn navbar-btn ml-md-2 btn-light text-dark\">Contact us</a>\r\n" + 
+				"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"IndexView\">\r\n" + 
+				"          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\r\n" + 
+				"          <b contenteditable=\"true\">&nbsp;FILL MY HOLE</b>\r\n" + 
+				"        </a>\r\n" + 
+				"        <ul class=\"navbar-nav mx-auto\">\r\n" + 
+				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"IndexView\">Report a Problem</a> </li>\r\n" + 
+				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n" + 
+				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"help.html\">FAQ</a> </li>\r\n" + 
+				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\r\n" + 
+				"        </ul>\r\n" + 
+				"        <ul class=\"navbar-nav\">\r\n" + 
+				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"Login.html\">Log in</a> </li>\r\n" + 
+				"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\r\n" + 
+				"          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"SignUp.html\">Register</a> </li>\r\n" + 
+				"        </ul>\r\n" + 
 				"      </div>\r\n" + 
 				"    </div>\r\n" + 
 				"  </nav>\r\n" + 
-				"  <div class=\"py-5 text-center align-items-center d-flex\" style=\"background-image: linear-gradient(to left bottom, rgba(189, 195, 199, .75), rgba(44, 62, 80, .75)); background-size: 100%;\">\r\n" + 
-				"    <div class=\"container py-5\">\r\n" + 
-				"      <div class=\"row\">\r\n" + 
-				"        <div class=\"col-md-8 mx-auto bg-primary\"> <i class=\"d-block fa fa-stop-circle mb-3 text-muted fa-5x\"></i>\r\n" + 
-				"          <h1 class=\"display-3 mb-4\">Fill My Hole</h1>\r\n" + 
-				"          <p class=\"lead mb-5\">Have an issue with your street? We are here to help.&nbsp;<br>The mapped issue will be reported to the Belfast City Council<br></p> <a class=\"btn btn-lg mx-1 btn-outline-dark\" href=\"#\">Report A Problem</a>\r\n" + 
-				"        </div>\r\n" + 
-				"      </div>\r\n" + 
-				"    </div>\r\n" + 
-				"  </div>\r\n" + 
 				"  <div class=\"py-5 text-center text-white\" style=\"background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: cover, cover;  background-repeat: repeat, repeat;\">\r\n" + 
 				"    <div class=\"container\">\r\n" + 
 				"      <div class=\"row\">\r\n" + 
@@ -74,11 +64,11 @@ public class AboutUsView extends DynamicWebPage {
 				"        </div>\r\n" + 
 				"        <div class=\"col-lg-4 col-md-6 p-4\"> <img class=\"img-fluid d-block mb-3 mx-auto rounded-circle\" src=\"https://static.pingendo.com/img-placeholder-2.svg\" alt=\"Card image cap\" width=\"200\">\r\n" + 
 				"          <h4>D. Bell</h4>\r\n" + 
-				"          <p class=\"mb-0\">Lead Designer</p>\r\n" + 
+				"          <p class=\"mb-0\">Team 1 Member</p>\r\n" + 
 				"        </div>\r\n" + 
-				"		<div class=\"col-lg-4 col-md-6 p-4\"> <img class=\"img-fluid d-block mb-3 mx-auto rounded-circle\" src=\"https://static.pingendo.com/img-placeholder-1.svg\" alt=\"Card image cap\" width=\"200\">\r\n" + 
-				"          <h4> <b>" +test.name + "</b></h4>\r\n" + 
-				"          <p class=\"mb-0\">" + test.info + "</p>\r\n" + 
+				"        <div class=\"col-lg-4 p-4\"> <img class=\"img-fluid d-block mb-3 mx-auto rounded-circle\" src=\"https://static.pingendo.com/img-placeholder-3.svg\" width=\"200\">\r\n" + 
+				"          <h4> <b>E. M. Atos</b></h4>\r\n" + 
+				"          <p class=\"mb-0\">Team 1 Member&nbsp;</p>\r\n" + 
 				"        </div>\r\n" + 
 				"      </div>\r\n" + 
 				"    </div>\r\n" + 
@@ -94,13 +84,24 @@ public class AboutUsView extends DynamicWebPage {
 				"      </div>\r\n" + 
 				"    </div>\r\n" + 
 				"  </div>\r\n" + 
-				"  <div class=\"py-5 text-center text-white\" style=\"background-image: url(&quot;https://static.pingendo.com/cover-moon.svg&quot;); background-size: cover; background-position: center top;\">\r\n" + 
+				"  <div class=\"text-center text-white py-5\" style=\"background-image: url(&quot;https://static.pingendo.com/cover-moon.svg&quot;); background-size: cover; background-position: center top;\" >\r\n" + 
 				"    <div class=\"container\">\r\n" + 
-				"      <div class=\"row\">\r\n" + 
+				"      <div class=\"row\" style=\"\">\r\n" + 
 				"        <div class=\"mx-auto p-4 col-md-7\" style=\"\">\r\n" + 
-				"          <h1 class=\"mb-4\">Support Us!</h1>\r\n" + 
-				"          <p> Help us run this site </p>\r\n" + 
-				"          <a class=\"btn btn-primary\" href=\"SupportUsView\">Donate</a>\r\n" + 
+				"          <h3 class=\"display-3\"><b>Support Us</b></h3>\r\n" + 
+				"          <h1 contenteditable=\"true\"> Help us run this site </h1>\r\n" + 
+				"          <h1>&nbsp;</h1>\r\n" + 
+				"          <a class=\"btn btn-primary w-25 text-white\" href=\"SupportUs.html\">Donate</a>\r\n" + 
+				"        </div>\r\n" + 
+				"      </div>\r\n" + 
+				"    </div>\r\n" + 
+				"  </div>\r\n" + 
+				"  <div class=\"py-5 text-center align-items-center d-flex\" style=\"background-image: linear-gradient(to left bottom, rgba(189, 195, 199, 0.75), rgba(44, 62, 80, 0.75)); background-size: 100%;\">\r\n" + 
+				"    <div class=\"container py-5\">\r\n" + 
+				"      <div class=\"row\">\r\n" + 
+				"        <div class=\"col-md-8 mx-auto bg-primary\"> <i class=\"d-block fa fa-stop-circle mb-3 text-muted fa-5x\"></i>\r\n" + 
+				"          <h1 class=\"display-3 mb-4\">Fill My Hole</h1>\r\n" + 
+				"          <p class=\"lead mb-5\">Have an issue with your street? We are here to help.&nbsp;<br>The mapped issue will be reported to the Belfast City Council<br></p> <a class=\"btn btn-lg mx-1 btn-outline-dark\" href=\"index.html\">Report A Problem</a>\r\n" + 
 				"        </div>\r\n" + 
 				"      </div>\r\n" + 
 				"    </div>\r\n" + 
@@ -111,7 +112,7 @@ public class AboutUsView extends DynamicWebPage {
 				"        <div class=\"my-3 col-lg-8\">\r\n" + 
 				"          <h1 class=\"text-center text-lg-left text-white\">Help others by sharing</h1>\r\n" + 
 				"        </div>\r\n" + 
-				"        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/QCSQUB/\">\r\n" + 
+				"        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/QUBelfast/\">\r\n" + 
 				"            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n" + 
 				"          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n" + 
 				"            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n" + 
