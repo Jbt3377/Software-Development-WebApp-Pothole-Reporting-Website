@@ -34,16 +34,9 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "<html>\r\n";
 			stringToSendToBrowser += "\r\n";
 			stringToSendToBrowser += "<head>\r\n";
-			stringToSendToBrowser += "  <meta charset=\"utf-8\">\r\n";
-			stringToSendToBrowser += "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n";
 			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" type=\"text/css\">\r\n";
 			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"now-ui-kit.css\" type=\"text/css\">\r\n";
-			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.4.0/dist/leaflet.css\"\r\n" + 
-					"   integrity=\"sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==\"\r\n" + 
-					"   crossorigin=\"\"/>\r\n";
-			stringToSendToBrowser += "  <script src=\"https://unpkg.com/leaflet@1.4.0/dist/leaflet.js\"\r\n" + 
-					"   integrity=\"sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==\"\r\n" + 
-					"   crossorigin=\"\"></script>";
+			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.4.0/dist/leaflet.css\" />\r\n";
 			stringToSendToBrowser += "</head>\r\n";
 			stringToSendToBrowser += "\r\n";
 			stringToSendToBrowser += "<body class=\"text-left\">\r\n";
@@ -89,7 +82,19 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "        </div>\r\n";
 			stringToSendToBrowser += "      </div>\r\n";
 			stringToSendToBrowser += "      <div class=\"row\">\r\n";
-			stringToSendToBrowser += "        <div class=\"col-md-12\"><iframe width=\"100%\" height=\"400\" src=\"https://maps.google.com/maps?q=New%20York&amp;z=14&amp;output=embed\" scrolling=\"no\" frameborder=\"0\"></iframe></div>\r\n";
+			
+			// Map of Belfast
+			stringToSendToBrowser += "        <div id=\"mapContainer\" style=\"width: 1200px; height:500px;\"></div>\r\n";
+			stringToSendToBrowser += "        <script src=\"https://unpkg.com/leaflet@1.4.0/dist/leaflet.js\"></script>\r\n";
+			stringToSendToBrowser += "        <script>"
+					+ "  var map = L.map(\"mapContainer\").setView([54.607868, -5.926437], 11);"
+					+ "  var layer = L.tileLayer(\"http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png\", {"
+					+ "  attribution: \'&copy; <a href=\"http://www.openstreetmap.org/copyright\">"
+					+ "    OpenStreetMap</a>\'"
+					+ "  }).addTo(map)"
+					+ "</script>";
+			
+			
 			stringToSendToBrowser += "      </div>\r\n";
 			stringToSendToBrowser += "    </div>\r\n";
 			stringToSendToBrowser += "    <div class=\"container py-4\">\r\n";
