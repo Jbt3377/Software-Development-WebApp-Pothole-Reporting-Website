@@ -61,7 +61,7 @@ public class IndexView extends DynamicWebPage{
 			// Account actions alter depending if user is signed in
 			if(profiles.get(username)!=null)
 			{
-				stringToSendToBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Welcome "+ username +"</a> </li>\n";
+				stringToSendToBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome "+ username +"</a> </li>\n";
 			}
 			else
 			{
