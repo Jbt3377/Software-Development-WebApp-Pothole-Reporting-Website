@@ -25,6 +25,7 @@ public class SignupSuccessful extends DynamicWebPage{
 		
 			MVMap<String, Profile> profiles = db.s.openMap("Profiles");
 		
+			// Check for existing username
 			if (profiles.containsKey(user.username))
 			{
 			String stringToSendToWebBrowser = "";
