@@ -115,7 +115,8 @@ public class SignupView extends DynamicWebPage{
 					"                      <input type=\"password\" class=\"form-control\" id=\"inlineFormInputGroupPassword\" placeholder=\"Password...\"  name=\"password\">  \r\n" + 
 					"                    </div>  \r\n" + 
 					"                  </div>  \r\n" + 
-					"                  <button type=\"submit\" class=\"btn btn-lg btn-dark mx-1 rounded\">Sign Up</button>  \r\n" +  
+					"                  <button type=\"submit\" class=\"btn btn-lg btn-dark mx-1 rounded\">Sign Up</button>  \r\n" + 
+					"                 <p contenteditable=\"true\">&nbsp;</p><br>\r\n" +
 					"                </form>  \r\n" + 
 					"              </div>  \r\n" + 
 					"            </div>  \r\n" + 
@@ -216,7 +217,7 @@ public class SignupView extends DynamicWebPage{
 		stringToSendToWebBrowser += "  <meta charset=\"utf-8\">\n";
 		stringToSendToWebBrowser += "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n";
 		stringToSendToWebBrowser += "  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" type=\"text/css\">\n";
-		stringToSendToWebBrowser += "  <link rel=\"stylesheet\" href=\"https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css\">\n";
+		stringToSendToWebBrowser += "  <link rel=\"stylesheet\" href=\"now-ui-kit.css\">\n";
 		stringToSendToWebBrowser += "</head>\n";
 		stringToSendToWebBrowser += "\n";
 		stringToSendToWebBrowser += "<body>\n";
