@@ -8,14 +8,15 @@ import storage.FileStoreInterface;
 import web.WebRequest;
 import web.WebResponse;
 
-public class SignupView extends DynamicWebPage{
+public class SignupSuccessful extends DynamicWebPage{
 
-	public SignupView(DatabaseInterface db, FileStoreInterface fs){
+	public SignupSuccessful(DatabaseInterface db, FileStoreInterface fs){
 		super(db, fs);
 	}
 	public boolean process(WebRequest toProcess)
 	{
-		if(toProcess.path.equalsIgnoreCase("signupview"))
+		// 
+		if(toProcess.path.equalsIgnoreCase("signupsuccessful"))
 		{
 			Profile user = new Profile();
 			user.name = toProcess.params.get("name");

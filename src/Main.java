@@ -3,11 +3,11 @@ import java.util.ArrayList;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import views.AboutUsView;
-import views.ExampleView;
 import views.HelpView;
 import views.IndexView;
 import views.LoginView;
-import views.SignupView;
+import views.SignupSuccessful;
+import views.SubmitSuccessful;
 import views.SupportUsView;
 import views.TestForm;
 import web.Base64;
@@ -87,7 +87,7 @@ public class Main
 
 		IndexView indexViewPage = new IndexView(databaseInterface, fileStoreInterface);
 		
-		SignupView signupViewPage = new SignupView(databaseInterface, fileStoreInterface);
+		SignupSuccessful signupSuccessfulPage = new SignupSuccessful(databaseInterface, fileStoreInterface);
 		
 		LoginView loginViewPage = new LoginView(databaseInterface, fileStoreInterface);
 		
@@ -96,6 +96,8 @@ public class Main
 		SupportUsView supportUsViewPage = new SupportUsView(databaseInterface, fileStoreInterface);
 		
 		HelpView helpViewPage = new HelpView(databaseInterface, fileStoreInterface);
+		
+		SubmitSuccessful submitSuccessfulPage = new SubmitSuccessful(databaseInterface, fileStoreInterface);
 		
 		
 		//this variable indicates that the program should keep running
@@ -152,7 +154,7 @@ public class Main
 		        	
 		        }else if(indexViewPage.process(toProcess)) {
 		        	// Main page is requested
-		        }else if(signupViewPage.process(toProcess)) {
+		        }else if(signupSuccessfulPage.process(toProcess)) {
 		        	// Sign up page is requested
 		        }else if(loginViewPage.process(toProcess)) {
 		        	// Login page is requested
@@ -161,7 +163,9 @@ public class Main
 		        }else if(supportUsViewPage.process(toProcess)) {
 		        	// Support us page is requested
 		        }else if(helpViewPage.process(toProcess)) {
-		        	//help page is processed
+		        	// Help page is processed
+		        }else if(submitSuccessfulPage.process(toProcess)) {
+		        	// Submit successful page is processed
 		        }
 		        else
 		        {
