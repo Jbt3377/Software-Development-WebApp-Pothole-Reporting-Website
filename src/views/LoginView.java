@@ -190,7 +190,7 @@ public class LoginView extends DynamicWebPage
 			stringToSendToWebBrowser += "  </script>\n";
 
 			stringToSendToWebBrowser += "  </head>\n";
-			stringToSendToWebBrowser += "<body>\n";
+			stringToSendToWebBrowser += "<body onload='saveLoginCookie()'>\n";
 			stringToSendToWebBrowser += "  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\n";
 			stringToSendToWebBrowser += "    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\n";
 			stringToSendToWebBrowser += "        <span class=\"navbar-toggler-icon\"></span>\n";
