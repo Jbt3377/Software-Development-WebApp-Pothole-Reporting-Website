@@ -15,6 +15,8 @@ import web.WebRequest;
 import web.WebResponse;
 
 public class IndexView extends DynamicWebPage{
+	
+	public int hitcounter = 0;
 
 	public IndexView(DatabaseInterface db, FileStoreInterface fs) {
 		super(db, fs);
@@ -25,10 +27,14 @@ public class IndexView extends DynamicWebPage{
 		if(toProcess.path.equalsIgnoreCase("indexview") || toProcess.path.equalsIgnoreCase("index.html")) {
 			
 			System.out.println("\n\nRequest for Web Page: " + toProcess.path);
-			String username = toProcess.cookies.get("username"); 
+			String username = toProcess.cookies.get("username");
 			String password = toProcess.cookies.get("password");
-						
+			
+			MVMap<String, Profile> profiles = db.s.openMap("Profiles");
+			
 			String stringToSendToBrowser = "";
+			
+
 			stringToSendToBrowser += "<!DOCTYPE html>\r\n";
 			stringToSendToBrowser += "<html>\r\n";
 			stringToSendToBrowser += "\r\n";
@@ -58,15 +64,15 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "        <ul class=\"navbar-nav\">\r\n";
 			
 			// Account actions alter depending if user is signed in
-			if(username!=null)
+			if(profiles.get(username)!=null)
 			{
-				stringToSendToBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Welcome "+ username +"</a> </li>\n";
+				stringToSendToBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome "+ username +"</a> </li>\n";
 			}
 			else
 			{
 				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n";
 				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
-				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signup.html\">Register</a> </li>\n";
+				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signupview\">Register</a> </li>\n";
 			}
 			
 			stringToSendToBrowser += "        </ul>\r\n";
@@ -167,7 +173,6 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "              <div class=\"card-body\">\r\n";
 			stringToSendToBrowser += "                <div class=\"card bg-dark\">\r\n";
 			
-			
 			// Display 3 most recent reports
 			MVMap<String, Report> allReports = db.s.openMap("NewReports");
 			List<String> reportKeys = allReports.keyList();
@@ -259,12 +264,11 @@ public class IndexView extends DynamicWebPage{
 			// Pass out Web Response
 			toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToBrowser);
 			if(username!=null)
-			{
-				MVMap<String, Profile> profiles = db.s.openMap("Profiles");
-				Validator.validate(db);
-				Profile user = profiles.get(username);
-				if((user==null)||(!user.password.contentEquals(password))) 
-				{
+			{	
+					Validator.validate(db);
+					Profile user = profiles.get(username);
+					if((user==null)||(!user.password.contentEquals(password)))
+					{
 					String stringToSendToWebBrowser = "";
 					stringToSendToWebBrowser += "<!DOCTYPE html>\n";
 					stringToSendToWebBrowser += "<html>\n";

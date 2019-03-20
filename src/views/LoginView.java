@@ -162,7 +162,7 @@ public class LoginView extends DynamicWebPage
 			stringToSendToWebBrowser += "    <title>LoginSubmit</title>\n";
 			stringToSendToWebBrowser += "    <meta charset=\"utf-8\">\n";
 			stringToSendToWebBrowser += "    <meta  name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
-			stringToSendToWebBrowser += "    <link href=\"/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">\n";
+			stringToSendToWebBrowser += "  <link rel=\"stylesheet\" href=\"now-ui-kit.css\">\n";
 			stringToSendToWebBrowser += "    <link href=\"/css/font-awesome.min.css\" rel=\"stylesheet\">\n";
 			stringToSendToWebBrowser += "    <link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700\" rel=\"stylesheet\">\n";
 			stringToSendToWebBrowser += "    <link href=\"https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic\" rel=\"stylesheet\">\n";
@@ -190,7 +190,7 @@ public class LoginView extends DynamicWebPage
 			stringToSendToWebBrowser += "  </script>\n";
 
 			stringToSendToWebBrowser += "  </head>\n";
-			stringToSendToWebBrowser += "<body>\n";
+			stringToSendToWebBrowser += "<body onload='saveLoginCookie()'>\n";
 			stringToSendToWebBrowser += "  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\n";
 			stringToSendToWebBrowser += "    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\n";
 			stringToSendToWebBrowser += "        <span class=\"navbar-toggler-icon\"></span>\n";

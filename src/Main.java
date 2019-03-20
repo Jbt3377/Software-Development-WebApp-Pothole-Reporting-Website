@@ -10,7 +10,6 @@ import views.SignupSuccessful;
 import views.SubmitSuccessful;
 import views.SupportUsView;
 import views.TestForm;
-import web.Base64;
 import web.WebInterface;
 import web.WebRequest;
 import web.WebResponse;
