@@ -27,8 +27,7 @@ public class IndexView extends DynamicWebPage{
 			System.out.println("\n\nRequest for Web Page: " + toProcess.path);
 			String username = toProcess.cookies.get("username"); 
 			String password = toProcess.cookies.get("password");
-			
-			
+						
 			String stringToSendToBrowser = "";
 			stringToSendToBrowser += "<!DOCTYPE html>\r\n";
 			stringToSendToBrowser += "<html>\r\n";
@@ -37,6 +36,8 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" type=\"text/css\">\r\n";
 			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"now-ui-kit.css\" type=\"text/css\">\r\n";
 			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.4.0/dist/leaflet.css\" />\r\n";
+			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.4.0/dist/leaflet.css\" integrity=\"sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==\" crossorigin=\"\"/>\r\n";
+			stringToSendToBrowser += "  <script src=\"https://unpkg.com/leaflet@1.4.0/dist/leaflet.js\" integrity=\"sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==\" crossorigin=\"\"></script>";
 			stringToSendToBrowser += "</head>\r\n";
 			stringToSendToBrowser += "\r\n";
 			stringToSendToBrowser += "<body class=\"text-left\">\r\n";
@@ -84,16 +85,66 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "      <div class=\"row\">\r\n";
 			
 			// Map of Belfast
-			stringToSendToBrowser += "        <div id=\"mapContainer\" style=\"width: 1200px; height:500px;\"></div>\r\n";
-			stringToSendToBrowser += "        <script src=\"https://unpkg.com/leaflet@1.4.0/dist/leaflet.js\"></script>\r\n";
-			stringToSendToBrowser += "        <script>"
-					+ "  var map = L.map(\"mapContainer\").setView([54.607868, -5.926437], 11);"
-					+ "  var layer = L.tileLayer(\"http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png\", {"
-					+ "  attribution: \'&copy; <a href=\"http://www.openstreetmap.org/copyright\">"
-					+ "    OpenStreetMap</a>\'"
-					+ "  }).addTo(map)"
-					+ "</script>";
+			stringToSendToBrowser += "        \r\n" + 
+					"<div id=\"mapid\" style=\"width: 1200px; height: 500px;\"></div>\r\n" + 
+					"<script>" +
+					"  var tileLayer = new L.TileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {\r\n" + 
+					"    'attribution': 'Map data © <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors'\r\n" + 
+					"  });\r\n" + 
+					"\r\n" + 
+					"  var map = new L.Map('mapid', {\r\n" + 
+					"    'layers': [tileLayer]\r\n" + 
+					"  }).setView([54.5973, -5.9301], 13);\r\n" + 
+					"\r\n" + 
+					"  var marker;\r\n" + 
+					"\r\n" +
+					"  map.on('click', function (e) {\r\n" + 
+					"    if (marker) {\r\n" + 
+					"      map.removeLayer(marker);\r\n" + 
+					"    }\r\n" + 
+					"    marker = new L.Marker(e.latlng).addTo(map)\r\n" + 
+					"      .bindPopup(\"Problem Location: \" + e.latlng.toString()).openPopup();\r\n" +
+					"    document.getElementById('location').value = e.latlng.toString()" +
+					"  });"+
+					"</script>\r\n";
 			
+//					"\r\n" + 
+//					"	var mymap = L.map('mapid', {'layers': [tileLayer]}).setView([54.5973, -5.9301], 13);\r\n" + 
+//					"\r\n" + 
+//					"	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {\r\n" + 
+//					"		maxZoom: 18,\r\n" + 
+//					"		attribution: 'Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, ' +\r\n" + 
+//					"			'<a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, ' +\r\n" + 
+//					"			'Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>',\r\n" + 
+//					"		id: 'mapbox.streets'\r\n" + 
+//					"	}).addTo(mymap);\r\n" + 
+//					"\r\n" + 
+//					"	var popup = L.popup();\r\n" +
+//					"   var marker;" +
+//					"\r\n" + 
+//					"   mymap.on('click', function(e) {\r\n" +
+//					"     if (marker) {\r\n" +
+//					"       map.removeLayer(marker);\r\n" +
+//					"     }\r\n" +
+//					"     marker = new L.Marker(e.latlng).addTo(mymap);\r\n" +
+//					"   });\r\n" +
+
+
+//					"	function onMapClick(e) {\r\n" + 
+//					"		popup\r\n" + 
+//					"			.setLatLng(e.latlng)\r\n" + 
+//					"			.setContent(\"You clicked the map at \" + e.latlng.toString())\r\n" + 
+//					"			.openOn(mymap);\r\n" + 
+//					" 		if (marker){\r\n" +
+//					"		  map.removeLayer(marker);\r\n" +
+//					"       }\r\n" +
+//					"		marker = new L.marker(e.latlng).addTo(mymap);\r\n" + 
+////					"		.bindPopup(\"<b>Hello world!</b><br />I am a popup.\").openPopup();\r\n" +
+//					"	}\r\n" + 
+//					"\r\n" + 
+//					"	mymap.on('click', onMapClick);\r\n" + 
+//					"\r\n" + 
+//					"</script>";
 			
 			stringToSendToBrowser += "      </div>\r\n";
 			stringToSendToBrowser += "    </div>\r\n";
@@ -138,15 +189,7 @@ public class IndexView extends DynamicWebPage{
 					stringToSendToBrowser += "                        <h5 class=\"card-title my-2 text-dark\" align=\"left\">" + currentReport.description +"</h5>\r\n";
 					stringToSendToBrowser += "                        <p align=\"left\">"+ currentReport.category.description() +"</p>\r\n";
 					stringToSendToBrowser += "                      </div>\r\n";
-					
-					// Decide if an image was provided in the report, or if a default image is required
-					if(currentReport.filePathToImage != null) {
-						stringToSendToBrowser += "                      <div class=\"col-md-6\"><img class=\"img-fluid d-block\" src=\"/"+ currentReport.filePathToImage +"\" height=\"120\" width=\"120\" align=\"right\" alt=\"Picture of Problem\"></div>\r\n";
-						
-					}else{
-						stringToSendToBrowser += "                      <div class=\"col-md-6\"><img class=\"img-fluid d-block\" src=\"/"+ decideDefaultImage(currentReport.category) +"\" height=\"120\" width=\"120\" align=\"right\" alt=\"Picture of Problem\"></div>\r\n";
-					}
-					
+					stringToSendToBrowser += "                      <div class=\"col-md-6\"><img class=\"img-fluid d-block\" src=\"/"+ currentReport.filePathToImage +"\" height=\"120\" width=\"120\" align=\"right\" alt=\"Picture of Problem\"></div>\r\n";			
 					stringToSendToBrowser += "                    </div>\r\n";
 					stringToSendToBrowser += "                  </div>\r\n";
 					
@@ -177,7 +220,7 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "                  <form action=\"/Report\" method=\"GET\">\r\n";
 			stringToSendToBrowser += "                    <!--Location (Text Input)-->\r\n";
 			stringToSendToBrowser += "                    <label for=\"location\" class=\"w-100 text-left pt-2\"><b>Location</b></label>\r\n";
-			stringToSendToBrowser += "                    <input type=\"text\" class=\"form-control text-left text-white\" name=\"location\" placeholder=\"Mark your location on the map or tell us the address\" required=\"required\">\r\n";
+			stringToSendToBrowser += "                    <input type=\"text\" class=\"form-control text-left text-white\" name=\"location\" id=\"location\" placeholder=\"Mark your location on the map or tell us the address\" required=\"required\">\r\n";
 			stringToSendToBrowser += "                    <!--Description (Text Input)-->\r\n";
 			stringToSendToBrowser += "                    <label for=\"description\" class=\"w-100 text-left pt-2\"><b>Description</b></label>\r\n";
 			stringToSendToBrowser += "                    <input type=\"text\" class=\"form-control text-left text-white\" name=\"desc\" placeholder=\"Provide a short despription of the problem\" required=\"required\">\r\n";
@@ -196,7 +239,7 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "                    <textarea name=\"details\" rows=\"10\" required=\"required\" cols=\"70\" class=\"form-control text-left w-100 text-white\" maxlength=\"255\"></textarea>\r\n";
 			stringToSendToBrowser += "                    <!--Media (File Input)-->\r\n";
 			stringToSendToBrowser += "                    <label for=\"files\" class=\"w-100 text-left pt-2\"><b>Photos/Videos</b></label>\r\n";
-			stringToSendToBrowser += "                    <input type=\"file\" name=\"fileupload\" value=\"fileupload\" class=\"text-left form-control-file\">\r\n";
+			stringToSendToBrowser += "                    <input type=\"file\" id=\"fileupload\" name=\"fileupload\" value=\"fileupload\" class=\"text-left form-control-file\">\r\n";
 			stringToSendToBrowser += "                    <input value=\"Submit\" type=\"submit\" class=\"mt-4\">\r\n";
 			stringToSendToBrowser += "                  </form>\r\n";
 			stringToSendToBrowser += "                </div>\r\n";
@@ -280,11 +323,16 @@ public class IndexView extends DynamicWebPage{
 
 			
 			// File upload
-			File uploaded = new File(problemReport.filePathToImage);
-			int ind = problemReport.filePathToImage.lastIndexOf('.');
-			String extension = problemReport.filePathToImage.substring(ind);
-			uploaded.renameTo(new File("httpdocs/"+problemReport.reportID+extension));
-			problemReport.filePathToImage = problemReport.reportID+extension;
+			try {
+				File uploaded = new File(problemReport.filePathToImage);
+				int ind = problemReport.filePathToImage.lastIndexOf('.');
+				String extension = problemReport.filePathToImage.substring(ind);
+//				String f1 = "httpdocs/"+problemReport.reportID+extension;
+				uploaded.renameTo(new File("httpdocs/"+problemReport.reportID+extension));
+				problemReport.filePathToImage = problemReport.reportID+extension;
+			}catch( StringIndexOutOfBoundsException e ) {
+				problemReport.filePathToImage = decideDefaultImage(problemReport.category);
+			}
 			
 			
 			// Add report to database
