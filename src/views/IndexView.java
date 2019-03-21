@@ -37,6 +37,7 @@ public class IndexView extends DynamicWebPage{
 			System.out.println(email);
 			System.out.println(password);
 			System.out.println(name);
+			System.out.println(name + name);
 			
 			MVMap<String, Profile> profiles = db.s.openMap("Profiles");
 			
@@ -80,7 +81,7 @@ public class IndexView extends DynamicWebPage{
 			{
 				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n";
 				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
-				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"SignupView\">Register</a> </li>\n";
+				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"signupview\">Register</a> </li>\n";
 			}
 			
 			stringToSendToBrowser += "        </ul>\r\n";
@@ -155,7 +156,6 @@ public class IndexView extends DynamicWebPage{
 				// Iterates through up to 3 reports and display their details under "Recently Reported Problems"
 				while(keyIndex>=(reportKeys.size()-3) && keyIndex!=-1)
 				{
-
 					String currentReportKey = reportKeys.get(keyIndex);
 					Report currentReport = allReports.get(currentReportKey);
 					
@@ -171,8 +171,6 @@ public class IndexView extends DynamicWebPage{
 					stringToSendToBrowser += "                  </div>\r\n";
 					
 					keyIndex--;
-					
-
 				}
 			}else {
 				stringToSendToBrowser += "                  <p>No Reports on Record</p>";
@@ -194,7 +192,7 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "                <p class=\"card-text\"><b>Ping the location of the problem on the map above and enter the required information. Afterwards, submit!</b><br></p>\r\n";
 			stringToSendToBrowser += "                <!--Report Form-->\r\n";
 			stringToSendToBrowser += "                <div class=\"Report-Form\">\r\n";
-			stringToSendToBrowser += "                  <form action=\"/Report\" method=\"GET\">\r\n";
+			stringToSendToBrowser += "                  <form action=\"/Report\" method=\"POST\" enctype=\"multipart/form-data\">\r\n";
 			stringToSendToBrowser += "                    <!--Location (Text Input)-->\r\n";
 			stringToSendToBrowser += "                    <label for=\"location\" class=\"w-100 text-left pt-2\"><b>Location</b></label>\r\n";
 			stringToSendToBrowser += "                    <input type=\"text\" class=\"form-control text-left text-white\" name=\"location\" id=\"location\" placeholder=\"Mark your location on the map or tell us the address\" required=\"required\">\r\n";
@@ -220,6 +218,7 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "                    <input value=\"Submit\" type=\"submit\" onclick=\"return clicked();\" class=\"mt-4\">\r\n";
 			stringToSendToBrowser += "       			  <script>\r\n";
 			stringToSendToBrowser += "       			    function clicked(){\r\n";
+			stringToSendToBrowser += "     					  ";
 			stringToSendToBrowser += "       			      return confirm('Make sure you are signed in! If you want to keep up to date with the problem, sign in before submitting.');\r\n";
 			stringToSendToBrowser += "       			    }\r\n";
 			stringToSendToBrowser += "       			  </script>\r\n";
@@ -313,7 +312,12 @@ public class IndexView extends DynamicWebPage{
 				problemReport.filePathToImage = decideDefaultImage(problemReport.category);
 				System.out.println("uh oh no image was provided");
 			}
+		
 			
+			// Get usedID of user who submitted if logged in
+			
+			
+			// Time Stamp
 			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 			problemReport.timeStamp = sdf.format(timestamp);
 			
