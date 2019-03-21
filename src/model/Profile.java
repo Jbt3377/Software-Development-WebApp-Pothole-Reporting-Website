@@ -7,8 +7,8 @@ public class Profile implements Serializable{
 	public String filePathToProfilePicture;
 	public String name;
 	public String username;
+	public String email;
 	public String password;
+	public String address;
 	public int numOfReports;
-	
-
 }

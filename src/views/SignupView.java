@@ -23,7 +23,7 @@ public class SignupView extends DynamicWebPage{
 			stringToSendToWebBrowser += "<!DOCTYPE html>\r\n" + 
 					"<html>  \r\n" + 
 					"<head>  \r\n" + 
-					"<title>SignUpSubmit</title>\" +\r\n" + 
+					"<title>SignUp</title>\" +\r\n" + 
 					"  <meta charset=\"utf-8\">  \r\n" + 
 					"  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">  \r\n" + 
 					"  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" type=\"text/css\">  \r\n" + 
@@ -139,12 +139,14 @@ public class SignupView extends DynamicWebPage{
 			System.out.println("Checking details provided");
 			Profile user = new Profile();
 			user.name = toProcess.params.get("name");
-			user.username = toProcess.params.get("username");
+			user.email = toProcess.params.get("username");
 			user.password = toProcess.params.get("password");
+			user.username = "user_"+System.currentTimeMillis();
+			user.filePathToProfilePicture = "https://static.pingendo.com/img-placeholder-3.svg";
 			
 			MVMap<String, Profile> profiles = db.s.openMap("Profiles");
 		
-			if (profiles.containsKey(user.username))
+			if (profiles.containsKey(user.email))
 			{
 			String stringToSendToWebBrowser = "";
 			stringToSendToWebBrowser += "<!DOCTYPE html>\n";
@@ -206,7 +208,7 @@ public class SignupView extends DynamicWebPage{
 			toProcess.r = new WebResponse( WebResponse.HTTP_OK,WebResponse.MIME_HTML, stringToSendToWebBrowser );
 			return true;
 		}
-		profiles.put(user.username, user);
+		profiles.put(user.email, user);
 		db.commit();
 		
 		String stringToSendToWebBrowser = "";

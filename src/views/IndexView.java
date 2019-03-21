@@ -71,12 +71,14 @@ public class IndexView extends DynamicWebPage{
 			if(profiles.get(username)!=null)
 			{
 				stringToSendToBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome "+ username +"</a> </li>\n";
+				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
+				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"accountview\">Account</a> </li>\n";
 			}
 			else
 			{
 				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n";
 				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
-				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"SignupView\">Register</a> </li>\n";
+				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"signupview\">Register</a> </li>\n";
 			}
 			
 			stringToSendToBrowser += "        </ul>\r\n";
@@ -151,7 +153,6 @@ public class IndexView extends DynamicWebPage{
 				// Iterates through up to 3 reports and display their details under "Recently Reported Problems"
 				while(keyIndex>=(reportKeys.size()-3) && keyIndex!=-1)
 				{
-
 					String currentReportKey = reportKeys.get(keyIndex);
 					Report currentReport = allReports.get(currentReportKey);
 					
@@ -167,8 +168,6 @@ public class IndexView extends DynamicWebPage{
 					stringToSendToBrowser += "                  </div>\r\n";
 					
 					keyIndex--;
-					
-
 				}
 			}else {
 				stringToSendToBrowser += "                  <p>No Reports on Record</p>";
@@ -216,6 +215,7 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "                    <input value=\"Submit\" type=\"submit\" onclick=\"return clicked();\" class=\"mt-4\">\r\n";
 			stringToSendToBrowser += "       			  <script>\r\n";
 			stringToSendToBrowser += "       			    function clicked(){\r\n";
+			stringToSendToBrowser += "     					  ";
 			stringToSendToBrowser += "       			      return confirm('Make sure you are signed in! If you want to keep up to date with the problem, sign in before submitting.');\r\n";
 			stringToSendToBrowser += "       			    }\r\n";
 			stringToSendToBrowser += "       			  </script>\r\n";
