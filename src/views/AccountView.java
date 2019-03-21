@@ -28,7 +28,8 @@ public class AccountView extends DynamicWebPage{
 		String password = currentUser.password;
 		String address = currentUser.address;
 		String filepath = currentUser.filePathToProfilePicture;
-		
+		String username = currentUser.username;
+		System.out.println("-------------------------------" + filepath);
 		
 		if(toProcess.path.equalsIgnoreCase("accountview") || toProcess.path.equalsIgnoreCase("account.html")) {
 			
@@ -88,18 +89,19 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "              <div class=\"col-md-6\">\n";
 			stringToSendToBrowser += "                <div class=\"row mt-3 pl-5 pt-1\">\n";
 			stringToSendToBrowser += "                  <form class=\"text-left\" action=\"/Submit2\" method=\"POST\" enctype=\"multipart/form-data\">\n";
-			stringToSendToBrowser += "                    <div class=\"form-group\"> <label for=\"form16\">Your Name</label> <input type=\"text\" class=\"form-control\" id=\"form16\" value=\"Name...\"></div>\n";
+			stringToSendToBrowser += "                    <div class=\"form-group\"> <label for=\"form16\">Your Name</label> <input type=\"text\" class=\"form-control\" id=\"form16\" placeholder=\"Name...\"></div>\n";
 			stringToSendToBrowser += "                    <div class=\"form-group\"> <label for=\"form18\">Your Email</label> <input type=\"email\" class=\"form-control\" id=\"form17\" placeholder=\"Email...\"> </div>\n";
-			stringToSendToBrowser += "                    <textarea name=\"Address\" rows=\"5\" cols=\"30\" class=\"form-control text-left w-70 text-white\" maxlength=\"255\" id=\"form18\"> </textarea>\r\n";
+			stringToSendToBrowser += "                    <label for=\"files\" class=\"w-100 text-left pt-2\"><b>Address</b></label>\r\n";
+			stringToSendToBrowser += "                    <textarea name=\"Address\" rows=\"5\" cols=\"30\" class=\"form-control text-left w-70 text-white\" maxlength=\"255\" id=\"form18\" placeholder=\"Address...\"> </textarea>\r\n";
 			stringToSendToBrowser += "                    <div class=\"form-row\">\n";
 			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"form19\">Password</label> <input type=\"password\" class=\"form-control\" id=\"form19\" placeholder=\"Password\"> </div>\n";
-			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"form20\">Confirm Password</label> <input type=\"password\" class=\"form-control\" id=\"form19\" placeholder=\"Password\"> </div>\n";
+			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"form20\">Confirm Password</label> <input type=\"password\" class=\"form-control\" id=\"form20\" placeholder=\"Password\"> </div>\n";
 			stringToSendToBrowser += "                    </div><a class=\"btn btn-primary mt-3\" href=\"#\"><i class=\"fa fa-download fa-fw\"></i>&nbsp;Save Changes</a>\n";
 			stringToSendToBrowser += "                  </form>\n";
 			stringToSendToBrowser += "                </div>\n";
 			stringToSendToBrowser += "              </div>\n";
 			stringToSendToBrowser += "              <form class=\"col-md-6 text-left\"><img class=\"d-block rounded-circle img-fluid btn-link action=\"/Submit\" method=\"POST\" enctype=\"multipart/form-data\" w-75 mx-auto\" src=\"" + filepath + "\">\n";
-			stringToSendToBrowser += "                    <label for=\"files\" class=\"w-100 text-left pt-2\"><b>Profile Picture</b></label>\r\n";
+			stringToSendToBrowser += "                    <label for=\"pictures\">Profile Picture</label>\r\n";
 			stringToSendToBrowser += "                    <input type=\"file\" id=\"fileupload\" name=\"fileupload\" value=\"fileupload\" class=\"text-left form-control-file\">\r\n";
 			stringToSendToBrowser += "                    <input value=\"Submit\" type=\"submit\" onclick=\"return clicked();\" class=\"mt-4\">\r\n";
 			stringToSendToBrowser += "       			  <script>\r\n";
@@ -127,19 +129,20 @@ public class AccountView extends DynamicWebPage{
 			toProcess.r = new WebResponse( WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToBrowser );
 			return true;
 			
-		}else if(toProcess.path.equalsIgnoreCase("Submit")) {
+		}else if(toProcess.path.equalsIgnoreCase("Submit2")) {
 			try {
-				File uploaded = new File(currentUser.filePathToProfilePicture);
-				int ind = currentUser.filePathToProfilePicture.lastIndexOf('.');
-				String extension = currentUser.filePathToProfilePicture.substring(ind);
-				uploaded.renameTo(new File("httpdocs/"+currentUser.username+extension));
-				currentUser.filePathToProfilePicture = currentUser.username+extension;
-				filepath = currentUser.filePathToProfilePicture;
+				System.out.print("Hello");
+				filepath = toProcess.params.get("fileupload");
+				System.out.println(filepath);
+				File uploaded = new File(filepath);
+				int ind = filepath.lastIndexOf('.');
+				String extension = filepath.substring(ind);
+				uploaded.renameTo(new File("httpdocs/"+username+extension));
+				filepath = username+extension;
 				System.out.println(filepath);
 			}catch( StringIndexOutOfBoundsException e ) {
 				System.out.println("You did an oopsie");
 				filepath = "https://static.pingendo.com/img-placeholder-3.svg";
-				currentUser.filePathToProfilePicture = filepath;
 			}
 			
 		}
