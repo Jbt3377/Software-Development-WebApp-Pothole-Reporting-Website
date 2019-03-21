@@ -206,7 +206,7 @@ public class SupportUsView extends DynamicWebPage {
 					"    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\n"+
 					"        <span class=\"navbar-toggler-icon\"></span>\n" +
 					"      </button>\n"+
-					"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"#\">\n" +
+					"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"index.html\">\n" +
 					"          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\n"+
 					"          <b>&nbsp;FILL MY HOLE</b>\n"+
 					"        </a>\n"+
@@ -224,12 +224,13 @@ public class SupportUsView extends DynamicWebPage {
 					"      </div>\n"+
 					"    </div>\n"+
 					"  </nav>\n"+
-					"  <div class=\"py-5 text-center align-items-center d-flex h-100\" style=\"background-image: linear-gradient(to left bottom, rgba(189, 195, 199, .75), rgba(44, 62, 80, .75)); background-size: 100%;\">\r\n" + 
+					"  <div class=\"py-5 text-center text-white h-100 align-items-center d-flex\" style=\"background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: cover, cover;  background-repeat: repeat, repeat;\" >\r\n" + 
 					"    <div class=\"container py-5\">\r\n" + 
 					"      <div class=\"row\">\r\n" + 
 					"        <div class=\"col-md-8 mx-auto bg-primary\"> <i class=\"d-block fa fa-stop-circle mb-3 text-muted fa-5x\"></i>\r\n" + 
 					"          <h1 class=\"display-3 mb-4\">Thank You!</h1>\r\n" + 
-					"          <p class=\"lead mb-5\" style=\"\">You have successfully donated! Click the button to return to the Support Page!<br></p><a class=\"btn btn-dark\" href=\"supportus.html\">Support Us Page</a>\r\n" + 
+					"          <p class=\"lead mb-5 text-white\" style=\"\">You have successfully donated! Click the button to return to the Support Page!<br></p><a class=\"btn btn-dark\" href=\"supportus.html\">Support Us Page</a>\r\n" + 
+					"<h4 style=\"\" >&nbsp;</h4>\r\n"+
 					"        </div>\r\n" + 
 					"      </div>\r\n" + 
 					"    </div>\r\n" + 

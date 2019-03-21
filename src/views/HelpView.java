@@ -1,5 +1,11 @@
 package views;
 
+import java.util.List;
+
+import org.h2.mvstore.MVMap;
+
+
+import model.FAQ;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import web.WebRequest;
@@ -32,7 +38,7 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +="    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\n";
         	stringToSendToWebBrowser +="        <span class=\"navbar-toggler-icon\"></span>\n" ;
         	stringToSendToWebBrowser +="      </button>\n" ;
-        	stringToSendToWebBrowser +="      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"#\">\n" ;
+        	stringToSendToWebBrowser +="      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"index.html\">\n" ;
         	stringToSendToWebBrowser +="          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\n" ;
         	stringToSendToWebBrowser +="          <b contenteditable=\"true\">&nbsp;FILL MY HOLE</b>\n" ;
         	stringToSendToWebBrowser +="        </a>\n" ;
@@ -62,12 +68,45 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +="            </div>\n";
         	stringToSendToWebBrowser +="          </form>\n";
         	stringToSendToWebBrowser +="          <p class=\"mb-0\">&nbsp;</p>\n";
-        	stringToSendToWebBrowser +="          <h4 style=\"\">&nbsp;Other Issues?</h4><a class=\"btn btn-dark\" href=\"#\" contenteditable=\"true\">Contact Us</a>\n" ;
+        	stringToSendToWebBrowser +="          <h4 style=\"\">&nbsp;Want to ask us a question directly?</h4><a class=\"btn btn-dark\" href=\"#\" contenteditable=\"true\">Contact Us</a>\n" ;
         	stringToSendToWebBrowser +="          <h4 style=\"\">&nbsp;</h4>\n"; 
         	stringToSendToWebBrowser +="        </div>\n";
         	stringToSendToWebBrowser +="      </div>\n";
         	stringToSendToWebBrowser +="    </div>\n";
         	stringToSendToWebBrowser +="  </div>\n";
+        	
+        	//Start of form
+        	stringToSendToWebBrowser +="<div class=\"py-5 text-center text-white\" style=\"background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: cover, cover;  background-repeat: repeat, repeat;\" >\n";
+        	stringToSendToWebBrowser +="<div class=\"container\">";
+        	stringToSendToWebBrowser +="<div class=\"row\">";
+        	stringToSendToWebBrowser +="<div class=\"mx-auto col-md-12\">";
+        	stringToSendToWebBrowser +="<h1 class=\"mb-5 text-primary\">Add A Question</h1>\n";
+        	stringToSendToWebBrowser +="</div>\n";
+        	stringToSendToWebBrowser +="</div>";
+        	stringToSendToWebBrowser +="<div class=\"row\">";
+        	stringToSendToWebBrowser +="<div class=\"col-md-9  ml-5 pl-5  offset-md-5\">";
+        	stringToSendToWebBrowser +="<form action=\"/FAQ\" method=\"GET\" class=\"\">";
+        	stringToSendToWebBrowser +="<div class=\"form-group row\"> <label for=\"title\" class=\"col-2 col-form-label text-primary\"><b class=\"ml-5\">Title</b></label>";
+        	stringToSendToWebBrowser +=" <div class=\"col-10 \">";
+        	stringToSendToWebBrowser +=" <input type=\"text\" class=\"form-control bg-light text-dark\" id=\"title\" name=\"title\" placeholder=\"Question title e.g. Login Issue\"> </div>";
+        	stringToSendToWebBrowser +="</div>";
+        	stringToSendToWebBrowser +="<div class=\"form-group row\"> <label for=\"description\" class=\"col-2 col-form-label text-primary\"><b>Description</b></label>";
+        	stringToSendToWebBrowser +=" <div class=\"col-10\">";
+        	stringToSendToWebBrowser +=" <input type=\"text\" class=\"form-control bg-light text-dark\" id=\"description\" name=\"description\" placeholder=\"Question description e.g. Can't Login\"> </div>";
+        	stringToSendToWebBrowser +="</div>";
+        	stringToSendToWebBrowser +="<div class=\"form-group row\"> <label for=\"category\" class=\"col-2 col-form-label text-primary\"><b>Category</b></label>";
+        	stringToSendToWebBrowser +=" <div class=\"col-10\">";
+        	stringToSendToWebBrowser +=" <input type=\"text\" class=\"form-control bg-light text-dark\" id=\"category\" name=\"category\" placeholder=\"Question category e.g. Account\"> </div>";
+        	stringToSendToWebBrowser +="</div>";
+        	stringToSendToWebBrowser +=" <button type=\"submit\" class=\"btn btn-primary\">Submit</button>";
+        	stringToSendToWebBrowser +="</form>";
+        	stringToSendToWebBrowser +="</div>";
+        	stringToSendToWebBrowser +=" </div>";
+        	stringToSendToWebBrowser +=" </div>";
+        	stringToSendToWebBrowser +=" </div>";
+        	//End of Form
+
+//Categories        	
         	stringToSendToWebBrowser +="  <div class=\"py-5 text-center bg-dark  \">\n";
         	stringToSendToWebBrowser +="    <div class=\"container\">\n";
         	stringToSendToWebBrowser +="      <div class=\"row\">\n";
@@ -230,7 +269,91 @@ public class HelpView extends DynamicWebPage
         	toProcess.r = new WebResponse( WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToWebBrowser );
 
         	return true;
-        }
+        }else if(toProcess.path.equalsIgnoreCase("FAQ")) { 
+			FAQ newFAQ = new FAQ();
+			
+			newFAQ.questionID = "FAQ_" +System.currentTimeMillis();
+			newFAQ.title = toProcess.params.get("title");
+			newFAQ.description = toProcess.params.get("description");
+			newFAQ.category = toProcess.params.get("category");
+			
+			MVMap<String, FAQ> newQuestion = db.s.openMap("FAQ");
+			//newQuestion.put(newQuestion.questionID, newQuestion);
+			List<String> newQuestionKeys = newQuestion.keyList();
+			
+			String stringToSendToWebBrowser = "<!DOCTYPE html>\r\n" + 
+					"<html>\r\n" + 
+					"\r\n" + 
+					"<head>\r\n" + 
+					"  <meta charset=\"utf-8\">\r\n" + 
+					"  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n" + 
+					"  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" type=\"text/css\">\r\n" + 
+					"  <link rel=\"stylesheet\" href=\"https://static.pingendo.com/bootstrap/bootstrap-4.2.1.css\">\r\n" + 
+					"  <link rel=\"stylesheet\" href=\"now-ui-kit.css\" type=\"text/css\">\r\n" + 
+					"</head>\r\n" + 
+					"\r\n" + 
+					"<body>\r\n" + 
+					"<nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\n" +
+					"    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\n"+
+					"        <span class=\"navbar-toggler-icon\"></span>\n" +
+					"      </button>\n"+
+					"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"index.html\">\n" +
+					"          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\n"+
+					"          <b>&nbsp;FILL MY HOLE</b>\n"+
+					"        </a>\n"+
+					"        <ul class=\"navbar-nav mx-auto\">\n"+
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"indexview\">Report a Problem</a> </li>\n"+
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\n"+
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"help.html\">FAQ</a> </li>\n"+
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About Us</a> </li>\n"+
+					"        </ul>\n"+
+					"        <ul class=\"navbar-nav\">\n"+
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n"+
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n"+
+					"          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signup.html\">Register</a> </li>\n"+
+					"        </ul>\n"+
+					"      </div>\n"+
+					"    </div>\n"+
+					"  </nav>\n"+
+					"  <div class=\"py-5 text-center text-white h-100 align-items-center d-flex\" style=\"background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: cover, cover;  background-repeat: repeat, repeat;\" >\r\n" + 
+					"    <div class=\"container py-5\">\r\n" + 
+					"      <div class=\"row\">\r\n" + 
+					"        <div class=\"col-md-8 mx-auto bg-primary\"> <i class=\"d-block fa fa-stop-circle mb-3 text-muted fa-5x\"></i>\r\n" + 
+					"          <h1 class=\"display-3 mb-4\">Thank You!</h1>\r\n" + 
+					"          <p class=\"lead mb-5 text-white\" style=\"\">You have successfully submitted! Click the button to return to the Help Page!<br></p><a class=\"btn btn-dark\" href=\"help.html\">Help Page</a>\r\n" + 
+					"<h4 style=\"\" >&nbsp;</h4>\r\n"+
+					"        </div>\r\n" + 
+					"      </div>\r\n" + 
+					"    </div>\r\n" + 
+					"  </div>\r\n" + 
+					"  <div class=\"py-5\" style=\"background-image: linear-gradient(to left bottom, rgba(189, 195, 199, .75), rgba(44, 62, 80, .75));	background-size: 100%;\" >\r\n" + 
+					"    <div class=\"container\">\r\n" + 
+					"      <div class=\"row\">\r\n" + 
+					"        <div class=\"my-3 col-lg-8\">\r\n" + 
+					"          <h1 class=\"text-center text-lg-left text-white\">Help others by sharing</h1>\r\n" + 
+					"        </div>\r\n" + 
+					"        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/QUBelfast/\">\r\n" + 
+					"            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n" + 
+					"          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n" + 
+					"            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n" + 
+					"          </a> <a href=\"https://www.instagram.com/qubelfast/?hl=en\">\r\\n" +
+					"            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n" + 
+					"          </a> </div>\r\n" + 
+					"      </div>\r\n" + 
+					"    </div>\r\n" + 
+					"  </div>\r\n" + 
+					"  <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\r\n" + 
+					"  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\"></script>\r\n" + 
+					"  <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\"></script>\r\n" + 
+					"</body>\r\n" + 
+					"\r\n" + 
+					"</html>";
+			toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToWebBrowser); 
+			
+
+		}
+        
+        
         return false;
 	}
 

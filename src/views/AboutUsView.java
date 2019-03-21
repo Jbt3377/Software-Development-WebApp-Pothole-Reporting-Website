@@ -32,7 +32,7 @@ public class AboutUsView extends DynamicWebPage {
 				"    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\">\r\n" + 
 				"        <span class=\"navbar-toggler-icon\"></span>\r\n" + 
 				"      </button>\r\n" + 
-				"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"IndexView\">\r\n" + 
+				"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"index.html\">\r\n" + 
 				"          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\r\n" + 
 				"          <b contenteditable=\"true\">&nbsp;FILL MY HOLE</b>\r\n" + 
 				"        </a>\r\n" + 
