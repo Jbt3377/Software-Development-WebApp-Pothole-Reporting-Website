@@ -3,6 +3,8 @@ package views;
 import org.h2.mvstore.MVMap;
 
 import java.io.File;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import model.Categories;
@@ -17,6 +19,7 @@ import web.WebResponse;
 public class IndexView extends DynamicWebPage{
 	
 	public int hitcounter = 0;
+	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
 	public IndexView(DatabaseInterface db, FileStoreInterface fs) {
 		super(db, fs);
@@ -30,11 +33,12 @@ public class IndexView extends DynamicWebPage{
 			String username = toProcess.cookies.get("username");
 			String password = toProcess.cookies.get("password");
 			
+			System.out.println(username);
+			System.out.println(password);
+			
 			MVMap<String, Profile> profiles = db.s.openMap("Profiles");
 			
 			String stringToSendToBrowser = "";
-			
-
 			stringToSendToBrowser += "<!DOCTYPE html>\r\n";
 			stringToSendToBrowser += "<html>\r\n";
 			stringToSendToBrowser += "\r\n";
@@ -72,7 +76,7 @@ public class IndexView extends DynamicWebPage{
 			{
 				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n";
 				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
-				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signupview\">Register</a> </li>\n";
+				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signup.html\">Register</a> </li>\n";
 			}
 			
 			stringToSendToBrowser += "        </ul>\r\n";
@@ -114,43 +118,6 @@ public class IndexView extends DynamicWebPage{
 					"  });"+
 					"</script>\r\n";
 			
-//					"\r\n" + 
-//					"	var mymap = L.map('mapid', {'layers': [tileLayer]}).setView([54.5973, -5.9301], 13);\r\n" + 
-//					"\r\n" + 
-//					"	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {\r\n" + 
-//					"		maxZoom: 18,\r\n" + 
-//					"		attribution: 'Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, ' +\r\n" + 
-//					"			'<a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, ' +\r\n" + 
-//					"			'Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>',\r\n" + 
-//					"		id: 'mapbox.streets'\r\n" + 
-//					"	}).addTo(mymap);\r\n" + 
-//					"\r\n" + 
-//					"	var popup = L.popup();\r\n" +
-//					"   var marker;" +
-//					"\r\n" + 
-//					"   mymap.on('click', function(e) {\r\n" +
-//					"     if (marker) {\r\n" +
-//					"       map.removeLayer(marker);\r\n" +
-//					"     }\r\n" +
-//					"     marker = new L.Marker(e.latlng).addTo(mymap);\r\n" +
-//					"   });\r\n" +
-
-
-//					"	function onMapClick(e) {\r\n" + 
-//					"		popup\r\n" + 
-//					"			.setLatLng(e.latlng)\r\n" + 
-//					"			.setContent(\"You clicked the map at \" + e.latlng.toString())\r\n" + 
-//					"			.openOn(mymap);\r\n" + 
-//					" 		if (marker){\r\n" +
-//					"		  map.removeLayer(marker);\r\n" +
-//					"       }\r\n" +
-//					"		marker = new L.marker(e.latlng).addTo(mymap);\r\n" + 
-////					"		.bindPopup(\"<b>Hello world!</b><br />I am a popup.\").openPopup();\r\n" +
-//					"	}\r\n" + 
-//					"\r\n" + 
-//					"	mymap.on('click', onMapClick);\r\n" + 
-//					"\r\n" + 
-//					"</script>";
 			
 			stringToSendToBrowser += "      </div>\r\n";
 			stringToSendToBrowser += "    </div>\r\n";
@@ -169,7 +136,7 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "            </div>\r\n";
 			stringToSendToBrowser += "            <div class=\"card text-white bg-dark my-3\">\r\n";
 			stringToSendToBrowser += "              <div class=\"card-header text-center\">\r\n";
-			stringToSendToBrowser += "                <b class=\"w-100 h-100\"><b><span style=\"font-weight: normal;\">Recently Reported Problems</span></b></b><b class=\"w-100 h-100\"></b></div>\r\n";
+			stringToSendToBrowser += "                <b class=\"w-100 h-100\"><b><span style=\"font-weight: bold;\">Recently Reported Problems</span></b></b><b class=\"w-100 h-100\"></b></div>\r\n";
 			stringToSendToBrowser += "              <div class=\"card-body\">\r\n";
 			stringToSendToBrowser += "                <div class=\"card bg-dark\">\r\n";
 			
@@ -191,8 +158,9 @@ public class IndexView extends DynamicWebPage{
 					stringToSendToBrowser += "                  <div class=\"card-body bg-primary my-2\">\r\n";
 					stringToSendToBrowser += "                    <div class=\"row\">\r\n";
 					stringToSendToBrowser += "                      <div class=\"col-md-6\">\r\n";
-					stringToSendToBrowser += "                        <h5 class=\"card-title my-2 text-dark\" align=\"left\">" + currentReport.description +"</h5>\r\n";
+					stringToSendToBrowser += "                        <h5 class=\"card-title my-2 text-dark\" style=\"font-weight: bold\" align=\"left\">" + currentReport.description +"</h5>\r\n";
 					stringToSendToBrowser += "                        <p align=\"left\">"+ currentReport.category.description() +"</p>\r\n";
+					stringToSendToBrowser += "                        <p align=\"left\">"+ currentReport.timeStamp +"</p>\r\n";
 					stringToSendToBrowser += "                      </div>\r\n";
 					stringToSendToBrowser += "                      <div class=\"col-md-6\"><img class=\"img-fluid d-block\" src=\"/"+ currentReport.filePathToImage +"\" height=\"120\" width=\"120\" align=\"right\" alt=\"Picture of Problem\"></div>\r\n";			
 					stringToSendToBrowser += "                    </div>\r\n";
@@ -245,7 +213,12 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "                    <!--Media (File Input)-->\r\n";
 			stringToSendToBrowser += "                    <label for=\"files\" class=\"w-100 text-left pt-2\"><b>Photos/Videos</b></label>\r\n";
 			stringToSendToBrowser += "                    <input type=\"file\" id=\"fileupload\" name=\"fileupload\" value=\"fileupload\" class=\"text-left form-control-file\">\r\n";
-			stringToSendToBrowser += "                    <input value=\"Submit\" type=\"submit\" class=\"mt-4\">\r\n";
+			stringToSendToBrowser += "                    <input value=\"Submit\" type=\"submit\" onclick=\"return clicked();\" class=\"mt-4\">\r\n";
+			stringToSendToBrowser += "       			  <script>\r\n";
+			stringToSendToBrowser += "       			    function clicked(){\r\n";
+			stringToSendToBrowser += "       			      return confirm('Make sure you are signed in! If you want to keep up to date with the problem, sign in before submitting.');\r\n";
+			stringToSendToBrowser += "       			    }\r\n";
+			stringToSendToBrowser += "       			  </script>\r\n";
 			stringToSendToBrowser += "                  </form>\r\n";
 			stringToSendToBrowser += "                </div>\r\n";
 			stringToSendToBrowser += "              </div>\r\n";
@@ -314,7 +287,7 @@ public class IndexView extends DynamicWebPage{
 			
 			System.out.println("Request to submit a Report: " + toProcess.path);
 			
-			// New Report
+			// New Report Created
 			Report problemReport = new Report();
 			
 			// Get details of new report provided
@@ -325,24 +298,24 @@ public class IndexView extends DynamicWebPage{
 			problemReport.details = toProcess.params.get("details");
 			problemReport.filePathToImage = toProcess.params.get("fileupload");
 
-			
 			// File upload
 			try {
 				File uploaded = new File(problemReport.filePathToImage);
 				int ind = problemReport.filePathToImage.lastIndexOf('.');
 				String extension = problemReport.filePathToImage.substring(ind);
-//				String f1 = "httpdocs/"+problemReport.reportID+extension;
 				uploaded.renameTo(new File("httpdocs/"+problemReport.reportID+extension));
 				problemReport.filePathToImage = problemReport.reportID+extension;
 			}catch( StringIndexOutOfBoundsException e ) {
 				problemReport.filePathToImage = decideDefaultImage(problemReport.category);
+				System.out.println("uh oh no image was provided");
 			}
 			
+			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+			problemReport.timeStamp = sdf.format(timestamp);
 			
 			// Add report to database
 			MVMap<String, Report> allReports = db.s.openMap("NewReports");
 			allReports.put(problemReport.reportID, problemReport);
-			
 			db.commit();
 			
 			// Console feedback - this is the report being saved to database
@@ -354,13 +327,15 @@ public class IndexView extends DynamicWebPage{
 			System.out.println("Category: " + problemReport.category);
 			System.out.println("Details: " + problemReport.details);
 			System.out.println("File path to image: " + problemReport.filePathToImage);
+			System.out.println("--------------------------------------------------------------");
+			System.out.println("Timestamp: " + problemReport.timeStamp);
+			System.out.println("User Submitted: " + problemReport.usernameOfUserWhoReported);
+			System.out.println("Status: " + problemReport.isSolved);
 			System.out.println();
 			
-			// Redirect to new page once report complete
-			String stringToSendToBrowser = "<html><body><p>Report Recorded</p><a href=\"indexview\">Home</a></body></html>";
-			toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToBrowser);
+			// Redirect to new page once report complete			
+			toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, "<html><body><script>window.location.href = \"/SubmitSuccessful.html\"</script></body></html>");
 	
-			
 			return true;
 		}
 		

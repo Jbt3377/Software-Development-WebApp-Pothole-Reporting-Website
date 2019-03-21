@@ -18,9 +18,8 @@ public class SubmitSuccessful extends DynamicWebPage
         {
         	
         	System.out.println("\n\nRequest for Web Page: " + toProcess.path);
-			String username = toProcess.cookies.get("username"); 
-			String password = toProcess.cookies.get("password");
-        	
+			String username = toProcess.cookies.get("username");
+			
         	String stringToSendToBrowser = "";
 			stringToSendToBrowser += "<!DOCTYPE html>\r\n";
 			stringToSendToBrowser += "<html>\r\n";
@@ -65,27 +64,20 @@ public class SubmitSuccessful extends DynamicWebPage
 			stringToSendToBrowser += "    </div>\r\n";
 			stringToSendToBrowser += "  </nav>\r\n";
 			stringToSendToBrowser += "  <div class=\"text-center text-white\" style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(&quot;https://static.pingendo.com/cover-bubble-dark.svg&quot;); background-position: center center, center center; background-size: cover, cover; background-repeat: repeat, repeat;\" >\r\n";
-			stringToSendToBrowser += "    <div class=\"container\">\r\n";
+			stringToSendToBrowser += "    <div class=\"container py-4\" style=\"width: 1200px; height: 700px;>\r\n";
 			stringToSendToBrowser += "      <div class=\"row\">\r\n";
-			stringToSendToBrowser += "        <div class=\"col-md-8 mx-auto\">\r\n";
-			stringToSendToBrowser += "          <h1 class=\"mb-3 mt-3 p-2\">What's Bothering You?</h1>\r\n";
-			stringToSendToBrowser += "          <p class=\"lead mb-0 p-2\">Fill My Hole is a website dedicated to informing local councils of problems they have the responsibility to fix.<br></p>\r\n";
-			stringToSendToBrowser += "          <p class=\"lead text-center text-capitalize p-0 m-2\">Got a Problem?&nbsp; Report it!<br></p><a class=\"btn btn-primary m-2 my-3 mb-4\" href=\"#reportForm\"><b class=\"text-center\">Report an Issue</b></a>\r\n";
+			stringToSendToBrowser += "        <div class=\"card text-white bg-dark my-3 align-center\">\r\n";
+			stringToSendToBrowser += "          <div class=\"card-header text-center\"><b class=\"w-100 h-100\">Your report has been recorded!</b></div>\r\n";
+			stringToSendToBrowser += "            <div class=\"card-body\">\r\n";
+			stringToSendToBrowser += "              <p>Belfast City Council will be informed of the report and have the details passed on.</p><br>";
+			stringToSendToBrowser += "              <p>If you submitted the report while signed in, you can track its status on your account page!</p>";
+			stringToSendToBrowser += "              <a class=\"btn btn-primary my-3\" href=\"login.html\"><b class=\"text-center\">View my Account</b></a>\r\n";
+			stringToSendToBrowser += "            </div>\r\n";
+			stringToSendToBrowser += "          </div>\r\n";
 			stringToSendToBrowser += "        </div>\r\n";
 			stringToSendToBrowser += "      </div>\r\n";
-			stringToSendToBrowser += "    <div class=\"container py-4\">\r\n";
-			stringToSendToBrowser += "        <div class=\"row\">\r\n";
-			stringToSendToBrowser += "          <div class=\"col-md-6\" style=\"\">\r\n";
-			stringToSendToBrowser += "            <div class=\"card text-white bg-dark my-3\">\r\n";
-			stringToSendToBrowser += "              <div class=\"card-header text-center\"><b class=\"w-100 h-100\">How to Report a Problem</b></div>\r\n";
-			stringToSendToBrowser += "              <div class=\"card-body\">\r\n";
-			stringToSendToBrowser += "                <ol class=\"\">\r\n";
-			stringToSendToBrowser += "                  <li class=\"text-left py-2\"><b>Locate - </b>Use the map above to find the area of the problem</li>\r\n";
-			stringToSendToBrowser += "                  <li class=\"text-left py-2\"><b>Mark - </b>Click on the precise location of the problem</li>\r\n";
-			stringToSendToBrowser += "                  <li class=\"text-left py-2\"><b>Tell us! - </b>Provide us with information on the problem and we'll pass it onto the local council. You can include images as well!</li>\r\n";
-			stringToSendToBrowser += "                </ol>\r\n";
-			stringToSendToBrowser += "              </div>\r\n";
-			stringToSendToBrowser += "            </div>\r\n";
+			stringToSendToBrowser += "    </div>\r\n";
+			stringToSendToBrowser += "  </div>\r\n";
 			stringToSendToBrowser += "</body>\r\n";
 			stringToSendToBrowser += "</html>\r\n";
         	
