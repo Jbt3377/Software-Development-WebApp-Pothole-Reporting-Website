@@ -55,7 +55,7 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "   <script type=\"text/javascript\" src=\"/js/bootstrap.min.js\"></script>\" +\r\n";
 			stringToSendToBrowser += "</head>\r\n";
 			stringToSendToBrowser += "\r\n";
-			stringToSendToBrowser += "<body onload=\"ProfileLoadFunction()\" class=\"text-left\">\r\n";
+			stringToSendToBrowser += "<body onload=\"ProfileLoadFunction('" + name + "', '" + email + "', '" + password + "', '" + address + "', '" + filepath + "')\" class=\"text-left\">\r\n";
 			stringToSendToBrowser += "  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\r\n";
 			stringToSendToBrowser += "    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\r\n";
 			stringToSendToBrowser += "        <span class=\"navbar-toggler-icon\"></span>\r\n";
@@ -94,11 +94,11 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "                <div class=\"row mt-3 pl-5 pt-1\">\n";
 			stringToSendToBrowser += "                  <form class=\"text-left\">\n";
 			stringToSendToBrowser += "                    <div class=\"form-group\"> <label for=\"form16\">Your Name</label> <input type=\"text\" class=\"form-control\" id=\"form16\" value=\"Name...\"></div>\n";
-			stringToSendToBrowser += "                    <div class=\"form-group\"> <label for=\"form18\">Your Email</label> <input type=\"email\" class=\"form-control\" id=\"form18\" placeholder=\"Email...\"> </div>\n";
-			stringToSendToBrowser += "                    <textarea name=\"Address\" rows=\"5\" cols=\"30\" class=\"form-control text-left w-70 text-white\" maxlength=\"255\"> </textarea>\r\n";
+			stringToSendToBrowser += "                    <div class=\"form-group\"> <label for=\"form18\">Your Email</label> <input type=\"email\" class=\"form-control\" id=\"form17\" placeholder=\"Email...\"> </div>\n";
+			stringToSendToBrowser += "                    <textarea name=\"Address\" rows=\"5\" cols=\"30\" class=\"form-control text-left w-70 text-white\" maxlength=\"255\" id=\"form18\"> </textarea>\r\n";
 			stringToSendToBrowser += "                    <div class=\"form-row\">\n";
 			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"form19\">Password</label> <input type=\"password\" class=\"form-control\" id=\"form19\" placeholder=\"Password\"> </div>\n";
-			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"form20\">Confirm Password</label> <input type=\"password\" class=\"form-control\" id=\"form20\" placeholder=\"Password\"> </div>\n";
+			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"form20\">Confirm Password</label> <input type=\"password\" class=\"form-control\" id=\"form19\" placeholder=\"Password\"> </div>\n";
 			stringToSendToBrowser += "                    </div><a class=\"btn btn-primary mt-3\" href=\"#\"><i class=\"fa fa-download fa-fw\"></i>&nbsp;Save Changes</a>\n";
 			stringToSendToBrowser += "                  </form>\n";
 			stringToSendToBrowser += "                </div>\n";
@@ -116,8 +116,7 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "  <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n";
 			stringToSendToBrowser += "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\" style=\"\"></script>\n";
 			stringToSendToBrowser += "  <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\"></script>\n";
-			stringToSendToBrowser += "<script>\n" + "function ProileLoadFunction(){" + 
-									  "document.getElementById(\"form16\").value =" + name +";}\n</script>";
+			stringToSendToBrowser += "  <script src=\"/js/ProfileLoadFunction.js\"></script>";
 			stringToSendToBrowser += "</body>\n";
 			stringToSendToBrowser += "\n";
 			stringToSendToBrowser += "</html>";

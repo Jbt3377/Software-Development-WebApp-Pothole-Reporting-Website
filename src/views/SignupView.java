@@ -102,7 +102,7 @@ public class SignupView extends DynamicWebPage{
 					"                          <i class=\"now-ui-icons text_caps-small lg\"></i>  \r\n" + 
 					"                        </span>  \r\n" + 
 					"                      </div>  \r\n" + 
-					"                      <input type=\"email\" class=\"form-control\" id=\"inlineFormInputGroupEmail\" placeholder=\"Email...\" name=\"username\">  \r\n" + 
+					"                      <input type=\"email\" class=\"form-control\" id=\"inlineFormInputGroupEmail\" placeholder=\"Email...\" name=\"email\">  \r\n" + 
 					"                    </div>  \r\n" + 
 					"                  </div>  \r\n" + 
 					"                  <div class=\"form-group mb-3\">  \r\n" + 
@@ -139,7 +139,7 @@ public class SignupView extends DynamicWebPage{
 			System.out.println("Checking details provided");
 			Profile user = new Profile();
 			user.name = toProcess.params.get("name");
-			user.email = toProcess.params.get("username");
+			user.email = toProcess.params.get("email");
 			user.password = toProcess.params.get("password");
 			user.username = "user_"+System.currentTimeMillis();
 			user.filePathToProfilePicture = "https://static.pingendo.com/img-placeholder-3.svg";

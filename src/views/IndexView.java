@@ -30,11 +30,13 @@ public class IndexView extends DynamicWebPage{
 		if(toProcess.path.equalsIgnoreCase("indexview") || toProcess.path.equalsIgnoreCase("index.html")) {
 			
 			System.out.println("\n\nRequest for Web Page: " + toProcess.path);
-			String username = toProcess.cookies.get("username");
+			String email = toProcess.cookies.get("email");
 			String password = toProcess.cookies.get("password");
+			String name = toProcess.cookies.get("name");
 			
-			System.out.println(username);
+			System.out.println(email);
 			System.out.println(password);
+			System.out.println(name);
 			
 			MVMap<String, Profile> profiles = db.s.openMap("Profiles");
 			
@@ -68,9 +70,9 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "        <ul class=\"navbar-nav\">\r\n";
 			
 			// Account actions alter depending if user is signed in
-			if(profiles.get(username)!=null)
+			if(profiles.get(email)!=null)
 			{
-				stringToSendToBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome "+ username +"</a> </li>\n";
+				stringToSendToBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome "+ email +"</a> </li>\n";
 				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
 				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"accountview\">Account</a> </li>\n";
 			}
@@ -238,10 +240,10 @@ public class IndexView extends DynamicWebPage{
 			
 			// Pass out Web Response
 			toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToBrowser);
-			if(username!=null)
+			if(email!=null)
 			{	
 					Validator.validate(db);
-					Profile user = profiles.get(username);
+					Profile user = profiles.get(email);
 					if((user==null)||(!user.password.contentEquals(password)))
 					{
 					String stringToSendToWebBrowser = "";
@@ -265,7 +267,7 @@ public class IndexView extends DynamicWebPage{
 					stringToSendToWebBrowser += "  <script>\n";
 					stringToSendToWebBrowser += "      function clearLoginCookie()\n";
 					stringToSendToWebBrowser += "      {\n";
-					stringToSendToWebBrowser += "          document.cookie='username=;expires=' + new Date(0).toGMTString();\n";
+					stringToSendToWebBrowser += "          document.cookie='email=;expires=' + new Date(0).toGMTString();\n";
 					stringToSendToWebBrowser += "          document.cookie='password=;expires=' + new Date(0).toGMTString();\n";
 					stringToSendToWebBrowser += "      }\n";
 					stringToSendToWebBrowser += "  </script>\n";

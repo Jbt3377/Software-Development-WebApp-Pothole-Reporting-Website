@@ -21,12 +21,16 @@ public class LoginView extends DynamicWebPage
 	{
 		if(toProcess.path.equalsIgnoreCase("loginview.html"))
 		{
-			String username = toProcess.params.get("username");
+			String email = toProcess.params.get("email");
 			String password = toProcess.params.get("password");
+			String username = toProcess.params.get("username");
+			String name = toProcess.params.get("name");
+			String address = toProcess.params.get("address");
+			String filepath = toProcess.params.get("filePathToProfilePicture");
 		
 			MVMap<String, Profile> profiles = db.s.openMap("Profiles");
 			
-			if(!profiles.containsKey(username))
+			if(!profiles.containsKey(email))
 			{
 		String stringToSendToWebBrowser = "";
 		stringToSendToWebBrowser += "<!DOCTYPE html>\n";
@@ -73,7 +77,7 @@ public class LoginView extends DynamicWebPage
 		stringToSendToWebBrowser += "    <div class=\"container py-5\">\n";
 		stringToSendToWebBrowser += "      <div class=\"row\">\n";
 		stringToSendToWebBrowser += "        <div class=\"mx-auto col-lg-8 col-md-10\">\n";
-		stringToSendToWebBrowser += "          <h1 class=\"display-3 mb-4\">Unknown Username?<br></h1>\n";
+		stringToSendToWebBrowser += "          <h1 class=\"display-3 mb-4\">Unknown Email?<br></h1>\n";
 		stringToSendToWebBrowser += "          <p class=\"lead mb-3\">Click the button try again.</p> <a class=\"btn btn-lg mx-1 btn-outline-primary\" href=\"login.html\">Log In</a>\n";
 		stringToSendToWebBrowser += "        </div>\n";
 		stringToSendToWebBrowser += "      </div>\n";
@@ -89,7 +93,7 @@ public class LoginView extends DynamicWebPage
 		return true;
 			}
 			
-			Profile user = profiles.get(username);
+			Profile user = profiles.get(email);
 			
 			//if(user.password==password)
 			if(!user.password.contentEquals(password))
@@ -183,8 +187,12 @@ public class LoginView extends DynamicWebPage
 			stringToSendToWebBrowser += "      }\n";
 			stringToSendToWebBrowser += "      function saveLoginCookie()\n";
 			stringToSendToWebBrowser += "      {\n";
-			stringToSendToWebBrowser += "          setCookie('username','"+username+"',365);\n";
+			stringToSendToWebBrowser += "          setCookie('email','"+email+"',365);\n";
 			stringToSendToWebBrowser += "          setCookie('password','"+password+"',365);\n";
+			stringToSendToWebBrowser += "          setCookie('name','"+name+"',365);\n";
+			stringToSendToWebBrowser += "          setCookie('username','"+username+"',365);\n";
+			stringToSendToWebBrowser += "          setCookie('address','"+address+"',365);\n";
+			stringToSendToWebBrowser += "          setCookie('filepath','"+filepath+"',365);\n";
 			stringToSendToWebBrowser += "      }\n";
 			
 			stringToSendToWebBrowser += "  </script>\n";
