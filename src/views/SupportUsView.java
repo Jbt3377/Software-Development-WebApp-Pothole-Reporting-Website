@@ -127,7 +127,7 @@ public class SupportUsView extends DynamicWebPage {
 			Donation.put(adonation.donatorID, adonation);
 			db.commit();
 			newDonatorKeys = Donation.keyList();
-		}
+		} 
 		
 		
 		for (int index = 0; index < newDonatorKeys.size(); index++) {

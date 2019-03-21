@@ -33,54 +33,40 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +="  <link rel=\"stylesheet\" href=\"now-ui-kit.css\" type=\"text/css\">\n" ;
         	stringToSendToWebBrowser +="</head>\n" ;
         	stringToSendToWebBrowser +="\n" ;
-        	stringToSendToWebBrowser +="<body>\n";
-        	stringToSendToWebBrowser +="  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\" style=\"\">\n" ;
-        	stringToSendToWebBrowser +="    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\n";
-        	stringToSendToWebBrowser +="        <span class=\"navbar-toggler-icon\"></span>\n" ;
-        	stringToSendToWebBrowser +="      </button>\n" ;
-        	stringToSendToWebBrowser +="      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"index.html\">\n" ;
-        	stringToSendToWebBrowser +="          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\n" ;
-        	stringToSendToWebBrowser +="          <b contenteditable=\"true\">&nbsp;FILL MY HOLE</b>\n" ;
-        	stringToSendToWebBrowser +="        </a>\n" ;
-        	stringToSendToWebBrowser +="        <ul class=\"navbar-nav mx-auto\">\n" ;
-        	stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"index.html\">Report a Problem</a> </li>\n" ;
-        	stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\n" ;
-        	stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"help.html\">FAQ</a> </li>\n"; 
-        	stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\n";
-        	stringToSendToWebBrowser +="        </ul>\n";
-        	stringToSendToWebBrowser +="        <ul class=\"navbar-nav\">\n";
-        	stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Log in</a> </li>\n";
-        	stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
-        	stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signup.html\">Register</a> </li>\n";
-        	stringToSendToWebBrowser +="        </ul>\n" ;
-        	stringToSendToWebBrowser +="      </div>\n" ;
-        	stringToSendToWebBrowser +="    </div>\n" ;
-        	stringToSendToWebBrowser +="  </nav>\n" ;
-        	stringToSendToWebBrowser +="  <div class=\"py-5 text-center align-items-center d-flex\" style=\"background-image: linear-gradient(to left bottom, rgba(189, 195, 199, 0.75), rgba(44, 62, 80, 0.75)); background-size: 100%;\">\n";
-        	stringToSendToWebBrowser +="    <div class=\"container py-5\">\n";
-        	stringToSendToWebBrowser +="      <div class=\"row\">\n";
-        	stringToSendToWebBrowser +="        <div class=\"col-md-8 mx-auto bg-primary\" style=\"\"> <i class=\"fa d-inline fa-wrench fa-5x\"></i>\n";
-        	stringToSendToWebBrowser +="          <h1 class=\"display-3 mb-4\" style=\"\">How can we help?</h1>\n";
-        	stringToSendToWebBrowser +="          <form class=\"form-center\">\n";
-        	stringToSendToWebBrowser +="            <div class=\"input-group\">\n"; 
-        	stringToSendToWebBrowser +="              <input type=\"search\" class=\"form-control form-control-sm\" id=\"inlineFormInputGroup\" placeholder=\"Search\" name=\"Search\" >\n";
-        	stringToSendToWebBrowser +="              <div class=\"input-group-append\"><button class=\"btn btn-primary\" type=\"button\"><i class=\"fa fa-search\"></i></button></div>\n";
-        	stringToSendToWebBrowser +="            </div>\n";
-        	stringToSendToWebBrowser +="          </form>\n";
-        	stringToSendToWebBrowser +="          <p class=\"mb-0\">&nbsp;</p>\n";
-        	stringToSendToWebBrowser +="          <h4 style=\"\">&nbsp;Want to ask us a question directly?</h4><a class=\"btn btn-dark\" href=\"#\" contenteditable=\"true\">Contact Us</a>\n" ;
-        	stringToSendToWebBrowser +="          <h4 style=\"\">&nbsp;</h4>\n"; 
-        	stringToSendToWebBrowser +="        </div>\n";
-        	stringToSendToWebBrowser +="      </div>\n";
-        	stringToSendToWebBrowser +="    </div>\n";
-        	stringToSendToWebBrowser +="  </div>\n";
+        	stringToSendToWebBrowser +="<body class=\"text-left\">\n";
+    		stringToSendToWebBrowser +="  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\n";
+    		stringToSendToWebBrowser +="    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\n";
+    		stringToSendToWebBrowser +="        <span class=\"navbar-toggler-icon\"></span>\n";
+    		stringToSendToWebBrowser +="      </button>\n";
+    		stringToSendToWebBrowser +="      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"index.html\">\n";
+    		stringToSendToWebBrowser +="          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\n";
+    		stringToSendToWebBrowser +="          <b>&nbsp;FILL MY HOLE</b>\n";
+    		stringToSendToWebBrowser +="        </a>\n";
+    		stringToSendToWebBrowser +="        <ul class=\"navbar-nav mx-auto\">\n";
+    		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"index.html\">Report a Problem</a> </li>\n";
+    		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\n";
+    		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"help.html\">FAQ</a> </li>\n";
+    		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About Us</a> </li>\n";
+    		stringToSendToWebBrowser +="        </ul>\n";
+    		stringToSendToWebBrowser +="        <ul class=\"navbar-nav\">\n";
+    		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n";
+    		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
+    		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signup.html\">Register</a> </li>\n";
+    		stringToSendToWebBrowser +="        </ul>\n";
+    		stringToSendToWebBrowser +="      </div>\n";
+    		stringToSendToWebBrowser +="    </div>\n";
+    		stringToSendToWebBrowser +="  </nav>\n";
+        	
+
+
+
         	
         	//Start of form
         	stringToSendToWebBrowser +="<div class=\"py-5 text-center text-white\" style=\"background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: cover, cover;  background-repeat: repeat, repeat;\" >\n";
         	stringToSendToWebBrowser +="<div class=\"container\">";
         	stringToSendToWebBrowser +="<div class=\"row\">";
         	stringToSendToWebBrowser +="<div class=\"mx-auto col-md-12\">";
-        	stringToSendToWebBrowser +="<h1 class=\"mb-5 text-primary\">Add A Question</h1>\n";
+        	stringToSendToWebBrowser +="<h1 class=\"mb-5 text-primary\">Ask A Question!</h1>\n";
         	stringToSendToWebBrowser +="</div>\n";
         	stringToSendToWebBrowser +="</div>";
         	stringToSendToWebBrowser +="<div class=\"row\">";
@@ -105,8 +91,7 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +=" </div>";
         	stringToSendToWebBrowser +=" </div>";
         	//End of Form
-
-//Categories        	
+        	//Categories        	
         	stringToSendToWebBrowser +="  <div class=\"py-5 text-center bg-dark  \">\n";
         	stringToSendToWebBrowser +="    <div class=\"container\">\n";
         	stringToSendToWebBrowser +="      <div class=\"row\">\n";
@@ -116,22 +101,22 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +="      </div>\n";
         	stringToSendToWebBrowser +="      <div class=\"row\">\n";
         	stringToSendToWebBrowser +="        <div class=\"col-6 col-lg-3 p-4\"> <img class=\"img-fluid d-block mb-3 mx-auto\" src=\"https://static.pingendo.com/cover-moon.svg\" width=\"200\" alt=\"Card image cap\">\n";
-        	stringToSendToWebBrowser +="          <h4> <b>Getting Started</b></h4>\n";
+        	stringToSendToWebBrowser +="          <h4><a class=\"btn btn-primary m-2 my-3 mb-4\" href=\"#start\"> <b>Getting Started</b></a></h4>\n";
         	stringToSendToWebBrowser +="          <p class=\"mb-3\">&nbsp;</p>\n";
         	stringToSendToWebBrowser +="          <p class=\"mb-0 text-white\">How to use our site<br></p>\n";
         	stringToSendToWebBrowser +="        </div>\n";
         	stringToSendToWebBrowser +="        <div class=\"col-6 col-lg-3 p-4\"> <img class=\"img-fluid d-block mb-3 mx-auto\" src=\"https://static.pingendo.com/cover-bubble-light.svg\" width=\"200\" alt=\"Card image cap\">\n";
-        	stringToSendToWebBrowser +="          <h4>Account</h4>\n";
+        	stringToSendToWebBrowser +="          <h4><a class=\"btn btn-primary m-2 my-3 mb-4\" href=\"#account\">Account</a></h4>\n";
         	stringToSendToWebBrowser +="          <p class=\"mb-3\">&nbsp;</p>\n";
         	stringToSendToWebBrowser +="          <p class=\"mb-0 text-white\">Registering with us</p>\n";
         	stringToSendToWebBrowser +="        </div>\n";
         	stringToSendToWebBrowser +="        <div class=\"col-6 col-lg-3 p-4\"> <img class=\"img-fluid d-block mb-3 mx-auto\" src=\"https://static.pingendo.com/cover-bubble-dark.svg\" width=\"200\">\n";
-        	stringToSendToWebBrowser +="          <h4>Site Issues</h4>\n";
+        	stringToSendToWebBrowser +="          <h4><a class=\"btn btn-primary m-2 my-3 mb-4\" href=\"#siteIssues\">Site Issues</a></h4>\n";
         	stringToSendToWebBrowser +="          <p class=\"mb-3\">&nbsp;</p>\n";
         	stringToSendToWebBrowser +="          <p class=\"mb-0 text-white\"> Problems with the site</p>\n";
         	stringToSendToWebBrowser +="        </div>\n";
         	stringToSendToWebBrowser +="        <div class=\"col-6 col-lg-3 p-4\"> <img class=\"img-fluid d-block mb-3 mx-auto\" src=\"https://static.pingendo.com/cover-moon.svg\" width=\"200\">\n";
-        	stringToSendToWebBrowser +="          <h4>Legal Information</h4>\n";
+        	stringToSendToWebBrowser +="          <h4><a class=\"btn btn-primary m-2 my-3 mb-4\" href=\"#legal\">Legal Information</a></h4>\n";
         	stringToSendToWebBrowser +="          <p class=\"mb-3\">&nbsp;</p>\n"; 
         	stringToSendToWebBrowser +="          <p class=\"mb-0 text-white\">Privacy</p>\n"; 
         	stringToSendToWebBrowser +="        </div>\n";
@@ -139,7 +124,9 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +="    </div>\n";
         	stringToSendToWebBrowser +="  </div>\n";
         	
+        	
 //Getting started
+        	stringToSendToWebBrowser += "			   <a name=\"start\"></a>\n";
         	stringToSendToWebBrowser +="  <div class=\"py-5 text-center text-white h-100 align-items-center d-flex\" style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(&quot;https://static.pingendo.com/cover-bubble-dark.svg&quot;); background-position: center center, center center; background-size: cover, cover; background-repeat: repeat, repeat;\">\n";
         	stringToSendToWebBrowser +="    <div class=\"container py-5\">\n";
         	stringToSendToWebBrowser +="      <div class=\"row\">\n";
@@ -166,7 +153,7 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +="    </div>\n";
         	stringToSendToWebBrowser +="  </div>\n";
 //End of GS        	
-
+        	stringToSendToWebBrowser += "			   <a name=\"account\"></a>\n";
         	stringToSendToWebBrowser +="  <div class=\"py-5 text-center text-white h-100 align-items-center d-flex\" style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(&quot;https://static.pingendo.com/cover-bubble-dark.svg&quot;); background-position: center center, center center; background-size: cover, cover; background-repeat: repeat, repeat;\">\n" ;
         	stringToSendToWebBrowser +="    <div class=\"container py-5\">\n";
         	stringToSendToWebBrowser +="      <div class=\"row\">\n";
@@ -197,6 +184,7 @@ public class HelpView extends DynamicWebPage
         	
         	
         	//Site Issues  
+        	stringToSendToWebBrowser += "			   <a name=\"siteIssues\"></a>\n";
         	stringToSendToWebBrowser +="  <div class=\"py-5 text-center text-white h-100 align-items-center d-flex\" style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(&quot;https://static.pingendo.com/cover-bubble-dark.svg&quot;); background-position: center center, center center; background-size: cover, cover; background-repeat: repeat, repeat;\">\n";
         	stringToSendToWebBrowser +="    <div class=\"container py-5\">\n";
         	stringToSendToWebBrowser +="      <div class=\"row\">\n";
@@ -219,6 +207,7 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +="    </div>\n";
         	stringToSendToWebBrowser +="  </div>\n";
 //End of SI        			
+        	stringToSendToWebBrowser += "			   <a name=\"legal\"></a>\n";
         	stringToSendToWebBrowser +="  <div class=\"py-5 text-center text-white h-100 align-items-center d-flex\" style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(&quot;https://static.pingendo.com/cover-bubble-dark.svg&quot;); background-position: center center, center center; background-size: cover, cover; background-repeat: repeat, repeat;\">\n";
         	stringToSendToWebBrowser +="    <div class=\"container py-5\">\n";
         	stringToSendToWebBrowser +="      <div class=\"row\">\n";
@@ -258,6 +247,14 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +="      </div>\n";
         	stringToSendToWebBrowser +="    </div>\n";
         	stringToSendToWebBrowser +="  </div>\n";
+        	
+        	stringToSendToWebBrowser +="";
+        	stringToSendToWebBrowser +="";
+        	stringToSendToWebBrowser +="";
+        	stringToSendToWebBrowser +="";
+        	stringToSendToWebBrowser +="";
+        	stringToSendToWebBrowser +="";
+        	
         	stringToSendToWebBrowser +="  <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n" ;
         			stringToSendToWebBrowser +="  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\"></script>\n";
         					stringToSendToWebBrowser +="  <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\" style=\"\"></script>\n" ;
