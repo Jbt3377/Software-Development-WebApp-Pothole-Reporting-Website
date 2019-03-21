@@ -309,8 +309,12 @@ public class IndexView extends DynamicWebPage{
 				problemReport.filePathToImage = decideDefaultImage(problemReport.category);
 				System.out.println("uh oh no image was provided");
 			}
+		
+			
+			// Get usedID of user who submitted if logged in
 			
 			
+			// Time Stamp
 			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 			problemReport.timeStamp = sdf.format(timestamp);
 			
