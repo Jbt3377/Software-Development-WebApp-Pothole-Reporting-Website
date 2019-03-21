@@ -1,6 +1,8 @@
 package views;
 
 
+import java.io.File;
+
 import org.h2.mvstore.MVMap;
 
 import model.Profile;
@@ -17,28 +19,21 @@ public class AccountView extends DynamicWebPage{
 	
 	public boolean process(WebRequest toProcess) {
 	
+		MVMap<String, Profile> profiles = db.s.openMap("Profiles");
+
+		String email = toProcess.cookies.get("email");
+		Profile currentUser = profiles.get(email);
+		
+		String name = currentUser.name;
+		String password = currentUser.password;
+		String address = currentUser.address;
+		String filepath = currentUser.filePathToProfilePicture;
+		
+		
 		if(toProcess.path.equalsIgnoreCase("accountview") || toProcess.path.equalsIgnoreCase("account.html")) {
 			
 			System.out.println("\n\nRequest for Web Page: " + toProcess.path);
 			
-			
-			Profile user = new Profile();
-			
-			MVMap<String, Profile> profiles = db.s.openMap("Profiles");
-			
-			String username = toProcess.cookies.get("username");
-			String password = toProcess.cookies.get("password");
-			String name = toProcess.cookies.get("name");
-			String email = toProcess.cookies.get("email");
-			String filepath = toProcess.cookies.get("filePathToProfilePicture");
-			String address = toProcess.cookies.get("address");
-			profiles.get(username);
-			profiles.get(password);
-			profiles.get(name);
-			profiles.get(email);
-			profiles.get(filepath);
-			profiles.get(address);
-
 			String stringToSendToBrowser = "";
 			stringToSendToBrowser += "<!DOCTYPE html>\r\n";
 			stringToSendToBrowser += "<html>\r\n";
@@ -92,7 +87,7 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "            <div class=\"row\">\n";
 			stringToSendToBrowser += "              <div class=\"col-md-6\">\n";
 			stringToSendToBrowser += "                <div class=\"row mt-3 pl-5 pt-1\">\n";
-			stringToSendToBrowser += "                  <form class=\"text-left\">\n";
+			stringToSendToBrowser += "                  <form class=\"text-left\" action=\"/Submit\" method=\"POST\" enctype=\"multipart/form-data\">\n";
 			stringToSendToBrowser += "                    <div class=\"form-group\"> <label for=\"form16\">Your Name</label> <input type=\"text\" class=\"form-control\" id=\"form16\" value=\"Name...\"></div>\n";
 			stringToSendToBrowser += "                    <div class=\"form-group\"> <label for=\"form18\">Your Email</label> <input type=\"email\" class=\"form-control\" id=\"form17\" placeholder=\"Email...\"> </div>\n";
 			stringToSendToBrowser += "                    <textarea name=\"Address\" rows=\"5\" cols=\"30\" class=\"form-control text-left w-70 text-white\" maxlength=\"255\" id=\"form18\"> </textarea>\r\n";
@@ -103,8 +98,9 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "                  </form>\n";
 			stringToSendToBrowser += "                </div>\n";
 			stringToSendToBrowser += "              </div>\n";
-			stringToSendToBrowser += "              <div class=\"col-md-6\" ><a href=\"index.html\"><img class=\"d-block rounded-circle img-fluid w-75 mx-auto\" src=\"https://static.pingendo.com/img-placeholder-3.svg\">\n";
+			stringToSendToBrowser += "              <form class=\"col-md-6 text-left\" action=\"/Submit\" method=\"POST\" enctype=\"multipart/form-data\"><a href=\"index.html\"><img class=\"d-block rounded-circle img-fluid w-75 mx-auto\" src=\"" + filepath + "\">\n";
 			stringToSendToBrowser += "				<div><h5 class=\"mt-2\">Click the image above to upload your profile picture.</h5>\n";
+			stringToSendToBrowser += "                  </form>\n";
 			stringToSendToBrowser += "                </div>\n";
 			stringToSendToBrowser += "              </div>\n";
 			stringToSendToBrowser += "            </div>\n";
@@ -117,11 +113,24 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\" style=\"\"></script>\n";
 			stringToSendToBrowser += "  <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\"></script>\n";
 			stringToSendToBrowser += "  <script src=\"/js/ProfileLoadFunction.js\"></script>";
+			stringToSendToBrowser += "  <script src=\"/js/alert.js\"></script>";
 			stringToSendToBrowser += "</body>\n";
 			stringToSendToBrowser += "\n";
 			stringToSendToBrowser += "</html>";
 			toProcess.r = new WebResponse( WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToBrowser );
 			return true;
+			
+		}else if(toProcess.path.equalsIgnoreCase("Submit")) {
+			try {
+				File uploaded = new File(currentUser.filePathToProfilePicture);
+				int ind = currentUser.filePathToProfilePicture.lastIndexOf('.');
+				String extension = currentUser.filePathToProfilePicture.substring(ind);
+				uploaded.renameTo(new File("httpdocs/"+currentUser.username+extension));
+				currentUser.filePathToProfilePicture = currentUser.username+extension;
+			}catch( StringIndexOutOfBoundsException e ) {
+				System.out.println("You did an oopsie");
+			}
+			
 		}
 	return false; 
 	}
