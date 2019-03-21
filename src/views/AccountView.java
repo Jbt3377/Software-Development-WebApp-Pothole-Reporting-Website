@@ -20,7 +20,7 @@ public class AccountView extends DynamicWebPage{
 	public boolean process(WebRequest toProcess) {
 	
 		MVMap<String, Profile> profiles = db.s.openMap("Profiles");
-
+		
 		String email = toProcess.cookies.get("email");
 		Profile currentUser = profiles.get(email);
 		
@@ -87,7 +87,7 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "            <div class=\"row\">\n";
 			stringToSendToBrowser += "              <div class=\"col-md-6\">\n";
 			stringToSendToBrowser += "                <div class=\"row mt-3 pl-5 pt-1\">\n";
-			stringToSendToBrowser += "                  <form class=\"text-left\" action=\"/Submit\" method=\"POST\" enctype=\"multipart/form-data\">\n";
+			stringToSendToBrowser += "                  <form class=\"text-left\" action=\"/Submit2\" method=\"POST\" enctype=\"multipart/form-data\">\n";
 			stringToSendToBrowser += "                    <div class=\"form-group\"> <label for=\"form16\">Your Name</label> <input type=\"text\" class=\"form-control\" id=\"form16\" value=\"Name...\"></div>\n";
 			stringToSendToBrowser += "                    <div class=\"form-group\"> <label for=\"form18\">Your Email</label> <input type=\"email\" class=\"form-control\" id=\"form17\" placeholder=\"Email...\"> </div>\n";
 			stringToSendToBrowser += "                    <textarea name=\"Address\" rows=\"5\" cols=\"30\" class=\"form-control text-left w-70 text-white\" maxlength=\"255\" id=\"form18\"> </textarea>\r\n";
@@ -98,8 +98,15 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "                  </form>\n";
 			stringToSendToBrowser += "                </div>\n";
 			stringToSendToBrowser += "              </div>\n";
-			stringToSendToBrowser += "              <form class=\"col-md-6 text-left\" action=\"/Submit\" method=\"POST\" enctype=\"multipart/form-data\"><a href=\"index.html\"><img class=\"d-block rounded-circle img-fluid w-75 mx-auto\" src=\"" + filepath + "\">\n";
-			stringToSendToBrowser += "				<div><h5 class=\"mt-2\">Click the image above to upload your profile picture.</h5>\n";
+			stringToSendToBrowser += "              <form class=\"col-md-6 text-left\"><img class=\"d-block rounded-circle img-fluid btn-link action=\"/Submit\" method=\"POST\" enctype=\"multipart/form-data\" w-75 mx-auto\" src=\"" + filepath + "\">\n";
+			stringToSendToBrowser += "                    <label for=\"files\" class=\"w-100 text-left pt-2\"><b>Profile Picture</b></label>\r\n";
+			stringToSendToBrowser += "                    <input type=\"file\" id=\"fileupload\" name=\"fileupload\" value=\"fileupload\" class=\"text-left form-control-file\">\r\n";
+			stringToSendToBrowser += "                    <input value=\"Submit\" type=\"submit\" onclick=\"return clicked();\" class=\"mt-4\">\r\n";
+			stringToSendToBrowser += "       			  <script>\r\n";
+			stringToSendToBrowser += "       			    function clicked(){\r\n";
+			stringToSendToBrowser += "     					  reload()";
+			stringToSendToBrowser += "       			    }\r\n";
+			stringToSendToBrowser += "       			  </script>\r\n";
 			stringToSendToBrowser += "                  </form>\n";
 			stringToSendToBrowser += "                </div>\n";
 			stringToSendToBrowser += "              </div>\n";
@@ -113,7 +120,7 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\" style=\"\"></script>\n";
 			stringToSendToBrowser += "  <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\"></script>\n";
 			stringToSendToBrowser += "  <script src=\"/js/ProfileLoadFunction.js\"></script>";
-			stringToSendToBrowser += "  <script src=\"/js/alert.js\"></script>";
+			stringToSendToBrowser += "  <script src=\"/js/reload.js\"></script>";
 			stringToSendToBrowser += "</body>\n";
 			stringToSendToBrowser += "\n";
 			stringToSendToBrowser += "</html>";
@@ -127,8 +134,12 @@ public class AccountView extends DynamicWebPage{
 				String extension = currentUser.filePathToProfilePicture.substring(ind);
 				uploaded.renameTo(new File("httpdocs/"+currentUser.username+extension));
 				currentUser.filePathToProfilePicture = currentUser.username+extension;
+				filepath = currentUser.filePathToProfilePicture;
+				System.out.println(filepath);
 			}catch( StringIndexOutOfBoundsException e ) {
 				System.out.println("You did an oopsie");
+				filepath = "https://static.pingendo.com/img-placeholder-3.svg";
+				currentUser.filePathToProfilePicture = filepath;
 			}
 			
 		}
