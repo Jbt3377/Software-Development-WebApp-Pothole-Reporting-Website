@@ -63,19 +63,9 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\r\n";
 			stringToSendToBrowser += "        </ul>\r\n";
 			stringToSendToBrowser += "        <ul class=\"navbar-nav\">\r\n";
-			
-			// Account actions alter depending if user is signed in
-			if(profiles.get(username)!=null)
-			{
-				stringToSendToBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome "+ username +"</a> </li>\n";
-			}
-			else
-			{
-				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n";
-				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
-				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"SignupView\">Register</a> </li>\n";
-			}
-			
+			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome " + username + "</a> </li>\r\n";
+			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
+			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"accountview\">Account</a> </li>\n";
 			stringToSendToBrowser += "        </ul>\r\n";
 			stringToSendToBrowser += "      </div>\r\n";
 			stringToSendToBrowser += "    </div>\r\n";
@@ -99,8 +89,8 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "                    <div class=\"form-group\"> <label for=\"form18\">Your Email</label> <input type=\"email\" class=\"form-control\" id=\"form18\" placeholder=\"Email...\"> </div>\n";
 			stringToSendToBrowser += "                    <textarea name=\"Address\" rows=\"5\" cols=\"30\" class=\"form-control text-left w-70 text-white\" maxlength=\"255\"> </textarea>\r\n";
 			stringToSendToBrowser += "                    <div class=\"form-row\">\n";
-			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"form19\">Password</label> <input type=\"password\" class=\"form-control\" id=\"form19\" placeholder=\"••••\"> </div>\n";
-			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"form20\">Confirm Password</label> <input type=\"password\" class=\"form-control\" id=\"form20\" placeholder=\"••••\"> </div>\n";
+			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"form19\">Password</label> <input type=\"password\" class=\"form-control\" id=\"form19\" placeholder=\"Password\"> </div>\n";
+			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"form20\">Confirm Password</label> <input type=\"password\" class=\"form-control\" id=\"form20\" placeholder=\"Password\"> </div>\n";
 			stringToSendToBrowser += "                    </div><a class=\"btn btn-primary mt-3\" href=\"#\"><i class=\"fa fa-download fa-fw\"></i>&nbsp;Save Changes</a>\n";
 			stringToSendToBrowser += "                  </form>\n";
 			stringToSendToBrowser += "                </div>\n";

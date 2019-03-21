@@ -71,6 +71,8 @@ public class IndexView extends DynamicWebPage{
 			if(profiles.get(username)!=null)
 			{
 				stringToSendToBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome "+ username +"</a> </li>\n";
+				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
+				stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"accountview\">Account</a> </li>\n";
 			}
 			else
 			{
