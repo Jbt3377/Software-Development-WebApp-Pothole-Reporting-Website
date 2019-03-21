@@ -190,7 +190,7 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "                <p class=\"card-text\"><b>Ping the location of the problem on the map above and enter the required information. Afterwards, submit!</b><br></p>\r\n";
 			stringToSendToBrowser += "                <!--Report Form-->\r\n";
 			stringToSendToBrowser += "                <div class=\"Report-Form\">\r\n";
-			stringToSendToBrowser += "                  <form action=\"/Report\" method=\"GET\">\r\n";
+			stringToSendToBrowser += "                  <form action=\"/Report\" method=\"POST\" enctype=\"multipart/form-data\">\r\n";
 			stringToSendToBrowser += "                    <!--Location (Text Input)-->\r\n";
 			stringToSendToBrowser += "                    <label for=\"location\" class=\"w-100 text-left pt-2\"><b>Location</b></label>\r\n";
 			stringToSendToBrowser += "                    <input type=\"text\" class=\"form-control text-left text-white\" name=\"location\" id=\"location\" placeholder=\"Mark your location on the map or tell us the address\" required=\"required\">\r\n";
@@ -309,6 +309,7 @@ public class IndexView extends DynamicWebPage{
 				problemReport.filePathToImage = decideDefaultImage(problemReport.category);
 				System.out.println("uh oh no image was provided");
 			}
+			
 			
 			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 			problemReport.timeStamp = sdf.format(timestamp);
