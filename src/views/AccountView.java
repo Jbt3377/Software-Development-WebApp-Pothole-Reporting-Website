@@ -20,20 +20,31 @@ public class AccountView extends DynamicWebPage{
 		if(toProcess.path.equalsIgnoreCase("accountview") || toProcess.path.equalsIgnoreCase("account.html")) {
 			
 			System.out.println("\n\nRequest for Web Page: " + toProcess.path);
-			String username = toProcess.cookies.get("username");
-			String password = toProcess.cookies.get("password");
 			
-			System.out.println(username);
-			System.out.println(password);
+			
+			Profile user = new Profile();
 			
 			MVMap<String, Profile> profiles = db.s.openMap("Profiles");
+			
+			String username = toProcess.cookies.get("username");
+			String password = toProcess.cookies.get("password");
+		
+
 			String stringToSendToBrowser = "";
 			stringToSendToBrowser += "<!DOCTYPE html>\r\n";
 			stringToSendToBrowser += "<html>\r\n";
 			stringToSendToBrowser += "\r\n";
 			stringToSendToBrowser += "<head>\r\n";
+			stringToSendToBrowser += "  <meta charset=\"utf-8\">  \r\n";
+			stringToSendToBrowser += "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">  \r\n";
 			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" type=\"text/css\">\r\n";
 			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"now-ui-kit.css\" type=\"text/css\">\r\n";
+			stringToSendToBrowser += "    <!--[if lt IE 9]>\" +\r\n";
+			stringToSendToBrowser += "      <script src=\"/js/html5shiv.js\"></script>\" +\r\n" ;
+			stringToSendToBrowser += "      <script src=\"/js/respond.min.js\"></script>\" +\r\n"; 
+			stringToSendToBrowser += "    <![endif]-->\" +\r\n";
+			stringToSendToBrowser += "    <script type=\"text/javascript\" src=\"/js/jquery-1.11.1.min.js\"></script>\" +\r\n";
+			stringToSendToBrowser += "   <script type=\"text/javascript\" src=\"/js/bootstrap.min.js\"></script>\" +\r\n";
 			stringToSendToBrowser += "</head>\r\n";
 			stringToSendToBrowser += "\r\n";
 			stringToSendToBrowser += "<body class=\"text-left\">\r\n";
@@ -94,8 +105,9 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "                  </form>\n";
 			stringToSendToBrowser += "                </div>\n";
 			stringToSendToBrowser += "              </div>\n";
-			stringToSendToBrowser += "              <div class=\"col-md-6\" ><img class=\"d-block rounded-circle img-fluid w-75 mx-auto\" src=\"https://static.pingendo.com/img-placeholder-3.svg\" href=\"index.html\">\n";
-			stringToSendToBrowser += "                <h5 class=\"mt-2\">Click the image above to upload your profile picture.</h5>\n";
+			stringToSendToBrowser += "              <div class=\"col-md-6\" ><a href=\"index.html\"><img class=\"d-block rounded-circle img-fluid w-75 mx-auto\" src=\"https://static.pingendo.com/img-placeholder-3.svg\">\n";
+			stringToSendToBrowser += "				<div><h5 class=\"mt-2\">Click the image above to upload your profile picture.</h5>\n";
+			stringToSendToBrowser += "                </div>\n";
 			stringToSendToBrowser += "              </div>\n";
 			stringToSendToBrowser += "            </div>\n";
 			stringToSendToBrowser += "          </div>\n";
