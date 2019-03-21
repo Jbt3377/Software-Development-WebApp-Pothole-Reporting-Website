@@ -189,10 +189,9 @@ public class LoginView extends DynamicWebPage
 			stringToSendToWebBrowser += "      {\n";
 			stringToSendToWebBrowser += "          setCookie('email','"+email+"',365);\n";
 			stringToSendToWebBrowser += "          setCookie('password','"+password+"',365);\n";
-			stringToSendToWebBrowser += "          setCookie('name','"+name+"',365);\n";
-			stringToSendToWebBrowser += "          setCookie('username','"+username+"',365);\n";
-			stringToSendToWebBrowser += "          setCookie('address','"+address+"',365);\n";
-			stringToSendToWebBrowser += "          setCookie('filepath','"+filepath+"',365);\n";
+			stringToSendToWebBrowser += "          setCookie('name','"+user.name+"',365);\n";
+			stringToSendToWebBrowser += "          setCookie('address','"+user.address+"',365);\n";
+			stringToSendToWebBrowser += "          setCookie('filepath','"+user.filePathToProfilePicture+"',365);\n";
 			stringToSendToWebBrowser += "      }\n";
 			
 			stringToSendToWebBrowser += "  </script>\n";

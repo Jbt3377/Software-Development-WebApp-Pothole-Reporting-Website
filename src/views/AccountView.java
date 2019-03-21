@@ -71,7 +71,7 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\r\n";
 			stringToSendToBrowser += "        </ul>\r\n";
 			stringToSendToBrowser += "        <ul class=\"navbar-nav\">\r\n";
-			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome " + username + "</a> </li>\r\n";
+			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome " + email + "</a> </li>\r\n";
 			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
 			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"accountview\">Account</a> </li>\n";
 			stringToSendToBrowser += "        </ul>\r\n";
