@@ -7,6 +7,7 @@ import views.HelpView;
 import views.IndexView;
 import views.LoginView;
 import views.SignupSuccessful;
+import views.SignupView;
 import views.SubmitSuccessful;
 import views.SupportUsView;
 import views.TestForm;
@@ -88,6 +89,8 @@ public class Main
 		
 		SignupSuccessful signupSuccessfulPage = new SignupSuccessful(databaseInterface, fileStoreInterface);
 		
+		SignupView signupviewPage = new SignupView(databaseInterface, fileStoreInterface);
+		
 		LoginView loginViewPage = new LoginView(databaseInterface, fileStoreInterface);
 		
 		AboutUsView aboutUsViewPage = new AboutUsView(databaseInterface, fileStoreInterface);
@@ -153,6 +156,8 @@ public class Main
 		        	
 		        }else if(indexViewPage.process(toProcess)) {
 		        	// Main page is requested
+		        }else if(signupviewPage.process(toProcess)) {
+		        	// Sign up page requested
 		        }else if(signupSuccessfulPage.process(toProcess)) {
 		        	// Sign up page is requested
 		        }else if(loginViewPage.process(toProcess)) {
