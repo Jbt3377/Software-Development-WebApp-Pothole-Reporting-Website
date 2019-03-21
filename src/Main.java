@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import views.AboutUsView;
+import views.AccountView;
 import views.HelpView;
 import views.IndexView;
 import views.LoginView;
@@ -87,6 +88,8 @@ public class Main
 
 		IndexView indexViewPage = new IndexView(databaseInterface, fileStoreInterface);
 		
+		AccountView accountviewPage = new AccountView(databaseInterface, fileStoreInterface);
+		
 		SignupSuccessful signupSuccessfulPage = new SignupSuccessful(databaseInterface, fileStoreInterface);
 		
 		SignupView signupviewPage = new SignupView(databaseInterface, fileStoreInterface);
@@ -160,6 +163,8 @@ public class Main
 		        	// Sign up page requested
 		        }else if(signupSuccessfulPage.process(toProcess)) {
 		        	// Sign up page is requested
+		        }else if(accountviewPage.process(toProcess)) {
+		        	// Account page is requested
 		        }else if(loginViewPage.process(toProcess)) {
 		        	// Login page is requested
 		        }else if(aboutUsViewPage.process(toProcess)) {
