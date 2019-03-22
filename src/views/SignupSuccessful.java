@@ -19,6 +19,7 @@ public class SignupSuccessful extends DynamicWebPage{
 		if(toProcess.path.equalsIgnoreCase("signupsuccessful"))
 		{
 			Profile user = new Profile();
+			String email = toProcess.params.get("email");
 			user.name = toProcess.params.get("name");
 			user.username = toProcess.params.get("username");
 			user.password = toProcess.params.get("password");
@@ -47,28 +48,40 @@ public class SignupSuccessful extends DynamicWebPage{
 			stringToSendToWebBrowser += "</head>\n";
 			stringToSendToWebBrowser += "\n";
 			stringToSendToWebBrowser += "<body >\n";
-			stringToSendToWebBrowser += "  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\n";
-			stringToSendToWebBrowser += "    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\n";
-			stringToSendToWebBrowser += "        <span class=\"navbar-toggler-icon\"></span>\n";
-			stringToSendToWebBrowser += "      </button>\n";
-			stringToSendToWebBrowser += "      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"indexview\">\n";
+			stringToSendToWebBrowser += "  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\r\n";
+			stringToSendToWebBrowser += "    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\r\n";
+			stringToSendToWebBrowser += "        <span class=\"navbar-toggler-icon\"></span>\r\n";
+			stringToSendToWebBrowser += "      </button>\r\n";
+			stringToSendToWebBrowser += "      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"index.html\">\n";
 			stringToSendToWebBrowser += "          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\n";
 			stringToSendToWebBrowser += "          <b>&nbsp;FILL MY HOLE</b>\n";
 			stringToSendToWebBrowser += "        </a>\n";
-			stringToSendToWebBrowser += "        <ul class=\"navbar-nav mx-auto\">\n";
-			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#report\">Report a Problem</a> </li>\n";
-			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\n";
-			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"formPage.html\">FAQ</a> </li>\n";
-			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About Us</a> </li>\n";
-			stringToSendToWebBrowser += "        </ul>\n";
-			stringToSendToWebBrowser += "        <ul class=\"navbar-nav\">\n";
-			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n";
-			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
-			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signup.html\">Register</a> </li>\n";
-			stringToSendToWebBrowser += "        </ul>\n";
-			stringToSendToWebBrowser += "      </div>\n";
-			stringToSendToWebBrowser += "    </div>\n";
-			stringToSendToWebBrowser += "  </nav>\n";
+			stringToSendToWebBrowser += "        <ul class=\"navbar-nav mx-auto\">\r\n";
+			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#reportForm\">Report a Problem</a> </li>\r\n";
+			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n";
+			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"Help.html\">FAQ</a> </li>\r\n";
+			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\r\n";
+			stringToSendToWebBrowser += "        </ul>\r\n";
+			stringToSendToWebBrowser += "        <ul class=\"navbar-nav\">\r\n";
+			
+			// Account actions alter depending if user is signed in
+			if(profiles.get(email)!=null)
+			{
+				stringToSendToWebBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome "+ email +"</a> </li>\n";
+				stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
+				stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"accountview\">Account</a> </li>\n";
+			}
+			else
+			{
+				stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n";
+				stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
+				stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"signupview\">Register</a> </li>\n";
+			}
+			
+			stringToSendToWebBrowser += "        </ul>\r\n";
+			stringToSendToWebBrowser += "      </div>\r\n";
+			stringToSendToWebBrowser += "    </div>\r\n";
+			stringToSendToWebBrowser += "  </nav>\r\n";
 			stringToSendToWebBrowser += "  <div class=\"bg text-center align-items-stretch d-flex flex-column h-100% w-100% pt-3 pb-5 mt-0 mb-auto\" style=\"background-image: linear-gradient(to bottom, rgba(13, 21, 25, .85), rgba(9, 14, 16, .90)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: auto, auto;  background-repeat: repeat, repeat;\">\n";
 			stringToSendToWebBrowser += "    <div class=\"container py-5\">\n";
 			stringToSendToWebBrowser += "      <div class=\"row\">\n";
