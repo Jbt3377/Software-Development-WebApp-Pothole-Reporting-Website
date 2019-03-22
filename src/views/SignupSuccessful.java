@@ -79,6 +79,23 @@ public class SignupSuccessful extends DynamicWebPage{
 			stringToSendToWebBrowser += "      </div>\n";
 			stringToSendToWebBrowser += "    </div>\n";
 			stringToSendToWebBrowser += "  </div>\n";
+			//Footer
+			stringToSendToWebBrowser +="  <div class=\"py-3 bg-dark\">\r\n";
+			stringToSendToWebBrowser +="    <div class=\"container\">\r\n";
+			stringToSendToWebBrowser +="      <div class=\"row\">\r\n";
+			stringToSendToWebBrowser +="        <div class=\"my-3 col-lg-8\">\r\n";
+			stringToSendToWebBrowser +="          <h2 class=\"text-center text-lg-left text-white\" style=\"\">Help others by sharing</h2>\r\n";
+			stringToSendToWebBrowser +="        </div>\r\n";
+			stringToSendToWebBrowser +="        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/FMH-308708959763566/\">\r\n";
+			stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n";
+			stringToSendToWebBrowser +="          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n";
+			stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n";
+			stringToSendToWebBrowser +="          </a> <a href=\"https://www.instagram.com/fmhwebpage/\">\r\n";
+			stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n";
+			stringToSendToWebBrowser +="          </a> </div>\r\n";
+			stringToSendToWebBrowser +="      </div>\r\n";
+			stringToSendToWebBrowser +="    </div>\r\n";
+			stringToSendToWebBrowser +="  </div>\r\n";
 			stringToSendToWebBrowser += "  <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n";
 			stringToSendToWebBrowser += "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\" style=\"\"></script>\n";
 			stringToSendToWebBrowser += "  <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\"></script>\n"; 
@@ -135,6 +152,23 @@ public class SignupSuccessful extends DynamicWebPage{
 		stringToSendToWebBrowser += "      </div>\n";
 		stringToSendToWebBrowser += "    </div>\n";
 		stringToSendToWebBrowser += "  </div>\n";
+		//Footer
+		stringToSendToWebBrowser +="  <div class=\"py-3 bg-dark\">\r\n";
+		stringToSendToWebBrowser +="    <div class=\"container\">\r\n";
+		stringToSendToWebBrowser +="      <div class=\"row\">\r\n";
+		stringToSendToWebBrowser +="        <div class=\"my-3 col-lg-8\">\r\n";
+		stringToSendToWebBrowser +="          <h2 class=\"text-center text-lg-left text-white\" style=\"\">Help others by sharing</h2>\r\n";
+		stringToSendToWebBrowser +="        </div>\r\n";
+		stringToSendToWebBrowser +="        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/FMH-308708959763566/\">\r\n";
+		stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n";
+		stringToSendToWebBrowser +="          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n";
+		stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n";
+		stringToSendToWebBrowser +="          </a> <a href=\"https://www.instagram.com/fmhwebpage/\">\r\n";
+		stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n";
+		stringToSendToWebBrowser +="          </a> </div>\r\n";
+		stringToSendToWebBrowser +="      </div>\r\n";
+		stringToSendToWebBrowser +="    </div>\r\n";
+		stringToSendToWebBrowser +="  </div>\r\n";
 		stringToSendToWebBrowser += "  <div class=\"py-5 text-center text-white h-100 align-items-center d-flex\" style=\"background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: cover, cover;  background-repeat: repeat, repeat;\" >\n";
 		stringToSendToWebBrowser += "  <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n";
 		stringToSendToWebBrowser += "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\"></script>\n";

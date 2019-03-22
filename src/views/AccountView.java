@@ -47,12 +47,12 @@ public class AccountView extends DynamicWebPage{
 				stringToSendToBrowser += "  <head>\r\n";
 				stringToSendToBrowser += "    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" type=\"text/css\">\r\n";
 				stringToSendToBrowser += "    <link rel=\"stylesheet\" href=\"now-ui-kit.css\" type=\"text/css\">\r\n";
-				stringToSendToBrowser += "    <!--[if lt IE 9]>\" +\r\n";
-				stringToSendToBrowser += "      <script src=\"/js/html5shiv.js\"></script>\" +\r\n" ;
-				stringToSendToBrowser += "      <script src=\"/js/respond.min.js\"></script>\" +\r\n"; 
-				stringToSendToBrowser += "    <![endif]-->\" +\r\n";
-				stringToSendToBrowser += "    <script type=\"text/javascript\" src=\"/js/jquery-1.11.1.min.js\"></script>\" +\r\n";
-				stringToSendToBrowser += "    <script type=\"text/javascript\" src=\"/js/bootstrap.min.js\"></script>\" +\r\n";
+
+				stringToSendToBrowser += "      <script src=\"/js/html5shiv.js\"></script>\r\n" ;
+				stringToSendToBrowser += "      <script src=\"/js/respond.min.js\"></script>\r\n"; 
+
+				stringToSendToBrowser += "    <script type=\"text/javascript\" src=\"/js/jquery-1.11.1.min.js\"></script>\r\n";
+				stringToSendToBrowser += "    <script type=\"text/javascript\" src=\"/js/bootstrap.min.js\"></script>\r\n";
 				stringToSendToBrowser += "  </head>\r\n";
 				stringToSendToBrowser += "\r\n";
 				stringToSendToBrowser += "  <body onload=\"ProfileLoadFunction('" + name + "', '" + password + "', '" + address + "')\" class=\"text-left\">\r\n";
@@ -170,6 +170,23 @@ public class AccountView extends DynamicWebPage{
 				
 				
 				stringToSendToBrowser += "  </div>\n";
+				//Footer
+				stringToSendToBrowser +="  <div class=\"py-3 bg-dark\">\r\n";
+				stringToSendToBrowser +="    <div class=\"container\">\r\n";
+				stringToSendToBrowser +="      <div class=\"row\">\r\n";
+				stringToSendToBrowser +="        <div class=\"my-3 col-lg-8\">\r\n";
+				stringToSendToBrowser +="          <h2 class=\"text-center text-lg-left text-white\" style=\"\">Help others by sharing</h2>\r\n";
+				stringToSendToBrowser +="        </div>\r\n";
+				stringToSendToBrowser +="        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/FMH-308708959763566/\">\r\n";
+				stringToSendToBrowser +="            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n";
+				stringToSendToBrowser +="          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n";
+				stringToSendToBrowser +="            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n";
+				stringToSendToBrowser +="          </a> <a href=\"https://www.instagram.com/fmhwebpage/\">\r\n";
+				stringToSendToBrowser +="            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n";
+				stringToSendToBrowser +="          </a> </div>\r\n";
+				stringToSendToBrowser +="      </div>\r\n";
+				stringToSendToBrowser +="    </div>\r\n";
+				stringToSendToBrowser +="  </div>\r\n";
 				stringToSendToBrowser += "  <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n";
 				stringToSendToBrowser += "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\" style=\"\"></script>\n";
 				stringToSendToBrowser += "  <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\"></script>\n";
@@ -295,6 +312,23 @@ public class AccountView extends DynamicWebPage{
                 stringToSendToBrowser += "      </div>\r\n";
                 stringToSendToBrowser += "    </div>\r\n";
                 stringToSendToBrowser += "  </div>\r\n";
+              //Footer
+    			stringToSendToBrowser +="  <div class=\"py-3 bg-dark\">\r\n";
+    			stringToSendToBrowser +="    <div class=\"container\">\r\n";
+    			stringToSendToBrowser +="      <div class=\"row\">\r\n";
+    			stringToSendToBrowser +="        <div class=\"my-3 col-lg-8\">\r\n";
+    			stringToSendToBrowser +="          <h2 class=\"text-center text-lg-left text-white\" style=\"\">Help others by sharing</h2>\r\n";
+    			stringToSendToBrowser +="        </div>\r\n";
+    			stringToSendToBrowser +="        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/FMH-308708959763566/\">\r\n";
+    			stringToSendToBrowser +="            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n";
+    			stringToSendToBrowser +="          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n";
+    			stringToSendToBrowser +="            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n";
+    			stringToSendToBrowser +="          </a> <a href=\"https://www.instagram.com/fmhwebpage/\">\r\n";
+    			stringToSendToBrowser +="            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n";
+    			stringToSendToBrowser +="          </a> </div>\r\n";
+    			stringToSendToBrowser +="      </div>\r\n";
+    			stringToSendToBrowser +="    </div>\r\n";
+    			stringToSendToBrowser +="  </div>\r\n";
                 stringToSendToBrowser += "</body>\r\n";
                 stringToSendToBrowser += "</html>\r\n";
                

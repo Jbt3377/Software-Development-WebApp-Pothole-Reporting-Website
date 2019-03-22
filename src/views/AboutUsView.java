@@ -42,7 +42,7 @@ public class AboutUsView extends DynamicWebPage {
 		stringToSendToWebBrowser += "          <b>&nbsp;FILL MY HOLE</b>\n";
 		stringToSendToWebBrowser += "        </a>\n";
 		stringToSendToWebBrowser += "        <ul class=\"navbar-nav mx-auto\">\r\n";
-		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#reportForm\">Report a Problem</a> </li>\r\n";
+		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"index.html#reportForm\">Report a Problem</a> </li>\r\n";
 		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n";
 		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"Help.html\">FAQ</a> </li>\r\n";
 		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\r\n";

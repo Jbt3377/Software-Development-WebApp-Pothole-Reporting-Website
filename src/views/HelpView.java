@@ -47,7 +47,7 @@ public class HelpView extends DynamicWebPage
     		stringToSendToWebBrowser += "          <b>&nbsp;FILL MY HOLE</b>\n";
     		stringToSendToWebBrowser += "        </a>\n";
     		stringToSendToWebBrowser += "        <ul class=\"navbar-nav mx-auto\">\r\n";
-    		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"index.html\">Report a Problem</a> </li>\r\n";
+    		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"index.html#reportForm\">Report a Problem</a> </li>\r\n";
     		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n";
     		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"Help.html\">FAQ</a> </li>\r\n";
     		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\r\n";
@@ -257,38 +257,31 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +="      </div>\n" ;
         	stringToSendToWebBrowser +="    </div>\n";
         	stringToSendToWebBrowser +="  </div>\n";
-//End of LI        			
-        			
-        	stringToSendToWebBrowser +="  <div class=\"py-5\" style=\"background-image: linear-gradient(to left bottom, rgba(189, 195, 199, .75), rgba(44, 62, 80, .75));	background-size: 100%;\">\n";
-        	stringToSendToWebBrowser +="    <div class=\"container\">\n";
-        	stringToSendToWebBrowser +="      <div class=\"row\">\n";
-        	stringToSendToWebBrowser +="        <div class=\"my-3 col-lg-8\">\n";
-        	stringToSendToWebBrowser +="          <h1 class=\"text-center text-lg-left text-white\" style=\"\">Help others by sharing</h1>\n";
-        	stringToSendToWebBrowser +="        </div>\n";
-        	stringToSendToWebBrowser +="        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/FMH-308708959763566/\">\n";
-        	stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\n";
-        	stringToSendToWebBrowser +="          </a> <a href=\"https://twitter.com/QUBelfast\">\n";
-        	stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\n";
-        	stringToSendToWebBrowser +="          </a> <a href=\"https://www.instagram.com/fmhwebpage/\">\n"; 
-        	stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\n";
-        	stringToSendToWebBrowser +="          </a> </div>\n";
-        	stringToSendToWebBrowser +="      </div>\n";
-        	stringToSendToWebBrowser +="    </div>\n";
-        	stringToSendToWebBrowser +="  </div>\n";
         	
-        	stringToSendToWebBrowser +="";
-        	stringToSendToWebBrowser +="";
-        	stringToSendToWebBrowser +="";
-        	stringToSendToWebBrowser +="";
-        	stringToSendToWebBrowser +="";
-        	stringToSendToWebBrowser +="";
+        	//Footer
+			stringToSendToWebBrowser +="  <div class=\"py-3 bg-dark\">\r\n";
+			stringToSendToWebBrowser +="    <div class=\"container\">\r\n";
+			stringToSendToWebBrowser +="      <div class=\"row\">\r\n";
+			stringToSendToWebBrowser +="        <div class=\"my-3 col-lg-8\">\r\n";
+			stringToSendToWebBrowser +="          <h2 class=\"text-center text-lg-left text-white\" style=\"\">Help others by sharing</h2>\r\n";
+			stringToSendToWebBrowser +="        </div>\r\n";
+			stringToSendToWebBrowser +="        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/FMH-308708959763566/\">\r\n";
+			stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n";
+			stringToSendToWebBrowser +="          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n";
+			stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n";
+			stringToSendToWebBrowser +="          </a> <a href=\"https://www.instagram.com/fmhwebpage/\">\r\n";
+			stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n";
+			stringToSendToWebBrowser +="          </a> </div>\r\n";
+			stringToSendToWebBrowser +="      </div>\r\n";
+			stringToSendToWebBrowser +="    </div>\r\n";
+			stringToSendToWebBrowser +="  </div>\r\n";
         	
         	stringToSendToWebBrowser +="  <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n" ;
-        			stringToSendToWebBrowser +="  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\"></script>\n";
-        					stringToSendToWebBrowser +="  <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\" style=\"\"></script>\n" ;
-        									stringToSendToWebBrowser +="</body>\n";
-        											stringToSendToWebBrowser +="\n"; 
-        													stringToSendToWebBrowser +="</html>";
+        	stringToSendToWebBrowser +="  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\"></script>\n";
+        	stringToSendToWebBrowser +="  <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\" style=\"\"></script>\n" ;
+        	stringToSendToWebBrowser +="</body>\n";
+        	stringToSendToWebBrowser +="\n"; 
+        	stringToSendToWebBrowser +="</html>";
         	
         	toProcess.r = new WebResponse( WebResponse.HTTP_OK, WebResponse.MIME_HTML, stringToSendToWebBrowser );
 
@@ -341,6 +334,23 @@ public class HelpView extends DynamicWebPage
 					"      </div>\r\n" + 
 					"    </div>\r\n" + 
 					"  </div>\r\n" + 
+					//Footer
+					"  <div class=\"py-3 bg-dark\">\r\n"+
+					"    <div class=\"container\">\r\n"+
+					"      <div class=\"row\">\r\n"+
+					"        <div class=\"my-3 col-lg-8\">\r\n"+
+					"          <h2 class=\"text-center text-lg-left text-white\" style=\"\">Help others by sharing</h2>\r\n"+
+					"        </div>\r\n"+
+					"        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/FMH-308708959763566/\">\r\n"+
+					"            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n"+
+					"          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n"+
+					"            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n"+
+					"          </a> <a href=\"https://www.instagram.com/fmhwebpage/\">\r\n"+
+					"            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n"+
+					"          </a> </div>\r\n"+
+					"      </div>\r\n"+
+					"    </div>\r\n"+
+					"  </div>\r\n"+
 					"  <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\r\n" + 
 					"  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\"></script>\r\n" + 
 					"  <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\"></script>\r\n" + 

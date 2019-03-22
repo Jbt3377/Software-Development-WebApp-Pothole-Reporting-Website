@@ -78,6 +78,23 @@ public class SubmitSuccessful extends DynamicWebPage
 			stringToSendToBrowser += "      </div>\r\n";
 			stringToSendToBrowser += "    </div>\r\n";
 			stringToSendToBrowser += "  </div>\r\n";
+			//Footer
+			stringToSendToBrowser +="  <div class=\"py-3 bg-dark\">\r\n";
+			stringToSendToBrowser +="    <div class=\"container\">\r\n";
+			stringToSendToBrowser +="      <div class=\"row\">\r\n";
+			stringToSendToBrowser +="        <div class=\"my-3 col-lg-8\">\r\n";
+			stringToSendToBrowser +="          <h2 class=\"text-center text-lg-left text-white\" style=\"\">Help others by sharing</h2>\r\n";
+			stringToSendToBrowser +="        </div>\r\n";
+			stringToSendToBrowser +="        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/FMH-308708959763566/\">\r\n";
+			stringToSendToBrowser +="            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n";
+			stringToSendToBrowser +="          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n";
+			stringToSendToBrowser +="            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n";
+			stringToSendToBrowser +="          </a> <a href=\"https://www.instagram.com/fmhwebpage/\">\r\n";
+			stringToSendToBrowser +="            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n";
+			stringToSendToBrowser +="          </a> </div>\r\n";
+			stringToSendToBrowser +="      </div>\r\n";
+			stringToSendToBrowser +="    </div>\r\n";
+			stringToSendToBrowser +="  </div>\r\n";
 			stringToSendToBrowser += "</body>\r\n";
 			stringToSendToBrowser += "</html>\r\n";
         	
