@@ -130,18 +130,45 @@ public class AccountView extends DynamicWebPage{
 				stringToSendToBrowser += "          </div>\n";
 				stringToSendToBrowser += "        </div>\n";
 				stringToSendToBrowser += "      </div>\n";
-				stringToSendToBrowser += "    <div class=\"container py-4\" style=\"width: 1200px; height: 700px;>\r\n";
+				
+				// User Reports Section
+				stringToSendToBrowser += "    <div class=\"py-0 px-5 container rounded w-100\">\n";
 				stringToSendToBrowser += "      <div class=\"row\">\r\n";
 				stringToSendToBrowser += "        <div class=\"card py-0 px-5 container rounded w-100 text-white bg-dark my-3 align-center\">\r\n";
-				stringToSendToBrowser += "          <div class=\"card-header text-center\"><b class=\"w-100 h-100\">New profile picture added!</b></div>\r\n";
+				stringToSendToBrowser += "          <div class=\"card-header text-center\"><b class=\"w-100 h-100\">Your Reports</b></div>\r\n";
 				stringToSendToBrowser += "            <div class=\"card-body\">\r\n";
-				stringToSendToBrowser += "              <p>Profile picture couldn't be saved - image not valid!</p><br>\r\n";
-				stringToSendToBrowser += "              <a class=\"btn btn-primary my-3\" href=\"accountview\"><b class=\"text-center\">Back</b></a>\r\n";
+				
+				// Iteratively add reports that the user previously submitted
+				MVMap<String, Report> reportMap = db.s.openMap("NewReports");
+				List<String> reportKeys = reportMap.keyList();
+				
+				for(String currentKey: reportKeys) {
+					Report currentReport = reportMap.get(currentKey);
+					
+					if(currentReport.usernameOfUserWhoReported.equals(email)) {
+						stringToSendToBrowser += "                  <div class=\"card-body bg-primary my-2\">\r\n";
+						stringToSendToBrowser += "                    <div class=\"row\">\r\n";
+						stringToSendToBrowser += "                      <div class=\"col-md-6\">\r\n";
+						stringToSendToBrowser += "                        <h5 class=\"card-title my-2 text-dark\" style=\"font-weight: bold\" align=\"left\">" + currentReport.description +"</h5>\r\n";
+						stringToSendToBrowser += "                        <p align=\"left\" class=\"text-dark\">"+ "<b>Submitted: </b>" + currentReport.timeStamp +"</p>\r\n";
+						stringToSendToBrowser += "                        <p align=\"left\" class=\"text-dark\">"+ "<b>Location: </b>" + currentReport.location +"</p>\r\n";
+						stringToSendToBrowser += "                        <p align=\"left\" class=\"text-dark\">"+ "<b>Category: </b>" + currentReport.category.description() +"</p>\r\n";
+						stringToSendToBrowser += "                        <p align=\"left\" class=\"text-dark\">"+ "<b>Details: </b>" + currentReport.details +"</p>\r\n";
+						stringToSendToBrowser += "                      </div>\r\n";
+						stringToSendToBrowser += "                      <div class=\"col-md-6\"><img class=\"img-fluid d-block\" src=\"/"+ currentReport.filePathToImage +"\" height=\"120\" width=\"120\" align=\"right\" alt=\"Picture of Problem\"></div>\r\n";			
+						stringToSendToBrowser += "                    </div>\r\n";
+						stringToSendToBrowser += "                  </div>\r\n";
+					}
+					
+				}
+				
 				stringToSendToBrowser += "            </div>\r\n";
 				stringToSendToBrowser += "          </div>\r\n";
 				stringToSendToBrowser += "        </div>\r\n";
 				stringToSendToBrowser += "      </div>\r\n";
 				stringToSendToBrowser += "    </div>\r\n";
+				
+				
 				stringToSendToBrowser += "  </div>\n";
 				stringToSendToBrowser += "  <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n";
 				stringToSendToBrowser += "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\" style=\"\"></script>\n";
