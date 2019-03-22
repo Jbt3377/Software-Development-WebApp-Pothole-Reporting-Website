@@ -42,7 +42,7 @@ public class SubmitSuccessful extends DynamicWebPage
 			stringToSendToBrowser += "        <ul class=\"navbar-nav mx-auto\">\r\n";
 			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#reportForm\">Report a Problem</a> </li>\r\n";
 			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n";
-			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"HelpView\">FAQ</a> </li>\r\n";
+			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"Help.html\">FAQ</a> </li>\r\n";
 			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\r\n";
 			stringToSendToBrowser += "        </ul>\r\n";
 			stringToSendToBrowser += "        <ul class=\"navbar-nav\">\r\n";

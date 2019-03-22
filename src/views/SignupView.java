@@ -50,7 +50,7 @@ public class SignupView extends DynamicWebPage{
 					"        <ul class=\"navbar-nav mx-auto\">  \r\n" + 
 					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"index.html#reportForm\">Report a Problem</a> </li>  \r\n" + 
 					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>  \r\n" + 
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"formPage.html\">FAQ</a> </li>  \r\n" + 
+					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"Help.html\">FAQ</a> </li>  \r\n" + 
 					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About Us</a> </li>  \r\n" + 
 					"        </ul>  \r\n" + 
 					"        <ul class=\"navbar-nav\">  \r\n" + 
@@ -196,7 +196,7 @@ public class SignupView extends DynamicWebPage{
 			stringToSendToWebBrowser += "        <ul class=\"navbar-nav mx-auto\">\n";
 			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#report\">Report a Problem</a> </li>\n";
 			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\n";
-			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"formPage.html\">FAQ</a> </li>\n";
+			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"help.html\">FAQ</a> </li>\n";
 			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About Us</a> </li>\n";
 			stringToSendToWebBrowser += "        </ul>\n";
 			stringToSendToWebBrowser += "        <ul class=\"navbar-nav\">\n";
