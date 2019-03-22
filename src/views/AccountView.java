@@ -4,7 +4,8 @@ package views;
 import java.io.File;
 
 import org.h2.mvstore.MVMap;
-
+import java.io.*;
+import java.util.*;
 import model.Profile;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
@@ -32,6 +33,7 @@ public class AccountView extends DynamicWebPage{
 		String address = currentUser.address;
 		String filepath = currentUser.filePathToProfilePicture;
 		
+		
 		// D- Use these attributes ( /\ )to auto fill entries upon loading page
 		
 		if(toProcess.path.equalsIgnoreCase("accountview") || toProcess.path.equalsIgnoreCase("account.html")) {
@@ -52,7 +54,7 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "    <script type=\"text/javascript\" src=\"/js/bootstrap.min.js\"></script>\" +\r\n";
 			stringToSendToBrowser += "  </head>\r\n";
 			stringToSendToBrowser += "\r\n";
-			stringToSendToBrowser += "  <body onload=\"ProfileLoadFunction('" + name + "', '" + email + "', '" + password + "', '" + address + "', '" + filepath + "')\" class=\"text-left\">\r\n";
+			stringToSendToBrowser += "  <body onload=\"ProfileLoadFunction('" + name + "', '" + password + "', '" + address + "')\" class=\"text-left\">\r\n";
 			stringToSendToBrowser += "    <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\r\n";
 			stringToSendToBrowser += "      <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\r\n";
 			stringToSendToBrowser += "        <span class=\"navbar-toggler-icon\"></span>\r\n";
@@ -92,16 +94,16 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "                  <form class=\"text-left\" action=\"/SubmitNewDetails\" method=\"POST\" enctype=\"multipart/form-data\">\n";
 			stringToSendToBrowser += "                    <div class=\"form-group\">\r\n";
 			stringToSendToBrowser += "                      <label for=\"newName\">Your Name</label>\r\n";
-			stringToSendToBrowser += "                      <input type=\"text\" class=\"form-control\" name=\"newName\" placeholder=\"Name...\">\r\n";
+			stringToSendToBrowser += "                      <input type=\"text\" class=\"form-control\" id=\"newName\" placeholder=\"Name...\">\r\n";
 			stringToSendToBrowser += "                    </div>\r\n";
 			stringToSendToBrowser += "                    <div class=\"form-group\">\r\n";
 			stringToSendToBrowser += "                      <label for=\"newAddress\" class=\"w-100 text-left pt-2\"><b>Address</b></label>\r\n";
-			stringToSendToBrowser += "                      <textarea name=\"Address\" rows=\"5\" cols=\"30\" class=\"form-control text-left w-70 text-white\" maxlength=\"255\" name=\"newAddress\" placeholder=\"Address...\"> </textarea>\r\n";
+			stringToSendToBrowser += "                      <textarea name=\"Address\" rows=\"5\" cols=\"30\" class=\"form-control text-left w-70 text-white\" maxlength=\"255\" id=\"newAddress\" placeholder=\"Address...\"> </textarea>\r\n";
 			stringToSendToBrowser += "                    </div>\r\n";
 			stringToSendToBrowser += "                    <br><p>You must confirm your password to us before changing details</p><br>\r\n";
 			stringToSendToBrowser += "                    <div class=\"form-row\">\n";
-			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"newPassword\">Password</label> <input type=\"password\" class=\"form-control\" name=\"newPassword\" placeholder=\"Password\"> </div>\n";
-			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"newPasswordConfirm\">Confirm Password</label> <input type=\"password\" class=\"form-control\" name=\"newPasswordConfirm\" placeholder=\"Password\"> </div>\n";
+			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"newPassword\">Password</label> <input type=\"password\" class=\"form-control\" id=\"newPassword\" placeholder=\"Password\"> </div>\n";
+			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"newPasswordConfirm\">Confirm Password</label> <input type=\"password\" class=\"form-control\" id=\"newPasswordConfirm\" placeholder=\"Password\"> </div>\n";
 			stringToSendToBrowser += "                    </div>";
 			stringToSendToBrowser += "                    <input value=\"Submit Changes\" type=\"submit\"  onclick=\"return confirmDetailsChange();\" class=\"mt-4\">\r\n";
 			stringToSendToBrowser += "       	          <script>\r\n";
@@ -155,6 +157,7 @@ public class AccountView extends DynamicWebPage{
 				currentUser.address = toProcess.params.get("newAddress");
 				currentUser.password = toProcess.params.get("newPassword");
 				// D - refresh or redirect page to confirm changes
+				
 			}else {
 				// D - Popup saying password needs confirmed
 			}
@@ -162,7 +165,7 @@ public class AccountView extends DynamicWebPage{
 
 		}else if(toProcess.path.equalsIgnoreCase("SubmitNewProfilePicture")) {
 			System.out.println("Changing Profile Picture");
-			try {
+		try {
 			String newfilepath = toProcess.params.get("fileupload");
 			File uploaded = new File(newfilepath);
 			int ind = newfilepath.lastIndexOf('.');
