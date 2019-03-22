@@ -37,7 +37,6 @@ public class IndexView extends DynamicWebPage{
 			System.out.println(email);
 			System.out.println(password);
 			System.out.println(name);
-			System.out.println(name + name);
 			
 			MVMap<String, Profile> profiles = db.s.openMap("Profiles");
 			
@@ -65,7 +64,7 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "        <ul class=\"navbar-nav mx-auto\">\r\n";
 			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#reportForm\">Report a Problem</a> </li>\r\n";
 			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n";
-			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"HelpView\">FAQ</a> </li>\r\n";
+			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"Help.html\">FAQ</a> </li>\r\n";
 			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\r\n";
 			stringToSendToBrowser += "        </ul>\r\n";
 			stringToSendToBrowser += "        <ul class=\"navbar-nav\">\r\n";
@@ -217,8 +216,7 @@ public class IndexView extends DynamicWebPage{
 			stringToSendToBrowser += "                    <input type=\"file\" id=\"fileupload\" name=\"fileupload\" value=\"fileupload\" class=\"text-left form-control-file\">\r\n";
 			stringToSendToBrowser += "                    <input value=\"Submit\" type=\"submit\" onclick=\"return clicked();\" class=\"mt-4\">\r\n";
 			stringToSendToBrowser += "       			  <script>\r\n";
-			stringToSendToBrowser += "       			    function clicked(){\r\n";
-			stringToSendToBrowser += "     					  ";
+			stringToSendToBrowser += "       			    function clicked('" + email + "'){\r\n";
 			stringToSendToBrowser += "       			      return confirm('Make sure you are signed in! If you want to keep up to date with the problem, sign in before submitting.');\r\n";
 			stringToSendToBrowser += "       			    }\r\n";
 			stringToSendToBrowser += "       			  </script>\r\n";
@@ -320,6 +318,8 @@ public class IndexView extends DynamicWebPage{
 			// Time Stamp
 			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 			problemReport.timeStamp = sdf.format(timestamp);
+			
+			// 
 			
 			// Add report to database
 			MVMap<String, Report> allReports = db.s.openMap("NewReports");
