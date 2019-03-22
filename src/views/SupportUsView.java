@@ -4,6 +4,7 @@ import java.util.List;
 import org.h2.mvstore.MVMap;
 import model.Donation;
 import model.Profile;
+import model.Report;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import web.WebRequest;
@@ -140,7 +141,6 @@ public class SupportUsView extends DynamicWebPage {
 		} 
 		*/
 
-		
 			MVMap<String, Donation> Donation = db.s.openMap("Donation");
 			List<String> newDonatorKeys = Donation.keyList();
 			int index = newDonatorKeys.size()-1;
@@ -210,6 +210,10 @@ public class SupportUsView extends DynamicWebPage {
 			newdonation.name = toProcess.params.get("Name");
 			newdonation.amount = toProcess.params.get("Amount");
 			
+			MVMap<String, Donation> newDonation = db.s.openMap("Donation");
+			newDonation.put(newdonation.donatorID, newdonation);
+			db.commit();
+
 			
 			String stringToSendToWebBrowser = "<!DOCTYPE html>\r\n" + 
 					"<html>\r\n" + 
