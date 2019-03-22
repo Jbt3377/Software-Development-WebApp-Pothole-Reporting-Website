@@ -31,12 +31,7 @@ public class IndexView extends DynamicWebPage{
 			
 			System.out.println("\n\nRequest for Web Page: " + toProcess.path);
 			String email = toProcess.cookies.get("email");
-			String password = toProcess.cookies.get("password");
-			String name = toProcess.cookies.get("name");
-			
-			System.out.println(email);
-			System.out.println(password);
-			System.out.println(name);
+			System.out.println("User Email: " + email);
 			
 			MVMap<String, Profile> profiles = db.s.openMap("Profiles");
 			
@@ -241,6 +236,7 @@ public class IndexView extends DynamicWebPage{
 			{	
 					Validator.validate(db);
 					Profile user = profiles.get(email);
+					String password = user.password;
 					if((user==null)||(!user.password.contentEquals(password)))
 					{
 					String stringToSendToWebBrowser = "";
@@ -307,19 +303,18 @@ public class IndexView extends DynamicWebPage{
 				uploaded.renameTo(new File("httpdocs/"+problemReport.reportID+extension));
 				problemReport.filePathToImage = problemReport.reportID+extension;
 			}catch( StringIndexOutOfBoundsException e ) {
+				// If no image provided, a default one is chosen.
 				problemReport.filePathToImage = decideDefaultImage(problemReport.category);
-				System.out.println("uh oh no image was provided");
 			}
 		
 			
-			// Get usedID of user who submitted if logged in
-			
+			// Get email of user who submitted if logged in
+			String emailOfUserWhoSubmitted = toProcess.cookies.get("email");
+			problemReport.usernameOfUserWhoReported = emailOfUserWhoSubmitted;
 			
 			// Time Stamp
 			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 			problemReport.timeStamp = sdf.format(timestamp);
-			
-			// 
 			
 			// Add report to database
 			MVMap<String, Report> allReports = db.s.openMap("NewReports");
