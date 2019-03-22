@@ -275,7 +275,7 @@ public class SupportUsView extends DynamicWebPage {
 					"            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n" + 
 					"          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n" + 
 					"            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n" + 
-					"          </a> <a href=\"https://www.instagram.com/qubelfast/?hl=en\">\r\\n" +
+					"          </a> <a href=\"https://www.instagrm.com/qubelfast/?hl=en\">\r\\n" +
 					"            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n" + 
 					"          </a> </div>\r\n" + 
 					"      </div>\r\n" + 
