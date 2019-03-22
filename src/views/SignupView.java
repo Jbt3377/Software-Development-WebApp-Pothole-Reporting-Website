@@ -142,6 +142,7 @@ public class SignupView extends DynamicWebPage{
 			user.email = toProcess.params.get("email");
 			user.password = toProcess.params.get("password");
 			user.username = "user_"+System.currentTimeMillis();
+			user.address = "";
 			user.filePathToProfilePicture = "https://static.pingendo.com/img-placeholder-3.svg";
 			
 			MVMap<String, Profile> profiles = db.s.openMap("Profiles");

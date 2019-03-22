@@ -4,6 +4,7 @@ import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import views.AboutUsView;
 import views.AccountView;
+import views.ChangeDetailsOutcome;
 import views.HelpView;
 import views.IndexView;
 import views.LoginView;
@@ -104,6 +105,8 @@ public class Main
 		
 		SubmitSuccessful submitSuccessfulPage = new SubmitSuccessful(databaseInterface, fileStoreInterface);
 		
+		ChangeDetailsOutcome changeDetailsOutcomePage = new ChangeDetailsOutcome(databaseInterface, fileStoreInterface);
+		
 		
 		//this variable indicates that the program should keep running
 			//by setting this variable to false the program will exit
@@ -148,12 +151,6 @@ public class Main
 	        	if(toProcess.path.length()==0)
 	        		toProcess.path = "indexview";	
 
-	        	//Uncomment this code to see an example dynamic page or an example dynamic page that responds to a form
-//		        if(exampleDynamicPage.process(toProcess))
-//		        {
-//		        	//example page is processed
-//		        }
-//		        else
 		        if(testFormPage.process(toProcess))
 		        {
 		        	
@@ -175,6 +172,8 @@ public class Main
 		        	// Help page is processed
 		        }else if(submitSuccessfulPage.process(toProcess)) {
 		        	// Submit successful page is processed
+		        }else if(changeDetailsOutcomePage.process(toProcess)) {
+		        	// Details Changed Successful page is processed
 		        }
 		        else
 		        {

@@ -7,6 +7,7 @@ import org.h2.mvstore.MVMap;
 import java.io.*;
 import java.util.*;
 import model.Profile;
+import model.Report;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import web.WebRequest;
@@ -94,29 +95,21 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "                  <form class=\"text-left\" action=\"/SubmitNewDetails\" method=\"POST\" enctype=\"multipart/form-data\">\n";
 			stringToSendToBrowser += "                    <div class=\"form-group\">\r\n";
 			stringToSendToBrowser += "                      <label for=\"newName\">Your Name</label>\r\n";
-			stringToSendToBrowser += "                      <input type=\"text\" class=\"form-control\" id=\"newName\" placeholder=\"Name...\">\r\n";
+			stringToSendToBrowser += "                      <input type=\"text\" class=\"form-control\" name=\"newName\" id=\"newName\" placeholder=\"Name...\">\r\n";
 			stringToSendToBrowser += "                    </div>\r\n";
 			stringToSendToBrowser += "                    <div class=\"form-group\">\r\n";
 			stringToSendToBrowser += "                      <label for=\"newAddress\" class=\"w-100 text-left pt-2\"><b>Address</b></label>\r\n";
-			stringToSendToBrowser += "                      <textarea name=\"Address\" rows=\"5\" cols=\"30\" class=\"form-control text-left w-70 text-white\" maxlength=\"255\" id=\"newAddress\" placeholder=\"Address...\"> </textarea>\r\n";
+			stringToSendToBrowser += "                      <textarea rows=\"5\" cols=\"30\" class=\"form-control text-left w-70 text-white\" maxlength=\"255\" name=\"newAddress\" id=\"newAddress\" placeholder=\"Address...\"> </textarea>\r\n";
 			stringToSendToBrowser += "                    </div>\r\n";
 			stringToSendToBrowser += "                    <br><p>You must confirm your password to us before changing details</p><br>\r\n";
 			stringToSendToBrowser += "                    <div class=\"form-row\">\n";
-			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"newPassword\">Password</label> <input type=\"password\" class=\"form-control\" id=\"newPassword\" placeholder=\"Password\"> </div>\n";
-			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"newPasswordConfirm\">Confirm Password</label> <input type=\"password\" class=\"form-control\" id=\"newPasswordConfirm\" placeholder=\"Password\"> </div>\n";
+			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"newPassword\">Password</label> <input type=\"password\" class=\"form-control\" name=\"newPassword\" id=\"newPassword\" placeholder=\"Password\"> </div>\n";
+			stringToSendToBrowser += "                      <div class=\"form-group col-md-6\"> <label for=\"newPasswordConfirm\">Confirm Password</label> <input type=\"password\" class=\"form-control\" name=\"newPasswordConfirm\" id=\"newPasswordConfirm\" placeholder=\"Password\"> </div>\n";
 			stringToSendToBrowser += "                    </div>";
-			stringToSendToBrowser += "                    <input value=\"Submit Changes\" type=\"submit\"  onclick=\"return confirmDetailsChange();\" class=\"mt-4\">\r\n";
+			stringToSendToBrowser += "                    <input value=\"Save Changes\" type=\"submit\"  onclick=\"return confirmDetailsChange();\" class=\"mt-4\">\r\n";
 			stringToSendToBrowser += "       	          <script>\r\n";
 			stringToSendToBrowser += "       	            function confirmDetailsChange(){\r\n";
 			stringToSendToBrowser += "  					  return confirm('Are you sure you want to change these details?');\r\n";  
-
-// Previous attempt at validating passwords in java script
-//			stringToSendToBrowser += "  					  if(password1 == password_2){\r\n";
-//			stringToSendToBrowser += "  					    return confirm('Are you sure you want to change these details?');\r\n";  
-//			stringToSendToBrowser += "     		              }else{\r\n";
-//			stringToSendToBrowser += "     		                alert('Passwords do not match');\r\n";
-//			stringToSendToBrowser += "     		                return false;\r\n";
-//			stringToSendToBrowser += "     		              }\r\n";
 			stringToSendToBrowser += "       	            }\r\n";
 			stringToSendToBrowser += "       	          </script>\r\n";
 			stringToSendToBrowser += "                  </form>\n";
@@ -126,7 +119,7 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "                <img class=\"d-block rounded-circle img-fluid w-75 mx-auto\" src=\"" + filepath + "\">\n";
 			stringToSendToBrowser += "                <label for=\"pictures\">Profile Picture</label>\r\n";
 			stringToSendToBrowser += "                <input type=\"file\" id=\"fileupload\" name=\"fileupload\" value=\"fileupload\" class=\"text-left form-control-file\">\r\n";
-			stringToSendToBrowser += "                <input value=\"Submit\" type=\"submit\" onclick=\"return confirmPictureChange();\" class=\"mt-4\">\r\n";
+			stringToSendToBrowser += "                <input value=\"Apply new Profile Picture\" type=\"submit\" onclick=\"return confirmPictureChange();\" class=\"mt-4\">\r\n";
 			stringToSendToBrowser += "       	      <script>\r\n";
 			stringToSendToBrowser += "       	        function confirmPictureChange(){\r\n";
 			stringToSendToBrowser += "     		          return confirm('Are you sure you want to change your profile picture?')";
@@ -151,35 +144,47 @@ public class AccountView extends DynamicWebPage{
 			
 		}else if(toProcess.path.equalsIgnoreCase("SubmitNewDetails")) {
 			System.out.println("Changing Details");
+			System.out.println(toProcess.params.get("newName"));
+			System.out.println(toProcess.params.get("newAddress"));
+			System.out.println(toProcess.params.get("newPassword"));
+			System.out.println(toProcess.params.get("newPasswordConfirm"));
 			
-			if(toProcess.params.get("newPassword").equals(toProcess.params.get("newPasswordConfirm"))) {
+			if(toProcess.params.get("newPassword").equals(toProcess.params.get("newPasswordConfirm")) && toProcess.params.get("newPasswordConfirm")!=null) {
 				currentUser.name = toProcess.params.get("newName");
 				currentUser.address = toProcess.params.get("newAddress");
 				currentUser.password = toProcess.params.get("newPassword");
-				// D - refresh or redirect page to confirm changes
+				db.commit();
+				
+				toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, "<html><body><script>window.location.href = \"/ChangeDetailsSuccessful.html\"</script></body></html>");
 				
 			}else {
-				// D - Popup saying password needs confirmed
+				toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, "<html><body><script>window.location.href = \"/ChangeDetailsFailed.html\"</script></body></html>");
 			}
+			
+			return true;
 			
 
 		}else if(toProcess.path.equalsIgnoreCase("SubmitNewProfilePicture")) {
 			System.out.println("Changing Profile Picture");
-		try {
-			String newfilepath = toProcess.params.get("fileupload");
-			File uploaded = new File(newfilepath);
-			int ind = newfilepath.lastIndexOf('.');
-			String extension = newfilepath.substring(ind);
-			uploaded.renameTo(new File("httpdocs/"+"profile_pic_" + System.currentTimeMillis() +extension));
-			newfilepath = "profile_pic_" + System.currentTimeMillis() + extension;
-			System.out.println(newfilepath);
-		}catch( StringIndexOutOfBoundsException e ) {
-			// D - Popup saying no file provided
+			System.out.println(toProcess.params.get("fileupload"));
 			
-			// Dont think this is needed but holding it anyway
-			// filepath = "https://static.pingendo.com/img-placeholder-3.svg";
-		}
-		
+			if(toProcess.params.get("fileupload") !=null) {
+				try {
+					String newfilepath = toProcess.params.get("fileupload");
+					File uploaded = new File(newfilepath);
+					int ind = newfilepath.lastIndexOf('.');
+					String extension = newfilepath.substring(ind);
+					uploaded.renameTo(new File("httpdocs/"+"profile_pic_" + System.currentTimeMillis() +extension));
+					newfilepath = "profile_pic_" + System.currentTimeMillis() + extension;
+					toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, "<html><body><script>window.location.href = \"/ChangePictureSuccess.html\"</script></body></html>");
+				}catch( StringIndexOutOfBoundsException e ) {
+					toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, "<html><body><script>window.location.href = \"/ChangePictureFailed.html\"</script></body></html>");
+				}
+			}else {
+				toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, "<html><body><script>window.location.href = \"/ChangePictureFailedNoPicture.html\"</script></body></html>");
+			}
+			
+			return true;
 		}
 	return false; 
 	}
