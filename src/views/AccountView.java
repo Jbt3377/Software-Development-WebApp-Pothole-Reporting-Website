@@ -37,9 +37,9 @@ public class AccountView extends DynamicWebPage{
 				
 			if(toProcess.path.equalsIgnoreCase("accountview") || toProcess.path.equalsIgnoreCase("account.html")) {
 				
+				// Account View - If currently signed in
 				System.out.println("\n\nRequest for Web Page: " + toProcess.path);
 				String currentFilePathToProfilePic = currentUser.filePathToProfilePicture;
-				System.out.println("Profile Picture File Path: " + currentFilePathToProfilePic);
 				
 				String stringToSendToBrowser = "";
 				stringToSendToBrowser += "<!DOCTYPE html>\r\n";
@@ -47,12 +47,12 @@ public class AccountView extends DynamicWebPage{
 				stringToSendToBrowser += "  <head>\r\n";
 				stringToSendToBrowser += "    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" type=\"text/css\">\r\n";
 				stringToSendToBrowser += "    <link rel=\"stylesheet\" href=\"now-ui-kit.css\" type=\"text/css\">\r\n";
-
-				stringToSendToBrowser += "      <script src=\"/js/html5shiv.js\"></script>\r\n" ;
-				stringToSendToBrowser += "      <script src=\"/js/respond.min.js\"></script>\r\n"; 
-
-				stringToSendToBrowser += "    <script type=\"text/javascript\" src=\"/js/jquery-1.11.1.min.js\"></script>\r\n";
-				stringToSendToBrowser += "    <script type=\"text/javascript\" src=\"/js/bootstrap.min.js\"></script>\r\n";
+				stringToSendToBrowser += "    <!--[if lt IE 9]>\" +\r\n";
+				stringToSendToBrowser += "      <script src=\"/js/html5shiv.js\"></script>\" +\r\n" ;
+				stringToSendToBrowser += "      <script src=\"/js/respond.min.js\"></script>\" +\r\n"; 
+				stringToSendToBrowser += "    <![endif]-->\" +\r\n";
+				stringToSendToBrowser += "    <script type=\"text/javascript\" src=\"/js/jquery-1.11.1.min.js\"></script>\" +\r\n";
+				stringToSendToBrowser += "    <script type=\"text/javascript\" src=\"/js/bootstrap.min.js\"></script>\" +\r\n";
 				stringToSendToBrowser += "  </head>\r\n";
 				stringToSendToBrowser += "\r\n";
 				stringToSendToBrowser += "  <body onload=\"ProfileLoadFunction('" + name + "', '" + password + "', '" + address + "')\" class=\"text-left\">\r\n";
@@ -65,9 +65,9 @@ public class AccountView extends DynamicWebPage{
 				stringToSendToBrowser += "          <b>&nbsp;FILL MY HOLE</b>\n";
 				stringToSendToBrowser += "          </a>\n";
 				stringToSendToBrowser += "          <ul class=\"navbar-nav mx-auto\">\r\n";
-				stringToSendToBrowser += "            <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#reportForm\">Report a Problem</a> </li>\r\n";
-				stringToSendToBrowser += "            <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n";
-				stringToSendToBrowser += "            <li class=\"nav-item\"> <a class=\"nav-link\" href=\"HelpView\">FAQ</a> </li>\r\n";
+				stringToSendToBrowser += "            <li class=\"nav-item\"> <a class=\"nav-link\" href=\"indexview\">Report a Problem</a> </li>\r\n";
+				stringToSendToBrowser += "            <li class=\"nav-item\"> <a class=\"nav-link\" href=\"\">Your Area</a> </li>\r\n";
+				stringToSendToBrowser += "            <li class=\"nav-item\"> <a class=\"nav-link\" href=\"help.html\">FAQ</a> </li>\r\n";
 				stringToSendToBrowser += "            <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\r\n";
 				stringToSendToBrowser += "          </ul>\r\n";
 				stringToSendToBrowser += "          <ul class=\"navbar-nav\">\r\n";
@@ -168,25 +168,7 @@ public class AccountView extends DynamicWebPage{
 				stringToSendToBrowser += "      </div>\r\n";
 				stringToSendToBrowser += "    </div>\r\n";
 				
-				
 				stringToSendToBrowser += "  </div>\n";
-				//Footer
-				stringToSendToBrowser +="  <div class=\"py-3 bg-dark\">\r\n";
-				stringToSendToBrowser +="    <div class=\"container\">\r\n";
-				stringToSendToBrowser +="      <div class=\"row\">\r\n";
-				stringToSendToBrowser +="        <div class=\"my-3 col-lg-8\">\r\n";
-				stringToSendToBrowser +="          <h2 class=\"text-center text-lg-left text-white\" style=\"\">Help others by sharing</h2>\r\n";
-				stringToSendToBrowser +="        </div>\r\n";
-				stringToSendToBrowser +="        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/FMH-308708959763566/\">\r\n";
-				stringToSendToBrowser +="            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n";
-				stringToSendToBrowser +="          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n";
-				stringToSendToBrowser +="            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n";
-				stringToSendToBrowser +="          </a> <a href=\"https://www.instagram.com/fmhwebpage/\">\r\n";
-				stringToSendToBrowser +="            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n";
-				stringToSendToBrowser +="          </a> </div>\r\n";
-				stringToSendToBrowser +="      </div>\r\n";
-				stringToSendToBrowser +="    </div>\r\n";
-				stringToSendToBrowser +="  </div>\r\n";
 				stringToSendToBrowser += "  <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n";
 				stringToSendToBrowser += "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\" style=\"\"></script>\n";
 				stringToSendToBrowser += "  <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\"></script>\n";
@@ -198,21 +180,20 @@ public class AccountView extends DynamicWebPage{
 				return true;
 				
 			}else if(toProcess.path.equalsIgnoreCase("SubmitNewDetails")) {
-				System.out.println("Changing Details");
-				System.out.println(toProcess.params.get("newName"));
-				System.out.println(toProcess.params.get("newAddress"));
-				System.out.println(toProcess.params.get("newPassword"));
-				System.out.println(toProcess.params.get("newPasswordConfirm"));
+				// Request for Account Details to be updated
 				
 				if(toProcess.params.get("newPassword").equals(toProcess.params.get("newPasswordConfirm")) && toProcess.params.get("newPasswordConfirm")!=null) {
+					// Update Account Details
 					currentUser.name = toProcess.params.get("newName");
 					currentUser.address = toProcess.params.get("newAddress");
 					currentUser.password = toProcess.params.get("newPassword");
 					db.commit();
 					
+					// Redirect to confirm changes
 					toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, "<html><body><script>window.location.href = \"/ChangeDetailsSuccessful.html\"</script></body></html>");
 					
 				}else {
+					// Redirect to inform of unchanged details
 					toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, "<html><body><script>window.location.href = \"/ChangeDetailsFailed.html\"</script></body></html>");
 				}
 				
@@ -220,11 +201,11 @@ public class AccountView extends DynamicWebPage{
 				
 
 			}else if(toProcess.path.equalsIgnoreCase("SubmitNewProfilePicture")) {
-				System.out.println("Changing Profile Picture");
-				System.out.println(toProcess.params.get("fileupload"));
+				// Request for Account Profile Picture to be updated
 				
 				if(toProcess.params.get("fileupload") !=null) {
 					try {
+						// Save provided image to httpdocs and update the filepath of profile picture in the account object
 						String uniqueString = "profilepic_"+System.currentTimeMillis();
 						String newfilepath = toProcess.params.get("fileupload");
 						File uploaded = new File(newfilepath);
@@ -234,11 +215,14 @@ public class AccountView extends DynamicWebPage{
 						newfilepath = uniqueString + extension;
 						currentUser.filePathToProfilePicture = newfilepath;
 						db.commit();
+						// Redirect to inform of successful profile picture update
 						toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, "<html><body><script>window.location.href = \"/ChangePictureSuccess.html\"</script></body></html>");
 					}catch( StringIndexOutOfBoundsException e ) {
+						// Redirect to inform of unsuccessful update of profile picture
 						toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, "<html><body><script>window.location.href = \"/ChangePictureFailed.html\"</script></body></html>");
 					}
 				}else {
+					// Redirect to inform of no image provided
 					toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, "<html><body><script>window.location.href = \"/ChangePictureFailedNoPicture.html\"</script></body></html>");
 				}
 				
@@ -251,7 +235,7 @@ public class AccountView extends DynamicWebPage{
 			
 			if(toProcess.path.equalsIgnoreCase("accountview") || toProcess.path.equalsIgnoreCase("account.html"))
             {
-               
+               // Account Page - If user is not signed in, access is denied
                 System.out.println("\n\nRequest for Web Page: " + toProcess.path);
                 String username = toProcess.cookies.get("username");
                
@@ -312,23 +296,6 @@ public class AccountView extends DynamicWebPage{
                 stringToSendToBrowser += "      </div>\r\n";
                 stringToSendToBrowser += "    </div>\r\n";
                 stringToSendToBrowser += "  </div>\r\n";
-              //Footer
-    			stringToSendToBrowser +="  <div class=\"py-3 bg-dark\">\r\n";
-    			stringToSendToBrowser +="    <div class=\"container\">\r\n";
-    			stringToSendToBrowser +="      <div class=\"row\">\r\n";
-    			stringToSendToBrowser +="        <div class=\"my-3 col-lg-8\">\r\n";
-    			stringToSendToBrowser +="          <h2 class=\"text-center text-lg-left text-white\" style=\"\">Help others by sharing</h2>\r\n";
-    			stringToSendToBrowser +="        </div>\r\n";
-    			stringToSendToBrowser +="        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/FMH-308708959763566/\">\r\n";
-    			stringToSendToBrowser +="            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n";
-    			stringToSendToBrowser +="          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n";
-    			stringToSendToBrowser +="            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n";
-    			stringToSendToBrowser +="          </a> <a href=\"https://www.instagram.com/fmhwebpage/\">\r\n";
-    			stringToSendToBrowser +="            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n";
-    			stringToSendToBrowser +="          </a> </div>\r\n";
-    			stringToSendToBrowser +="      </div>\r\n";
-    			stringToSendToBrowser +="    </div>\r\n";
-    			stringToSendToBrowser +="  </div>\r\n";
                 stringToSendToBrowser += "</body>\r\n";
                 stringToSendToBrowser += "</html>\r\n";
                
