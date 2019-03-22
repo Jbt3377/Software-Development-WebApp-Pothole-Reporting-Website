@@ -6,6 +6,7 @@ import org.h2.mvstore.MVMap;
 
 
 import model.FAQ;
+import model.Profile;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import web.WebRequest;
@@ -22,6 +23,9 @@ public class HelpView extends DynamicWebPage
 	{
         if(toProcess.path.equalsIgnoreCase("Help.html"))
         {
+			MVMap<String, Profile> profiles = db.s.openMap("Profiles");
+			String email = toProcess.cookies.get("email");
+        	
         	String stringToSendToWebBrowser = "<!DOCTYPE html>\n";
         	stringToSendToWebBrowser +="<html>\n";
         	stringToSendToWebBrowser +="\n";
@@ -34,28 +38,40 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +="</head>\n" ;
         	stringToSendToWebBrowser +="\n" ;
         	stringToSendToWebBrowser +="<body class=\"text-left\">\n";
-    		stringToSendToWebBrowser +="  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\n";
-    		stringToSendToWebBrowser +="    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\n";
-    		stringToSendToWebBrowser +="        <span class=\"navbar-toggler-icon\"></span>\n";
-    		stringToSendToWebBrowser +="      </button>\n";
-    		stringToSendToWebBrowser +="      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"index.html\">\n";
-    		stringToSendToWebBrowser +="          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\n";
-    		stringToSendToWebBrowser +="          <b>&nbsp;FILL MY HOLE</b>\n";
-    		stringToSendToWebBrowser +="        </a>\n";
-    		stringToSendToWebBrowser +="        <ul class=\"navbar-nav mx-auto\">\n";
-    		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"index.html\">Report a Problem</a> </li>\n";
-    		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\n";
-    		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"help.html\">FAQ</a> </li>\n";
-    		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About Us</a> </li>\n";
-    		stringToSendToWebBrowser +="        </ul>\n";
-    		stringToSendToWebBrowser +="        <ul class=\"navbar-nav\">\n";
-    		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n";
-    		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
-    		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signup.html\">Register</a> </li>\n";
-    		stringToSendToWebBrowser +="        </ul>\n";
-    		stringToSendToWebBrowser +="      </div>\n";
-    		stringToSendToWebBrowser +="    </div>\n";
-    		stringToSendToWebBrowser +="  </nav>\n";
+    		stringToSendToWebBrowser += "  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\r\n";
+    		stringToSendToWebBrowser += "    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\r\n";
+    		stringToSendToWebBrowser += "        <span class=\"navbar-toggler-icon\"></span>\r\n";
+    		stringToSendToWebBrowser += "      </button>\r\n";
+    		stringToSendToWebBrowser += "      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"index.html\">\n";
+    		stringToSendToWebBrowser += "          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\n";
+    		stringToSendToWebBrowser += "          <b>&nbsp;FILL MY HOLE</b>\n";
+    		stringToSendToWebBrowser += "        </a>\n";
+    		stringToSendToWebBrowser += "        <ul class=\"navbar-nav mx-auto\">\r\n";
+    		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#reportForm\">Report a Problem</a> </li>\r\n";
+    		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n";
+    		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"HelpView\">FAQ</a> </li>\r\n";
+    		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\r\n";
+    		stringToSendToWebBrowser += "        </ul>\r\n";
+    		stringToSendToWebBrowser += "        <ul class=\"navbar-nav\">\r\n";
+    		
+    		// Account actions alter depending if user is signed in
+    		if(profiles.get(email)!=null)
+    		{
+    			stringToSendToWebBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome "+ email +"</a> </li>\n";
+    			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
+    			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"accountview\">Account</a> </li>\n";
+    		}
+    		else
+    		{
+    			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n";
+    			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
+    			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"signupview\">Register</a> </li>\n";
+    		}
+    		
+    		stringToSendToWebBrowser += "        </ul>\r\n";
+    		stringToSendToWebBrowser += "      </div>\r\n";
+    		stringToSendToWebBrowser += "    </div>\r\n";
+    		stringToSendToWebBrowser += "  </nav>\r\n";
         	
 
 
@@ -329,11 +345,11 @@ public class HelpView extends DynamicWebPage
 					"        <div class=\"my-3 col-lg-8\">\r\n" + 
 					"          <h1 class=\"text-center text-lg-left text-white\">Help others by sharing</h1>\r\n" + 
 					"        </div>\r\n" + 
-					"        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/QUBelfast/\">\r\n" + 
+					"        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/FMH-308708959763566/\">\r\n" + 
 					"            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\r\n" + 
 					"          </a> <a href=\"https://twitter.com/QUBelfast\">\r\n" + 
 					"            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\r\n" + 
-					"          </a> <a href=\"https://www.instagram.com/qubelfast/?hl=en\">\r\\n" +
+					"          </a> <a href=\"https://www.instagram.com/fmhwebpage/\">\r\\n" +
 					"            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\r\n" + 
 					"          </a> </div>\r\n" + 
 					"      </div>\r\n" + 

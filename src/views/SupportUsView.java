@@ -3,6 +3,8 @@ package views;
 import java.util.List;
 import org.h2.mvstore.MVMap;
 import model.Donation;
+import model.Profile;
+import model.Report;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import web.WebRequest;
@@ -19,17 +21,15 @@ public class SupportUsView extends DynamicWebPage {
 		
 		if(toProcess.path.equalsIgnoreCase("supportus.html")) 
 		{ 
+			
+			MVMap<String, Profile> profiles = db.s.openMap("Profiles");
+			String email = toProcess.cookies.get("email");
+			
 			Donation donation = new Donation();
 			
 			donation.donatorID = "donation_" +System.currentTimeMillis();
 			donation.name = toProcess.params.get("Name");
-			donation.amount = toProcess.params.get("Amount");
-			
-			/*
-			MVMap<String, Donation> Donation = db.s.openMap("Donation");
-			Donation.put(donation.donatorID, donation);
-			List<String> newDonatorKeys = Donation.keyList();*/
-		 
+			donation.amount = toProcess.params.get("Amount");		 
 				
 		String stringToSendToWebBrowser = "";		
 		stringToSendToWebBrowser +="<html>\n";
@@ -42,28 +42,40 @@ public class SupportUsView extends DynamicWebPage {
 		stringToSendToWebBrowser +="</head>\n";
 		stringToSendToWebBrowser +="\n";
 		stringToSendToWebBrowser +="<body class=\"text-left\">\n";
-		stringToSendToWebBrowser +="  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\n";
-		stringToSendToWebBrowser +="    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\n";
-		stringToSendToWebBrowser +="        <span class=\"navbar-toggler-icon\"></span>\n";
-		stringToSendToWebBrowser +="      </button>\n";
-		stringToSendToWebBrowser +="      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"index.html\">\n";
-		stringToSendToWebBrowser +="          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\n";
-		stringToSendToWebBrowser +="          <b>&nbsp;FILL MY HOLE</b>\n";
-		stringToSendToWebBrowser +="        </a>\n";
-		stringToSendToWebBrowser +="        <ul class=\"navbar-nav mx-auto\">\n";
-		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"index.html\">Report a Problem</a> </li>\n";
-		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\n";
-		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"help.html\">FAQ</a> </li>\n";
-		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About Us</a> </li>\n";
-		stringToSendToWebBrowser +="        </ul>\n";
-		stringToSendToWebBrowser +="        <ul class=\"navbar-nav\">\n";
-		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n";
-		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
-		stringToSendToWebBrowser +="          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signup.html\">Register</a> </li>\n";
-		stringToSendToWebBrowser +="        </ul>\n";
-		stringToSendToWebBrowser +="      </div>\n";
-		stringToSendToWebBrowser +="    </div>\n";
-		stringToSendToWebBrowser +="  </nav>\n";
+		stringToSendToWebBrowser += "  <nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\r\n";
+		stringToSendToWebBrowser += "    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\r\n";
+		stringToSendToWebBrowser += "        <span class=\"navbar-toggler-icon\"></span>\r\n";
+		stringToSendToWebBrowser += "      </button>\r\n";
+		stringToSendToWebBrowser += "      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"index.html\">\n";
+		stringToSendToWebBrowser += "          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\n";
+		stringToSendToWebBrowser += "          <b>&nbsp;FILL MY HOLE</b>\n";
+		stringToSendToWebBrowser += "        </a>\n";
+		stringToSendToWebBrowser += "        <ul class=\"navbar-nav mx-auto\">\r\n";
+		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#reportForm\">Report a Problem</a> </li>\r\n";
+		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n";
+		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"HelpView\">FAQ</a> </li>\r\n";
+		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\r\n";
+		stringToSendToWebBrowser += "        </ul>\r\n";
+		stringToSendToWebBrowser += "        <ul class=\"navbar-nav\">\r\n";
+		
+		// Account actions alter depending if user is signed in
+		if(profiles.get(email)!=null)
+		{
+			stringToSendToWebBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome "+ email +"</a> </li>\n";
+			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
+			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"accountview\">Account</a> </li>\n";
+		}
+		else
+		{
+			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n";
+			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n";
+			stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link btn-primary text-light\" href=\"signupview\">Register</a> </li>\n";
+		}
+		
+		stringToSendToWebBrowser += "        </ul>\r\n";
+		stringToSendToWebBrowser += "      </div>\r\n";
+		stringToSendToWebBrowser += "    </div>\r\n";
+		stringToSendToWebBrowser += "  </nav>\r\n";
 		stringToSendToWebBrowser +="  <div class=\"py-5 text-center align-items-center d-flex\" style=\"background-image: linear-gradient(to left bottom, rgba(189, 195, 199, .75), rgba(44, 62, 80, .75)); background-size: 100%;\">\r\n";
 		stringToSendToWebBrowser +="    <div class=\"container py-5\">\r\n";
 		stringToSendToWebBrowser +="      <div class=\"row\">\r\n";
@@ -106,7 +118,7 @@ public class SupportUsView extends DynamicWebPage {
 		stringToSendToWebBrowser +="          <div class=\"card text-white bg-primary mb-3\">\r\n";
 		stringToSendToWebBrowser +="            <div class=\"card-header h-25\" style=\"\">Recent Donators</div>\r\n";
 		stringToSendToWebBrowser +="            <div class=\"card-body my-5 h-25\">\r\n";
-		stringToSendToWebBrowser +="              <h5 class=\"card-title\">These are the names of people who recently donated</h5>\r\n";
+		stringToSendToWebBrowser +="              <h5 class=\"card-title\">These are the top 4 people who have recently donated</h5>\r\n";
 		stringToSendToWebBrowser +="            </div>\r\n";
 		stringToSendToWebBrowser +="          </div>\r\n";
 		stringToSendToWebBrowser +="        </div>\r\n";
@@ -115,11 +127,11 @@ public class SupportUsView extends DynamicWebPage {
 		stringToSendToWebBrowser +="          <div class=\"list-group\">\r\n";
 
 
-		MVMap<String, Donation> Donation = db.s.openMap("Donation");
+		//MVMap<String, Donation> Donation = db.s.openMap("Donation");
 		//Donation.put(donation.donatorID, donation);
-		List<String> newDonatorKeys = Donation.keyList();
+		//List<String> newDonatorKeys = Donation.keyList();
 		
-		if(newDonatorKeys.size()==0) {
+		/*if(newDonatorKeys.size()==0) {
 			Donation adonation = new Donation();
 			adonation.donatorID = "" + System.currentTimeMillis();
 			adonation.name = "a name";
@@ -127,13 +139,25 @@ public class SupportUsView extends DynamicWebPage {
 			Donation.put(adonation.donatorID, adonation);
 			db.commit();
 			newDonatorKeys = Donation.keyList();
-		} 
+		} */
 		
 		
-		for (int index = 0; index < newDonatorKeys.size(); index++) {
+
 			
-			String newDonationUniqueID = newDonatorKeys.get(index);
-			Donation adonation = Donation.get(newDonationUniqueID);
+			//String newDonationUniqueID = newDonatorKeys.get(index);
+			//Donation adonation = Donation.get(newDonationUniqueID);
+			//Donation.put(donation.donatorID, donation);
+		
+			MVMap<String, Donation> Donation = db.s.openMap("Donation");
+			List<String> newDonatorKeys = Donation.keyList();
+			int index = newDonatorKeys.size()-1;
+			
+			if(newDonatorKeys.size() != 0) {
+				
+				while(index>=(newDonatorKeys.size()-4) && index!=-1)
+				{
+					String newDonationKeys = newDonatorKeys.get(index);
+					Donation adonation = Donation.get(newDonationKeys);
 
 			stringToSendToWebBrowser +="            <a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start active\">\r\n";
 			stringToSendToWebBrowser +="              <div class=\"d-flex w-100 justify-content-between\">\r\n";	
@@ -141,9 +165,15 @@ public class SupportUsView extends DynamicWebPage {
 		stringToSendToWebBrowser +="              </div>\r\n";
 		stringToSendToWebBrowser +="              <p class=\"mb-1 text-dark\"> "+adonation.amount+" </p><small><br>&nbsp;<br></small> <small></small>\r\n";
 		stringToSendToWebBrowser +="            </a>\r\n";
+		
+		index--;
+				} 
+			}else  {
+					stringToSendToWebBrowser += "                  <p>No donators yet!</p>";
+				}
 
 //End of recent Donations		
-		}
+		
 
 		stringToSendToWebBrowser +="          </div>\r\n"; 
 		stringToSendToWebBrowser +="        </div>\r\n";
