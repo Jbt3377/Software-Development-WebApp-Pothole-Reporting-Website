@@ -2,6 +2,9 @@ package views;
 
 import java.io.PrintWriter;
 
+import org.h2.mvstore.MVMap;
+
+import model.Profile;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import web.WebRequest;
@@ -15,6 +18,8 @@ public abstract class DynamicWebPage
 	{
 		this.db = db;
 		this.fs = fs;
+		
+		
 	}
 	
 	public abstract boolean process(WebRequest toProcess);

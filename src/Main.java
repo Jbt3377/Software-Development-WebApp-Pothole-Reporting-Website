@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+import org.h2.mvstore.MVMap;
+
+import model.Profile;
 import storage.DatabaseInterface;
 import storage.FileStoreInterface;
 import views.AboutUsView;
@@ -52,6 +55,7 @@ public class Main
 				//change the information stored in the database
 		String databaseFilepath = "database.mv";
 		DatabaseInterface databaseInterface = new DatabaseInterface(databaseFilepath);
+		
 		
 		//Creates a *FileStoreInterface* object
 			//this object manages access to large files that the webserver will provide to a webbrowser
@@ -123,6 +127,8 @@ public class Main
 		{
 			//check the time since the last update of the ip
 			//potentially update the otidae redirection
+			
+			
 			
 			//This application forces a strict flow of control over requests to the webserver from webbrowsers
 				//One request is handled at a time to prevent there being issues with two commands modifying the 

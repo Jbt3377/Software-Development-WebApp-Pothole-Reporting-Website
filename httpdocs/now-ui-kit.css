@@ -4346,7 +4346,7 @@ button.bg-gray:focus {
   border-left: 0 !important; }
 
 .border-primary {
-  border-color: #ff8900 !important; }
+  border: 3px solid #ff8900 !important; }
 
 .border-secondary {
   border-color: #888 !important; }
