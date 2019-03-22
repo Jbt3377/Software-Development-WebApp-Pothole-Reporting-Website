@@ -32,14 +32,12 @@ public class AccountView extends DynamicWebPage{
 		String name = currentUser.name;
 		String password = currentUser.password;
 		String address = currentUser.address;
-		String filepath = currentUser.filePathToProfilePicture;
-		
-		
-		// D- Use these attributes ( /\ )to auto fill entries upon loading page
-		
+			
 		if(toProcess.path.equalsIgnoreCase("accountview") || toProcess.path.equalsIgnoreCase("account.html")) {
 			
 			System.out.println("\n\nRequest for Web Page: " + toProcess.path);
+			String currentFilePathToProfilePic = currentUser.filePathToProfilePicture;
+			System.out.println("Profile Picture File Path: " + currentFilePathToProfilePic);
 			
 			String stringToSendToBrowser = "";
 			stringToSendToBrowser += "<!DOCTYPE html>\r\n";
@@ -78,7 +76,8 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "        </div>\r\n";
 			stringToSendToBrowser += "      </div>\r\n";
 			stringToSendToBrowser += "    </nav>\r\n"; 
-			stringToSendToBrowser += "  <div class=\"d-flex h-100 w-100 pt-3 pb-5 mt-0 mb-5 text-center flex-column align-items-stretch\" style=\"background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: auto, auto;  background-repeat: repeat, repeat;\" >\n";
+//			stringToSendToBrowser += "  <div class=\"d-flex h-100 w-100 pt-3 pb-5 mt-0 mb-5 text-center flex-column align-items-stretch\" style=\"background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: cover, cover;  background-repeat: repeat, repeat;\" >\n";
+			stringToSendToBrowser += "  <div class=\"text-center text-white pt-3\" style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(&quot;https://static.pingendo.com/cover-bubble-dark.svg&quot;); background-position: center center, center center; background-size: cover, cover; background-repeat: repeat, repeat;\" >\r\n";
 			stringToSendToBrowser += "    <div class=\"py-0 px-5 container rounded w-100\">\n";
 			stringToSendToBrowser += "      <div class=\"card bg-dark\">\n";
 			stringToSendToBrowser += "        <div class=\"card-body w-100 px-0 text-center\">\n";
@@ -116,7 +115,8 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "                </div>\n";
 			stringToSendToBrowser += "              </div>\n";
 			stringToSendToBrowser += "              <form class=\"col-md-6 text-left\" action=\"/SubmitNewProfilePicture\" method=\"POST\" enctype=\"multipart/form-data\">\r\n";
-			stringToSendToBrowser += "                <img class=\"d-block rounded-circle img-fluid w-75 mx-auto\" src=\"" + filepath + "\">\n";
+			System.out.println("HEYYYYYY: " + currentFilePathToProfilePic);
+			stringToSendToBrowser += "                <img class=\"d-block rounded-circle img-fluid w-75 mx-auto\" src=\"" + currentFilePathToProfilePic + "\">\n";
 			stringToSendToBrowser += "                <label for=\"pictures\">Profile Picture</label>\r\n";
 			stringToSendToBrowser += "                <input type=\"file\" id=\"fileupload\" name=\"fileupload\" value=\"fileupload\" class=\"text-left form-control-file\">\r\n";
 			stringToSendToBrowser += "                <input value=\"Apply new Profile Picture\" type=\"submit\" onclick=\"return confirmPictureChange();\" class=\"mt-4\">\r\n";
@@ -130,7 +130,18 @@ public class AccountView extends DynamicWebPage{
 			stringToSendToBrowser += "          </div>\n";
 			stringToSendToBrowser += "        </div>\n";
 			stringToSendToBrowser += "      </div>\n";
-			stringToSendToBrowser += "    </div>\n";
+			stringToSendToBrowser += "    <div class=\"container py-4\" style=\"width: 1200px; height: 700px;>\r\n";
+			stringToSendToBrowser += "      <div class=\"row\">\r\n";
+			stringToSendToBrowser += "        <div class=\"card py-0 px-5 container rounded w-100 text-white bg-dark my-3 align-center\">\r\n";
+			stringToSendToBrowser += "          <div class=\"card-header text-center\"><b class=\"w-100 h-100\">New profile picture added!</b></div>\r\n";
+			stringToSendToBrowser += "            <div class=\"card-body\">\r\n";
+			stringToSendToBrowser += "              <p>Profile picture couldn't be saved - image not valid!</p><br>\r\n";
+			stringToSendToBrowser += "              <a class=\"btn btn-primary my-3\" href=\"accountview\"><b class=\"text-center\">Back</b></a>\r\n";
+			stringToSendToBrowser += "            </div>\r\n";
+			stringToSendToBrowser += "          </div>\r\n";
+			stringToSendToBrowser += "        </div>\r\n";
+			stringToSendToBrowser += "      </div>\r\n";
+			stringToSendToBrowser += "    </div>\r\n";
 			stringToSendToBrowser += "  </div>\n";
 			stringToSendToBrowser += "  <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n";
 			stringToSendToBrowser += "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\" style=\"\"></script>\n";
@@ -170,12 +181,15 @@ public class AccountView extends DynamicWebPage{
 			
 			if(toProcess.params.get("fileupload") !=null) {
 				try {
+					String uniqueString = "profilepic_"+System.currentTimeMillis();
 					String newfilepath = toProcess.params.get("fileupload");
 					File uploaded = new File(newfilepath);
 					int ind = newfilepath.lastIndexOf('.');
 					String extension = newfilepath.substring(ind);
-					uploaded.renameTo(new File("httpdocs/"+"profile_pic_" + System.currentTimeMillis() +extension));
-					newfilepath = "profile_pic_" + System.currentTimeMillis() + extension;
+					uploaded.renameTo(new File("httpdocs/"+uniqueString+extension));
+					newfilepath = uniqueString + extension;
+					currentUser.filePathToProfilePicture = newfilepath;
+					db.commit();
 					toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, "<html><body><script>window.location.href = \"/ChangePictureSuccess.html\"</script></body></html>");
 				}catch( StringIndexOutOfBoundsException e ) {
 					toProcess.r = new WebResponse(WebResponse.HTTP_OK, WebResponse.MIME_HTML, "<html><body><script>window.location.href = \"/ChangePictureFailed.html\"</script></body></html>");

@@ -49,7 +49,6 @@ public class ChangeDetailsOutcome extends DynamicWebPage
 			stringToSendToBrowser += "<head>\r\n";
 			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" type=\"text/css\">\r\n";
 			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"now-ui-kit.css\" type=\"text/css\">\r\n";
-			stringToSendToBrowser += "  <link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.4.0/dist/leaflet.css\" />\r\n";
 			stringToSendToBrowser += "</head>\r\n";
 			stringToSendToBrowser += "\r\n";
 			stringToSendToBrowser += "<body class=\"text-left\">\r\n";
@@ -59,7 +58,7 @@ public class ChangeDetailsOutcome extends DynamicWebPage
 			stringToSendToBrowser += "      </button>\r\n";
 			stringToSendToBrowser += "      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"index.html\">\n";
 			stringToSendToBrowser += "          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\n";
-			stringToSendToBrowser += "          <b>&nbsp;FILL MY HOLE</b>\n";
+			stringToSendToBrowser += "          <b>FILL MY HOLE</b>\n";
 			stringToSendToBrowser += "        </a>\n";
 			stringToSendToBrowser += "        <ul class=\"navbar-nav mx-auto\">\r\n";
 			stringToSendToBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#reportForm\">Report a Problem</a> </li>\r\n";
