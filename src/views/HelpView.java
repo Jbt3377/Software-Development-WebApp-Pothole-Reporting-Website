@@ -1,6 +1,6 @@
 package views;
 
-import java.util.List;
+
 
 import org.h2.mvstore.MVMap;
 
@@ -47,14 +47,14 @@ public class HelpView extends DynamicWebPage
     		stringToSendToWebBrowser += "          <b>&nbsp;FILL MY HOLE</b>\n";
     		stringToSendToWebBrowser += "        </a>\n";
     		stringToSendToWebBrowser += "        <ul class=\"navbar-nav mx-auto\">\r\n";
-    		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#reportForm\">Report a Problem</a> </li>\r\n";
+    		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"index.html\">Report a Problem</a> </li>\r\n";
     		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n";
     		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"Help.html\">FAQ</a> </li>\r\n";
     		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\r\n";
     		stringToSendToWebBrowser += "        </ul>\r\n";
     		stringToSendToWebBrowser += "        <ul class=\"navbar-nav\">\r\n";
     		
-    		// Account actions alter depending if user is signed in
+    		// Nav bar welcomes the user
     		if(profiles.get(email)!=null)
     		{
     			stringToSendToWebBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome "+ email +"</a> </li>\n";
@@ -87,7 +87,7 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +="</div>";
         	stringToSendToWebBrowser +="<div class=\"row\">";
         	stringToSendToWebBrowser +="<div class=\"col-md-9  ml-5 pl-5  offset-md-5\">";
-        	stringToSendToWebBrowser +="<form action=\"/FAQ\" method=\"GET\" class=\"\">";
+        	stringToSendToWebBrowser +="<form action=\"/FAQ\" autocomplete=\"off\" method=\"GET\" class=\"\">";
         	stringToSendToWebBrowser +="<div class=\"form-group row\"> <label for=\"title\" class=\"col-2 col-form-label text-primary\"><b class=\"ml-5\">Title</b></label>";
         	stringToSendToWebBrowser +=" <div class=\"col-10 \">";
         	stringToSendToWebBrowser +=" <input type=\"text\" class=\"form-control bg-light text-dark\" id=\"title\" name=\"title\" placeholder=\"Question title e.g. Login Issue\"> </div>";
@@ -96,11 +96,23 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +=" <div class=\"col-10\">";
         	stringToSendToWebBrowser +=" <input type=\"text\" class=\"form-control bg-light text-dark\" id=\"description\" name=\"description\" placeholder=\"Question description e.g. Can't Login\"> </div>";
         	stringToSendToWebBrowser +="</div>";
-        	stringToSendToWebBrowser +="<div class=\"form-group row\"> <label for=\"category\" class=\"col-2 col-form-label text-primary\"><b>Category</b></label>";
+        	
+        	stringToSendToWebBrowser +="<script src=\"/js/QuestionCategory.js\"></script>";
+        	
+
+        	stringToSendToWebBrowser +="<div class=\"form-group row\"> <label for=\"category\" class=\"col-2 col-form-label text-primary\"><b>Category</b></label>";	
         	stringToSendToWebBrowser +=" <div class=\"col-10\">";
-        	stringToSendToWebBrowser +=" <input type=\"text\" class=\"form-control bg-light text-dark\" id=\"category\" name=\"category\" placeholder=\"Question category e.g. Account\"> </div>";
+        	stringToSendToWebBrowser +=" <input type=\"text\" class=\"form-control bg-light text-dark\" id=\"category\" name=\"category\"  onclick=\"return autocomplete();\" placeholder=\"Question category e.g. Account\"> </div>";
+        	
+        	stringToSendToWebBrowser +="<script>";
+        	stringToSendToWebBrowser +="function autocomplete() {";
+			stringToSendToWebBrowser +="return autocomplete(document.getElementById(\"category\"), qCategories))";
+			stringToSendToWebBrowser +="}";
+			stringToSendToWebBrowser +="</script>";
+        	
         	stringToSendToWebBrowser +="</div>";
-        	stringToSendToWebBrowser +=" <button type=\"submit\" class=\"btn btn-primary\">Submit</button>";
+ 
+        	stringToSendToWebBrowser +=" <button type=\"Submit\" class=\"btn btn-primary\">Submit</button>";
         	stringToSendToWebBrowser +="</form>";
         	stringToSendToWebBrowser +="</div>";
         	stringToSendToWebBrowser +=" </div>";
@@ -274,7 +286,6 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +="  <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n" ;
         			stringToSendToWebBrowser +="  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\" integrity=\"sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\" crossorigin=\"anonymous\"></script>\n";
         					stringToSendToWebBrowser +="  <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\" integrity=\"sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\" crossorigin=\"anonymous\" style=\"\"></script>\n" ;
-        							stringToSendToWebBrowser +="  <pingendo onclick=\"window.open('https://pingendo.com/', '_blank')\" style=\"cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white\">Made with Pingendo Free&nbsp;&nbsp;<img src=\"https://pingendo.com/site-assets/Pingendo_logo_big.png\" class=\"d-block\" alt=\"Pingendo logo\" height=\"16\"></pingendo>\n"; 
         									stringToSendToWebBrowser +="</body>\n";
         											stringToSendToWebBrowser +="\n"; 
         													stringToSendToWebBrowser +="</html>";
@@ -290,9 +301,6 @@ public class HelpView extends DynamicWebPage
 			newFAQ.description = toProcess.params.get("description");
 			newFAQ.category = toProcess.params.get("category");
 			
-			MVMap<String, FAQ> newQuestion = db.s.openMap("FAQ");
-			//newQuestion.put(newQuestion.questionID, newQuestion);
-			List<String> newQuestionKeys = newQuestion.keyList();
 			
 			String stringToSendToWebBrowser = "<!DOCTYPE html>\r\n" + 
 					"<html>\r\n" + 

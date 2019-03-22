@@ -57,7 +57,7 @@ public class SupportUsView extends DynamicWebPage {
 		stringToSendToWebBrowser += "        </ul>\r\n";
 		stringToSendToWebBrowser += "        <ul class=\"navbar-nav\">\r\n";
 		
-		// Account actions alter depending if user is signed in
+		// Nav bar welcomes the user
 		if(profiles.get(email)!=null)
 		{
 			stringToSendToWebBrowser += "  		   <li class=\"nav-item\"> <a class=\"nav-link disabled\" href=\"#\">Welcome "+ email +"</a> </li>\n";
@@ -125,12 +125,11 @@ public class SupportUsView extends DynamicWebPage {
 		stringToSendToWebBrowser +="        <div class=\"col-md-6\">\r\n";
 		stringToSendToWebBrowser +="          <div class=\"list-group\">\r\n";
 
-
-		//MVMap<String, Donation> Donation = db.s.openMap("Donation");
-		//Donation.put(donation.donatorID, donation);
-		//List<String> newDonatorKeys = Donation.keyList();
 		
-		/*if(newDonatorKeys.size()==0) {
+		/*
+		  	Test if no donations are there
+		  
+		    if(newDonatorKeys.size()==0) {
 			Donation adonation = new Donation();
 			adonation.donatorID = "" + System.currentTimeMillis();
 			adonation.name = "a name";
@@ -138,14 +137,9 @@ public class SupportUsView extends DynamicWebPage {
 			Donation.put(adonation.donatorID, adonation);
 			db.commit();
 			newDonatorKeys = Donation.keyList();
-		} */
-		
-		
+		} 
+		*/
 
-			
-			//String newDonationUniqueID = newDonatorKeys.get(index);
-			//Donation adonation = Donation.get(newDonationUniqueID);
-			//Donation.put(donation.donatorID, donation);
 		
 			MVMap<String, Donation> Donation = db.s.openMap("Donation");
 			List<String> newDonatorKeys = Donation.keyList();
@@ -215,9 +209,6 @@ public class SupportUsView extends DynamicWebPage {
 			newdonation.name = toProcess.params.get("Name");
 			newdonation.amount = toProcess.params.get("Amount");
 			
-			MVMap<String, Donation> newDonation = db.s.openMap("Donation");
-			newDonation.put(newdonation.donatorID, newdonation);
-			List<String> newDonatorKeys = newDonation.keyList();
 			
 			String stringToSendToWebBrowser = "<!DOCTYPE html>\r\n" + 
 					"<html>\r\n" + 
