@@ -1,3 +1,5 @@
+<script>
+
 var qCategories = ["Getting Started", "Account", "Site Issues", "Leagal Information"];
 
 function autocomplete(inp, arr) {
@@ -95,4 +97,7 @@ function autocomplete(inp, arr) {
 document.addEventListener("click", function (e) {
     closeAllLists(e.target);
 });
+autocomplete(document.getElementById("Submit"), qCategories);
 } 
+
+</script>
