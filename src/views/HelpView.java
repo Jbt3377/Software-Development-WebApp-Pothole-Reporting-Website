@@ -49,7 +49,7 @@ public class HelpView extends DynamicWebPage
     		stringToSendToWebBrowser += "        <ul class=\"navbar-nav mx-auto\">\r\n";
     		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#reportForm\">Report a Problem</a> </li>\r\n";
     		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\r\n";
-    		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"HelpView\">FAQ</a> </li>\r\n";
+    		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"Help.html\">FAQ</a> </li>\r\n";
     		stringToSendToWebBrowser += "          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"AboutUsView\">About Us</a> </li>\r\n";
     		stringToSendToWebBrowser += "        </ul>\r\n";
     		stringToSendToWebBrowser += "        <ul class=\"navbar-nav\">\r\n";
@@ -253,11 +253,11 @@ public class HelpView extends DynamicWebPage
         	stringToSendToWebBrowser +="        <div class=\"my-3 col-lg-8\">\n";
         	stringToSendToWebBrowser +="          <h1 class=\"text-center text-lg-left text-white\" style=\"\">Help others by sharing</h1>\n";
         	stringToSendToWebBrowser +="        </div>\n";
-        	stringToSendToWebBrowser +="        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/QUBelfast\">\n";
+        	stringToSendToWebBrowser +="        <div class=\"text-center align-self-center col-lg-4\"> <a href=\"https://www.facebook.com/FMH-308708959763566/\">\n";
         	stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-facebook text-white mx-3 fa-3x\"></i>\n";
         	stringToSendToWebBrowser +="          </a> <a href=\"https://twitter.com/QUBelfast\">\n";
         	stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-twitter fa-3x text-white mx-3\"></i>\n";
-        	stringToSendToWebBrowser +="          </a> <a href=\"https://www.instagram.com/qubelfast/?hl=en\">\n"; 
+        	stringToSendToWebBrowser +="          </a> <a href=\"https://www.instagram.com/fmhwebpage/\">\n"; 
         	stringToSendToWebBrowser +="            <i class=\"fa fa-fw fa-instagram fa-3x text-white mx-3\"></i>\n";
         	stringToSendToWebBrowser +="          </a> </div>\n";
         	stringToSendToWebBrowser +="      </div>\n";
@@ -306,28 +306,6 @@ public class HelpView extends DynamicWebPage
 					"</head>\r\n" + 
 					"\r\n" + 
 					"<body>\r\n" + 
-					"<nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\n" +
-					"    <div class=\"container\"> <button class=\"navbar-toggler navbar-toggler-right border-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar12\" style=\"\">\n"+
-					"        <span class=\"navbar-toggler-icon\"></span>\n" +
-					"      </button>\n"+
-					"      <div class=\"collapse navbar-collapse\" id=\"navbar12\"> <a class=\"navbar-brand d-none d-md-block\" href=\"index.html\">\n" +
-					"          <i class=\"fa d-inline fa-lg fa-wrench\"></i>\n"+
-					"          <b>&nbsp;FILL MY HOLE</b>\n"+
-					"        </a>\n"+
-					"        <ul class=\"navbar-nav mx-auto\">\n"+
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"indexview\">Report a Problem</a> </li>\n"+
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">Your Area</a> </li>\n"+
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"help.html\">FAQ</a> </li>\n"+
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"aboutusview\">About Us</a> </li>\n"+
-					"        </ul>\n"+
-					"        <ul class=\"navbar-nav\">\n"+
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.html\">Login</a> </li>\n"+
-					"          <li class=\"nav-item\"> <a class=\"nav-link\" href=\"#\">|</a> </li>\n"+
-					"          <li class=\"nav-item\"> <a class=\"nav-link text-primary\" href=\"signup.html\">Register</a> </li>\n"+
-					"        </ul>\n"+
-					"      </div>\n"+
-					"    </div>\n"+
-					"  </nav>\n"+
 					"  <div class=\"py-5 text-center text-white h-100 align-items-center d-flex\" style=\"background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: cover, cover;  background-repeat: repeat, repeat;\" >\r\n" + 
 					"    <div class=\"container py-5\">\r\n" + 
 					"      <div class=\"row\">\r\n" + 
